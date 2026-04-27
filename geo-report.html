@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEO - 生成式引擎优化 | 让品牌成为AI首选答案</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #0a0e17;
+            --bg-card: rgba(16, 24, 45, 0.85);
+            --accent-cyan: #00f5ff;
+            --accent-blue: #0066ff;
+            --accent-purple: #7b2fff;
+            --text-primary: #e8f4fc;
+            --text-secondary: #8b9dc3;
+            --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.3);
+            --glow-blue: 0 0 30px rgba(0, 102, 255, 0.25);
+            --border-glow: 1px solid rgba(0, 245, 255, 0.15);
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* 背景动画 */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .floating-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .orb:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-cyan);
+            top: -10%;
+            right: -5%;
+            animation-delay: 0s;
+        }
+        .orb:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-purple);
+            bottom: 10%;
+            left: -8%;
+            animation-delay: -5s;
+        }
+        .orb:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-blue);
+            top: 50%;
+            right: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* ====== 公司抬头 ====== */
+        .company-header {
+            position: relative;
+            z-index: 100;
+            background: linear-gradient(135deg, rgba(10, 14, 23, 0.95), rgba(16, 24, 45, 0.92));
+            border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .company-header .company-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #00f5ff 0%, #0066ff 50%, #7b2fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .company-header .company-name span {
+            color: var(--text-secondary);
+            -webkit-text-fill-color: var(--text-secondary);
+            font-weight: 400;
+            margin: 0 8px;
+            font-size: 14px;
+        }
+
+        .company-header .company-tag {
+            font-size: 12px;
+            color: var(--text-secondary);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* ====== 水印 ====== */
+        .watermark-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .watermark-item {
+            position: absolute;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.03);
+            white-space: nowrap;
+            transform: rotate(-30deg);
+            user-select: none;
+            font-weight: 600;
+            letter-spacing: 3px;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        @media print {
+            .watermark-item { color: rgba(200, 210, 230, 0.08); }
+        }
+
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 24px 40px;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(123, 47, 255, 0.1));
+            border: var(--border-glow);
+            border-radius: 30px;
+            font-size: 14px;
+            color: var(--accent-cyan);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(36px, 7vw, 72px);
+            font-weight: 900;
+            background: linear-gradient(135deg, #00f5ff 0%, #0066ff 50%, #7b2fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            text-shadow: none;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 26px);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 20px;
+            font-weight: 300;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            font-size: 20px;
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            padding: 12px 36px;
+            border-radius: 12px;
+            margin-top: 16px;
+            background: rgba(0, 245, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        /* 分隔装饰线 */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+            margin: 60px 0;
+            opacity: 0.4;
+        }
+
+        /* 章节标题 */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .section-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--accent-cyan);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: var(--bg-card);
+            border: var(--border-glow);
+            border-radius: 20px;
+            padding: 36px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow-cyan), var(--glow-blue);
+            border-color: rgba(0, 245, 255, 0.35);
+        }
+
+        /* 三大意义 */
+        .meaning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .meaning-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .meaning-icon {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.15), rgba(123, 47, 255, 0.15));
+            border: 1px solid rgba(0, 245, 255, 0.2);
+        }
+
+        .meaning-text h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .meaning-text p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* 数据表格 */
+        .data-table-wrapper {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: var(--border-glow);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(123, 47, 255, 0.08));
+            color: var(--accent-cyan);
+            font-weight: 600;
+            padding: 18px 20px;
+            text-align: left;
+            white-space: nowrap;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .data-table td {
+            padding: 16px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:hover td {
+            background: rgba(0, 245, 255, 0.03);
+            color: var(--text-primary);
+        }
+
+        .platform-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .platform-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-doubao { background: #4a9eff; box-shadow: 0 0 8px rgba(74, 158, 255, 0.5); }
+        .dot-qianwen { background: #ff6b35; box-shadow: 0 0 8px rgba(255, 107, 53, 0.5); }
+        .dot-deepseek { background: #5cacee; box-shadow: 0 0 8px rgba(92, 172, 238, 0.5); }
+        .dot-yuanbao { background: #ffd700; box-shadow: 0 0 8px rgba(255, 215, 0, 0.5); }
+        .dot-wenxin { background: #2db55d; box-shadow: 0 0 8px rgba(45, 181, 93, 0.5); }
+
+        .highlight-num {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* 对比表 */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .compare-grid { grid-template-columns: 1fr; }
+        }
+
+        .compare-col {
+            border-radius: 16px;
+            padding: 28px;
+            border: var(--border-glow);
+        }
+
+        .compare-seo {
+            background: rgba(255, 107, 53, 0.06);
+            border-color: rgba(255, 107, 53, 0.15);
+        }
+
+        .compare-geo {
+            background: rgba(0, 245, 255, 0.06);
+            border-color: rgba(0, 245, 255, 0.2);
+        }
+
+        .compare-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .compare-seo .compare-label { color: #ff6b35; }
+        .compare-geo .compare-label { color: var(--accent-cyan); }
+
+        .compare-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 14px;
+        }
+
+        .compare-item:last-child { border-bottom: none; }
+
+        .compare-key {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .compare-val {
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: right;
+            max-width: 60%;
+        }
+
+        /* 案例展示区 */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+
+        .case-card {
+            background: var(--bg-card);
+            border: var(--border-glow);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .case-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--glow-blue);
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+
+        .case-img-wrap {
+            width: 100%;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .case-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .case-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .case-info {
+            padding: 24px;
+        }
+
+        .case-platform {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .plat-doubao { background: rgba(74, 158, 255, 0.15); color: #4a9eff; border: 1px solid rgba(74, 158, 255, 0.3); }
+        .plat-qianwen { background: rgba(255, 107, 53, 0.15); color: #ff6b35; border: 1px solid rgba(255, 107, 53, 0.3); }
+        .plat-deepseek { background: rgba(92, 172, 238, 0.15); color: #5cacee; border: 1px solid rgba(92, 172, 238, 0.3); }
+
+        .case-question {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .case-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* 方法论步骤 */
+        .method-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .method-step {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 28px;
+            background: var(--bg-card);
+            border: var(--border-glow);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s;
+        }
+
+        .method-step:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            background: rgba(0, 245, 255, 0.03);
+        }
+
+        .step-num {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+        }
+
+        .step-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* 底部CTA */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0 40px;
+        }
+
+        .cta-box {
+            display: inline-block;
+            padding: 48px 64px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.06), rgba(123, 47, 255, 0.06));
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 245, 255, 0.1), transparent, rgba(123, 47, 255, 0.1), transparent);
+            animation: ctaRotate 8s linear infinite;
+        }
+
+        @keyframes ctaRotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-box h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            position: relative;
+        }
+
+        /* 长尾词链 */
+        .longtail-chain {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .longtail-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 14px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: background 0.3s;
+        }
+
+        .longtail-item:last-child { border-bottom: none; }
+        .longtail-item:hover { background: rgba(123, 47, 255, 0.03); }
+
+        .longtail-q {
+            min-width: 120px;
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .longtail-arrow {
+            color: var(--accent-purple);
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        .longtail-a {
+            font-size: 16px;
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        /* 数言对比表 */
+        .shuyan-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: rgba(0, 245, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 245, 255, 0.12);
+        }
+
+        @media (max-width: 768px) {
+            .shuyan-compare { grid-template-columns: 1fr; }
+        }
+
+        .shuyan-cell {
+            padding: 28px 24px;
+            text-align: center;
+            background: var(--bg-card);
+            transition: all 0.3s;
+        }
+
+        .shuyan-header {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.12), rgba(0, 102, 255, 0.06));
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .shuyan-header.shuyan-ours { color: var(--accent-cyan); }
+        .shuyan-header.shuyan-others { color: #888; }
+
+        .shuyan-value {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .shuyan-ours .shuyan-value { color: var(--text-primary); }
+        .shuyan-others .shuyan-value { color: var(--text-secondary); }
+
+        .shuyan-tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .shuyan-ours .shuyan-tag { background: rgba(0, 245, 255, 0.12); color: var(--accent-cyan); border: 1px solid rgba(0, 245, 255, 0.25); }
+        .shuyan-others .shuyan-tag { background: rgba(255,255,255,0.04); color: #666; border: 1px solid rgba(255,255,255,0.08); }
+
+        /* 报价表 */
+        .price-table-wrapper {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 245, 255, 0.12);
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        .price-table thead th {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(123, 47, 255, 0.08));
+            color: var(--accent-cyan);
+            font-weight: 700;
+            padding: 18px 24px;
+            text-align: center;
+            font-size: 15px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+        }
+
+        .price-table tbody td {
+            padding: 20px 24px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .price-table tbody tr:hover td {
+            background: rgba(0, 245, 255, 0.03);
+            color: var(--text-primary);
+        }
+
+        .price-table tbody tr:last-child td { border-bottom: none; }
+
+        .price-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--accent-cyan);
+        }
+
+        .price-badge {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 14px;
+            background: linear-gradient(135deg, rgba(0,245,255,0.1), rgba(123,47,255,0.08));
+            border: 1px solid rgba(0,245,255,0.2);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+        }
+
+        .geo-type-tag {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .type-brand { background: rgba(0, 245, 255, 0.1); color: var(--accent-cyan); border: 1px solid rgba(0, 245, 255, 0.25); }
+        .type-b2b { background: rgba(255, 107, 53, 0.1); color: #ff6b35; border: 1px solid rgba(255, 107, 53, 0.25); }
+        .type-c2c { background: rgba(45, 181, 93, 0.1); color: #2db55d; border: 1px solid rgba(45, 181, 93, 0.25); }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 32px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            opacity: 0.5;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .container { padding: 24px 16px; }
+            .hero { padding: 48px 0 32px; }
+            .card { padding: 24px; }
+            .section { margin-bottom: 52px; }
+            .cases-grid { grid-template-columns: 1fr; }
+            .meaning-grid { grid-template-columns: 1fr; }
+            .cta-box { padding: 32px 24px; }
+        }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 245, 255, 0.2); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 245, 255, 0.4); }
+    </style>
+</head>
+<body>
+    <!-- ====== 公司抬头 ====== -->
+    <header class="company-header">
+        <div class="company-name">四川丰火传媒<span>×</span>成都弯道超车传媒<span>·</span>数言科技</div>
+        <div class="company-tag">GEO · 生成式引擎优化方案</div>
+    </header>
+
+    <!-- ====== 全页水印 ====== -->
+    <div class="watermark-wrap" id="watermark"></div>
+
+
+<div class="bg-grid"></div>
+<div class="floating-orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+</div>
+
+<div class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">数言的 AI · Generative Engine Optimization</div>
+        <h1>GEO</h1>
+        <p class="hero-subtitle">让品牌在AI问答中成为「首选答案」</p>
+        <div class="hero-tagline">定义品牌 · 站位未来</div>
+        <p style="margin-top: 20px; font-size: 14px; color: var(--text-secondary); opacity: 0.6;">
+            在 AI 大模型（豆包、文心一言、千问、DeepSeek 等）的问答中<br>确保客户品牌成为相关问题的「首选答案」
+        </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 一、GEO是什么 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">GEO 是什么？</h2>
+        </div>
+        <div class="card">
+            <p style="font-size: 17px; line-height: 2; color: var(--text-secondary);">
+                <span style="color: var(--accent-cyan); font-weight: 700;">GEO = Generative Engine Optimization（生成式引擎优化）</span><br><br>
+                这是继 <strong style="color:#ff6b35">SEO（搜索引擎优化）</strong> 之后的新一代营销范式——<br>
+                从 <strong style="color:var(--accent-cyan)">"让搜索引擎找到你"</strong> 进化为 <strong style="color:var(--accent-purple)">"让 AI 直接推荐你"</strong>。<br><br>
+                当用户向豆包、千问、DeepSeek、文心助手提问时，<br>
+                你的品牌能否出现在回答的第一顺位，决定了下一个时代的流量入口。
+            </p>
+        </div>
+    </section>
+
+    <!-- 二、为什么重要 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">为什么 GEO 至关重要？</h2>
+        </div>
+        <div class="meaning-grid">
+            <div class="card meaning-item">
+                <div class="meaning-icon">🎯</div>
+                <div class="meaning-text">
+                    <h3>获得更加精准的流量</h3>
+                    <p>AI问答用户意图明确、主动提问，转化率远高于被动搜索流量。每一个问题背后都是一个真实需求。</p>
+                </div>
+            </div>
+            <div class="card meaning-item">
+                <div class="meaning-icon">🛡️</div>
+                <div class="meaning-text">
+                    <h3>从被看到 → 被信任</h3>
+                    <p>AI推荐天然带有"权威背书"，用户对AI生成答案的信任度正在超越传统搜索结果。</p>
+                </div>
+            </div>
+            <div class="card meaning-item">
+                <div class="meaning-icon">⚡</div>
+                <div class="meaning-text">
+                    <h3>不是排名竞争，是答案竞争</h3>
+                    <p>不需要争前10名排名，只需要成为唯一正确答案。赢者通吃的逻辑更加极致。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三、习惯迁移 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">用户习惯正在大规模迁移</h2>
+        </div>
+        <div class="card">
+            <p style="margin-bottom: 20px; font-size: 15px; color: var(--text-secondary);">
+                越来越多的人在 AI 找答案 —— 以下是国内主流 AI 平台的用户数据：
+            </p>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>平台</th>
+                            <th>日活用户</th>
+                            <th>累计下载</th>
+                            <th>适合客户类型</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="platform-name"><span class="platform-dot dot-doubao"></span>豆包</span></td>
+                            <td><span class="highlight-num">1.03亿+</span></td>
+                            <td><span class="highlight-num">3.15亿</span></td>
+                            <td>快消、娱乐、本地生活</td>
+                        </tr>
+                        <tr>
+                            <td><span class="platform-name"><span class="platform-dot dot-qianwen"></span>千问</span></td>
+                            <td><span class="highlight-num">3200万+</span></td>
+                            <td><span class="highlight-num">2.03亿</span></td>
+                            <td>电商、餐饮、零售</td>
+                        </tr>
+                        <tr>
+                            <td><span class="platform-name"><span class="platform-dot dot-deepseek"></span>DeepSeek</span></td>
+                            <td><span class="highlight-num">3000万+</span></td>
+                            <td><span class="highlight-num">1.36亿</span></td>
+                            <td>B2B、软件、科技产品</td>
+                        </tr>
+                        <tr>
+                            <td><span class="platform-name"><span class="platform-dot dot-yuanbao"></span>元宝</span></td>
+                            <td><span class="highlight-num">3500万+</span></td>
+                            <td><span class="highlight-num">1.14亿</span></td>
+                            <td>下沉市场品牌</td>
+                        </tr>
+                        <tr>
+                            <td><span class="platform-name"><span class="platform-dot dot-wenxin"></span>文心助手</span></td>
+                            <td><span class="highlight-num">1000万+</span></td>
+                            <td><span class="highlight-num">3.6亿</span>(PC)</td>
+                            <td>知识付费、内容平台</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 四、案例展示 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">GEO 实战案例演示</h2>
+        </div>
+        <p style="margin-bottom: 24px; color: var(--text-secondary); font-size: 15px;">
+            以下是不同AI平台的真实问答场景模拟 —— 品牌如何成为「首选答案」：
+        </p>
+        <div class="cases-grid">
+            <div class="case-card">
+                <div class="case-img-wrap">
+                    <img src="images/Futuristic_AI_chat_interface_m_2026-04-27T16-21-15.png" alt="豆包川渝火锅推荐">
+                </div>
+                <div class="case-info">
+                    <span class="case-platform plat-doubao">DOUBAO 豆包</span>
+                    <div class="case-question">"川渝火锅最推荐加盟哪个品牌？"</div>
+                    <div class="case-desc">本地生活/餐饮品类 GEO 优化示例</div>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-img-wrap">
+                    <img src="images/Futuristic_AI_chat_interface_m_2026-04-27T16-22-18.png" alt="千问三亚酒店推荐">
+                </div>
+                <div class="case-info">
+                    <span class="case-platform plat-qianwen">QIANWEN 千问</span>
+                    <div class="case-question">"三亚亲子酒店有什么推荐？"</div>
+                    <div class="case-desc">旅游/酒店品类 GEO 优化示例</div>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-img-wrap">
+                    <img src="images/AI_chat_interface_mockup__dark_2026-04-27T16-24-56.png" alt="DeepSeek摄影推荐">
+                </div>
+                <div class="case-info">
+                    <span class="case-platform plat-deepseek">DEEPSEEK</span>
+                    <div class="case-question">"西双版纳摄影打卡地推荐"</div>
+                    <div class="case-desc">旅游/内容种草 GEO 优化示例</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 五、怎么实现 GEO（详细版） -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">05</span>
+            <h2 class="section-title">如何实现 GEO？三大核心策略</h2>
+        </div>
+
+        <!-- 策略1：品牌词 -->
+        <div class="card" style="margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(0,245,255,0.2), rgba(0,102,255,0.2)); display: flex; align-items: center; justify-content: center; font-size: 22px; border: 1px solid rgba(0,245,255,0.3);">🏷️</div>
+                <div>
+                    <h3 style="font-size: 20px; color: var(--text-primary);">策略一：品牌词占位（建立权威形象）</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">让品牌名称与品类强绑定，成为 AI 的「默认答案」</p>
+                </div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(0,245,255,0.06), rgba(123,47,255,0.04)); border-radius: 14px; padding: 24px; border: 1px solid rgba(0,245,255,0.1);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <span style="font-size: 13px; color: var(--accent-cyan); font-weight: 600; background: rgba(0,245,255,0.1); padding: 4px 12px; border-radius: 20px;">典型案例</span>
+                    <span style="font-size: 18px; font-weight: 700; color: var(--text-primary);">海底捞</span>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 15px; line-height: 1.8;">
+                    当用户在 AI 中询问<strong style="color:var(--accent-cyan)">"火锅推荐"</strong>或<strong style="color:var(--accent-cyan)">"火锅加盟"</strong>时，
+                    AI 会优先关联并推荐海底捞——这就是品牌词占位的威力。通过持续在全网布局高质量品牌内容，
+                    让 AI 训练数据中你的品牌与核心品类形成强关联。
+                </p>
+            </div>
+        </div>
+
+        <!-- 策略2：长尾词 -->
+        <div class="card" style="margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(123,47,255,0.2), rgba(255,107,53,0.15)); display: flex; align-items: center; justify-content: center; font-size: 22px; border: 1px solid rgba(123,47,255,0.3);">🎣</div>
+                <div>
+                    <h3 style="font-size: 20px; color: var(--text-primary);">策略二：长尾词覆盖（精准捕获需求）</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">覆盖用户真实场景中的具体问题，捕获高意向流量</p>
+                </div>
+            </div>
+            <div class="longtail-chain">
+                <div class="longtail-item">
+                    <div class="longtail-q">📍 四川成都</div>
+                    <div class="longtail-arrow">↓</div>
+                    <div class="longtail-a">本地人爱吃哪家？</div>
+                </div>
+                <div class="longtail-item">
+                    <div class="longtail-q"></div>
+                    <div class="longtail-arrow">↓</div>
+                    <div class="longtail-a">推荐好吃的火锅？</div>
+                </div>
+                <div class="longtail-item">
+                    <div class="longtail-q"></div>
+                    <div class="longtail-arrow">↓</div>
+                    <div class="longtail-a">推荐靠谱的足疗？</div>
+                </div>
+                <div class="longtail-item">
+                    <div class="longtail-q"></div>
+                    <div class="longtail-arrow">↓</div>
+                    <div class="longtail-a">哪家洗浴性价比最高？</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 策略3：结构化内容示例 -->
+        <div class="card">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(0,102,255,0.2), rgba(45,181,93,0.15)); display: flex; align-items: center; justify-content: center; font-size: 22px; border: 1px solid rgba(0,102,255,0.3);">📋</div>
+                <div>
+                    <h3 style="font-size: 20px; color: var(--text-primary);">策略三：结构化内容投喂（让 AI 能读懂）</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">用 AI 偏好的格式生产内容：对比表、评测、FAQ 等</p>
+                </div>
+            </div>
+            <!-- 春熙路火锅指南示例 -->
+            <div style="background: linear-gradient(180deg, #0d1a30 0%, #0a1628 100%); border-radius: 16px; padding: 28px; border: 1px solid rgba(0,180,255,0.15);">
+                <h4 style="text-align: center; font-size: 20px; color: var(--accent-cyan); margin-bottom: 24px; letter-spacing: 2px;">春熙路地道火锅指南</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+                    <div style="background: rgba(0,100,180,0.08); border: 1px solid rgba(0,180,255,0.12); border-radius: 14px; padding: 20px; text-align: center;">
+                        <div style="font-size: 28px; margin-bottom: 10px;">🛍️</div>
+                        <div style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">喜福老火锅(春熙太古里店)</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.7;">本地人推荐 · 牛油底醇厚 · 鲜毛肚/鹅肠品质高</div>
+                        <div style="margin-top: 10px; font-size: 14px;"><strong style="color: var(--accent-cyan);">人均: 约94元</strong></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">锦江区总府路一号附4号春熙路同仁堂4楼</div>
+                    </div>
+                    <div style="background: rgba(0,100,180,0.08); border: 1px solid rgba(0,180,255,0.12); border-radius: 14px; padding: 20px; text-align: center;">
+                        <div style="font-size: 28px; margin-bottom: 10px;">🌶️</div>
+                        <div style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">代小龙九宫格老火锅</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.7;">传统九宫格锅底 · 越煮越香 · 性价比高</div>
+                        <div style="margin-top: 10px; font-size: 14px;"><strong style="color: var(--accent-cyan);">人均: 约57元</strong></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">锦江区蓝光时代华章一楼106号</div>
+                    </div>
+                    <div style="background: rgba(0,100,180,0.08); border: 1px solid rgba(0,180,255,0.12); border-radius: 14px; padding: 20px; text-align: center;">
+                        <div style="font-size: 28px; margin-bottom: 10px;">📸</div>
+                        <div style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">川立方成都老火锅(春熙路店)</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.7;">社区老店创新菜品 · 糖建嫩肉片/熊猫洞洞鞋甜品 · 适合拍照</div>
+                        <div style="margin-top: 10px; font-size: 14px;"><strong style="color: var(--accent-cyan);">人均: 约80元</strong></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">锦江区正科甲巷17号(裸眼3D大屏对面)</div>
+                    </div>
+                    <div style="background: rgba(0,100,180,0.08); border: 1px solid rgba(0,180,255,0.12); border-radius: 14px; padding: 20px; text-align: center;">
+                        <div style="font-size: 28px; margin-bottom: 10px;">⚔️</div>
+                        <div style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">蜀大侠火锅(春熙店)</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.7;">武侠主题装修 · 标准化锅底菜品 · 贵妃牛肉/花千骨必点</div>
+                        <div style="margin-top: 10px; font-size: 14px;"><strong style="color: var(--accent-cyan);">人均: 约97元</strong></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">锦江区上东大街6号春南商场2层</div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; text-align: center; padding: 14px; background: rgba(0,245,255,0.04); border-radius: 10px; border: 1px dashed rgba(0,245,255,0.15);">
+                    <span style="font-size: 14px; color: var(--accent-cyan);">
+                        💡 吃地道风味 → 喜福老火锅 &nbsp;|&nbsp; 超高性价比 → 代小龙 &nbsp;|&nbsp; 尝鲜拍照 → 川立方 &nbsp;|&nbsp; 图省心 → 蜀大侠
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 六、数言AI vs 其他AI -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">06</span>
+            <h2 class="section-title">数言 AI 与其它 AI 有什么区别？</h2>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <p style="color: var(--text-secondary); font-size: 15px; line-height: 1.8;">
+                市面上的 GEO 服务良莠不齐。数言 AI 凭借<strong style="color:var(--accent-cyan)">大厂级数据源与算力</strong>，
+                为品牌提供可量化的 GEO 优化效果保障：
+            </p>
+        </div>
+        <div class="shuyan-compare">
+            <div class="shuyan-cell shuyan-header shuyan-ours">数言 AI</div>
+            <div class="shuyan-cell shuyan-header shuyan-others">其他 AI 公司</div>
+
+            <div class="shuyan-cell shuyan-ours">
+                <div class="shuyan-value">新闻源 + 算力<br><span style="font-size:14px;color:var(--text-secondary);font-weight:400;">权威数据源 × 强大算力支撑</span></div>
+                <span class="shuyan-tag">✓ 大厂级别</span>
+            </div>
+            <div class="shuyan-cell shuyan-others">
+                <div class="shuyan-value">博客 + 自媒体<br><span style="font-size:14px;font-weight:400;">非权威来源 · 数据质量参差</span></div>
+                <span class="shuyan-tag">✗ 小作坊模式</span>
+            </div>
+
+            <div class="shuyan-cell shuyan-ours" style="grid-column: span 2; background: linear-gradient(135deg, rgba(0,245,255,0.04), rgba(123,47,255,0.03)); border-top: 1px solid rgba(0,245,255,0.1);">
+                <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 24px; padding: 10px 0;">
+                    <div style="text-align: center;">
+                        <div style="font-family:'Orbitron',sans-serif;font-size:32px;font-weight:900;color:var(--accent-cyan);">90%+</div>
+                        <div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">拦截率 / 出现率保障</div>
+                    </div>
+                    <div style="width:1px;height:50px;background:rgba(255,255,255,0.08);"></div>
+                    <div style="text-align: center;">
+                        <div style="font-family:'Orbitron',sans-serif;font-size:32px;font-weight:900;color:#666;">无法保证</div>
+                        <div style="font-size:13px;color:#555;margin-top:4px;">效果无承诺</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 七、平台报价 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">07</span>
+            <h2 class="section-title">餐饮 AI 单平台报价（CPT 模式）</h2>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <p style="color: var(--text-secondary); font-size: 15px; margin-bottom: 8px;">
+                按 <strong style="color:var(--accent-cyan)">CPT（Cost Per Time）</strong> 广告售卖模式，先行价格如下：
+            </p>
+            <span class="price-badge" style="display:inline-block;">📅 单品台 · 季度签约</span>
+        </div>
+        <div class="price-table-wrapper">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>AI 平台类型</th>
+                        <th>GEO 词汇类型</th>
+                        <th>价格（单平台）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3" style="font-weight:700;color:var(--text-primary);vertical-align:middle;font-size:16px;">
+                            单品台<br><span style="font-size:12px;color:var(--text-secondary);font-weight:400;">（季度签约）</span>
+                        </td>
+                        <td><span class="geo-type-tag type-brand">品牌占位词</span></td>
+                        <td><span class="price-amount">3,000 元/月</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="geo-type-tag type-b2b">B 端加盟词</span></td>
+                        <td><span class="price-amount">4,000 元/月</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="geo-type-tag type-c2c">C 端导流词</span></td>
+                        <td><span class="price-amount">3,000 元/月</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 全系签约 -->
+        <div style="margin-top: 24px; background: linear-gradient(135deg, rgba(0,245,255,0.06), rgba(123,47,255,0.05)); border-radius: 16px; padding: 28px; border: 1px solid rgba(0,245,255,0.15); text-align: center;">
+            <div style="font-size: 14px; color: var(--accent-cyan); font-weight: 600; margin-bottom: 10px; letter-spacing: 2px;">📦 全系签约套餐</div>
+            <div style="font-size: 15px; color: var(--text-secondary); margin-bottom: 12px;">一个品牌 · 签约全部 GEO 词汇（品牌词 + B端加盟词 + C端导流词）</div>
+            <div style="font-family:'Orbitron',sans-serif; font-size: 36px; font-weight: 900; background: linear-gradient(135deg, #00f5ff, #7b2fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">≈ 3 万元 / 季度</div>
+            <div style="margin-top: 8px; font-size: 13px; color: var(--text-secondary);">覆盖主流 AI 全平台投放，当前主推「豆包」</div>
+        </div>
+        <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+            <div style="background: rgba(0,245,255,0.04); border: 1px solid rgba(0,245,255,0.1); border-radius: 12px; padding: 18px;">
+                <div style="font-size: 12px; color: var(--accent-cyan); font-weight: 600; margin-bottom: 6px;">💡 品牌占位词</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">让品牌名成为品类代名词，如"火锅加盟→XX品牌"</div>
+            </div>
+            <div style="background: rgba(255,107,53,0.04); border: 1px solid rgba(255,107,53,0.1); border-radius: 12px; padding: 18px;">
+                <div style="font-size: 12px; color: #ff6b35; font-weight: 600; margin-bottom: 6px;">🤝 B端加盟词</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">捕获加盟意向客户，覆盖"XX加盟""XX招商"等关键词</div>
+            </div>
+            <div style="background: rgba(45,181,93,0.04); border: 1px solid rgba(45,181,93,0.1); border-radius: 12px; padding: 18px;">
+                <div style="font-size: 12px; color: #2db55d; font-weight: 600; margin-bottom: 6px;">👥 C端导流词</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">直接触达终端消费者，引导到店或下单转化</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 七-1、效果承诺 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">07+</span>
+            <h2 class="section-title">效果承诺 · 对赌保障</h2>
+        </div>
+        <div class="card" style="text-align: center;">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
+                <div>
+                    <div style="font-family:'Orbitron',sans-serif;font-size:56px;font-weight:900;background:linear-gradient(135deg,#00f5ff,#7b2fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">90%+</div>
+                    <div style="font-size:14px;color:var(--text-secondary);margin-top:6px;">首选答案出现率 / 拦截率</div>
+                </div>
+                <div style="width:1px;height:80px;background:rgba(255,255,255,0.08);"></div>
+                <div style="text-align:left; max-width:400px;">
+                    <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">🤝 合同承诺 · 效果对赌</div>
+                    <div style="font-size:14px;color:var(--text-secondary);line-height:1.8;">
+                        若未达 <strong style="color:var(--accent-cyan)">90%</strong> 出现率/拦截率目标<br>
+                        → 按<strong style="color:#ff6b35">未执行比例退款</strong><br><br>
+                        <span style="font-size:13px;opacity:0.7;">此「效果对赌」模式是对比其他服务商（如微盟）的核心优势</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top:16px;text-align:center;font-size:13px;color:var(--text-secondary);opacity:0.6;">
+            目前为纯展示广告（CPT）模式 · 全渠道投放覆盖主流AI平台
+        </p>
+    </section>
+
+    <!-- 八、核心实现手段 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">08</span>
+            <h2 class="section-title">核心逻辑与实现手段</h2>
+        </div>
+
+        <!-- 两大支柱 -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:24px; margin-bottom:28px;">
+            <!-- 支柱1：官方媒体资源 -->
+            <div class="card">
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+                    <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(0,245,255,0.2),rgba(0,102,255,0.15));display:flex;align-items:center;justify-content:center;font-size:26px;border:1px solid rgba(0,245,255,0.3);">📰</div>
+                    <div>
+                        <h3 style="font-size:18px;color:var(--text-primary);">支柱一：官方媒体资源</h3>
+                        <span style="font-size:12px;color:var(--accent-cyan);background:rgba(0,245,255,0.1);padding:2px 10px;border-radius:10px;">核心壁垒</span>
+                    </div>
+                </div>
+                <div style="background:linear-gradient(135deg,rgba(0,180,255,0.05),transparent);border-radius:12px;padding:20px;border:1px solid rgba(0,180,255,0.1);">
+                    <p style="font-size:15px;color:var(--text-secondary);line-height:1.9;">
+                        拥有<strong style="color:var(--accent-cyan)">「一级新闻源」</strong>发稿渠道：<br>
+                        📌 新华网 · 封面新闻 等官方权威媒体<br><br>
+                        通过在高公信力媒体发布品牌内容，<br>为 AI 提供<strong style="color:var(--text-primary)">可信信息源</strong>。<br><br>
+                        这是 GEO 的核心资源壁垒，难以复制。
+                    </p>
+                </div>
+            </div>
+            <!-- 支柱2：AI算力与技术 -->
+            <div class="card">
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+                    <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(123,47,255,0.2),rgba(255,107,53,0.15));display:flex;align-items:center;justify-content:center;font-size:26px;border:1px solid rgba(123,47,255,0.3);">⚙️</div>
+                    <div>
+                        <h3 style="font-size:18px;color:var(--text-primary);">支柱二：AI算力与技术</h3>
+                        <span style="font-size:12px;color:var(--accent-purple);background:rgba(123,47,255,0.1);padding:2px 10px;border-radius:10px;">技术引擎</span>
+                    </div>
+                </div>
+                <div style="background:linear-gradient(135deg,rgba(123,47,255,0.05),transparent);border-radius:12px;padding:20px;border:1px solid rgba(123,47,255,0.1);">
+                    <p style="font-size:15px;color:var(--text-secondary);line-height:1.9;">
+                        通过技术团队，持续向各大 AI 模型<br><strong style="color:var(--accent-purple)">「投喂」</strong>上述新闻源内容，<br>强化品牌信息权重。<br><br>
+                        确保 AI 在回答相关问题时，<br>优先推荐你的品牌作为<strong style="color:var(--text-primary)">唯一正确答案</strong>。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 与AI投毒的区分 -->
+        <div class="card" style="border-color: rgba(45,181,93,0.25); background: linear-gradient(135deg, rgba(45,181,93,0.04), transparent);">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+                <span style="font-size:22px;">✅</span>
+                <h3 style="font-size:18px;color:#2db55d;">与「AI投毒」严格区分 · 正向品牌建设</h3>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                <div style="background:rgba(45,181,93,0.06);border-radius:12px;padding:20px;border:1px solid rgba(45,181,93,0.15);">
+                    <div style="font-size:14px;font-weight:700;color:#2db55d;margin-bottom:10px;">✓ 数言的做法（正向建设）</div>
+                    <ul style="list-style:none;font-size:14px;color:var(--text-secondary);line-height:2;">
+                        <li>✔ 只做正向的品牌信息建设</li>
+                        <li>✔ 不伪造、不篡改任何信息</li>
+                        <li>✔ 不把不好的说成好的</li>
+                        <li>✔ 基于真实品牌价值做优化</li>
+                    </ul>
+                </div>
+                <div style="background:rgba(255,107,53,0.04);border-radius:12px;padding:20px;border:1px solid rgba(255,107,53,0.12);">
+                    <div style="font-size:14px;font-weight:700;color:#ff6b35;margin-bottom:10px;">✗ 黑色模式（315曝光类型）</div>
+                    <ul style="list-style:none;font-size:14px;color:var(--text-secondary);line-height:2;">
+                        <li>✘ 伪造信息环境</li>
+                        <li>✘ 进行信息污染</li>
+                        <li>✘ 欺骗性内容生成</li>
+                        <li>✘ 有法律风险</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top:16px;text-align:center;font-size:14px;color:#2db55d;font-weight:600;">
+                🛡️ 自称「AI时代新型品牌工作」· 与黑色模式有本质区别 · 无法律风险
+            </p>
+        </div>
+    </section>
+
+    <!-- 十、市场机遇与竞争壁垒 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">10</span>
+            <h2 class="section-title">时代机遇 · 抢占AI流量红利窗口</h2>
+        </div>
+        <div class="card" style="margin-bottom:24px;">
+            <p style="font-size:15px;color:var(--text-secondary);margin-bottom:24px;text-align:center;">每一代通信技术都催生新的流量入口霸主 —— 现在是 <strong style="color:var(--accent-cyan)">6G（AI）时代</strong></p>
+            <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+                <div style="background:linear-gradient(135deg,rgba(100,149,237,0.1),rgba(100,149,237,0.04));border-radius:14px;padding:20px 28px;text-align:center;border:1px solid rgba(100,149,237,0.2);min-width:150px;">
+                    <div style="font-size:28px;margin-bottom:6px;">📱</div>
+                    <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;color:#6495ED;">4G</div>
+                    <div style="font-size:14px;color:var(--text-primary);margin-top:4px;">美团 / 大众点评</div>
+                    <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">本地生活搜索入口</div>
+                </div>
+                <div style="color:var(--accent-purple);font-size:28px;font-weight:bold;">→</div>
+                <div style="background:linear-gradient(135deg,rgba(255,107,53,0.1),rgba(255,107,53,0.04));border-radius:14px;padding:20px 28px;text-align:center;border:1px solid rgba(255,107,53,0.2);min-width:150px;">
+                    <div style="font-size:28px;margin-bottom:6px;">📺</div>
+                    <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;color:#ff6b35;">5G</div>
+                    <div style="font-size:14px;color:var(--text-primary);margin-top:4px;">抖音 / 视频号</div>
+                    <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">短视频内容入口</div>
+                </div>
+                <div style="color:var(--accent-cyan);font-size:28px;font-weight:bold;">→</div>
+                <div style="background:linear-gradient(135deg,rgba(0,245,255,0.12),rgba(123,47,255,0.08));border-radius:14px;padding:20px 28px;text-align:center;border:2px solid rgba(0,245,255,0.3);min-width:160px;box-shadow:0 0 30px rgba(0,245,255,0.1);">
+                    <div style="font-size:28px;margin-bottom:6px;">🤖</div>
+                    <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;background:linear-gradient(135deg,#00f5ff,#7b2fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">6G</div>
+                    <div style="font-size:14px;color:var(--text-primary);margin-top:4px;"><strong>AI 问答引擎</strong></div>
+                    <div style="font-size:12px;color:var(--accent-cyan);margin-top:2px;">⭐ 新流量入口 · 窗口期</div>
+                </div>
+            </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;">
+            <div class="card">
+                <div style="font-size:22px;margin-bottom:12px;">🏰</div>
+                <h3 style="font-size:17px;color:var(--text-primary);margin-bottom:12px;">竞争壁垒</h3>
+                <ul style="list-style:none;font-size:14px;color:var(--text-secondary);line-height:2.2;">
+                    <li style="display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--accent-cyan);margin-top:2px;">●</span>独有「一级新闻源」渠道资源</li>
+                    <li style="display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--accent-cyan);margin-top:2px;">●</span>大厂级算力与技术团队支撑</li>
+                    <li style="display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--accent-cyan);margin-top:2px;">●</span>效果对赌承诺（90%+退款保障）</li>
+                    <li style="display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--accent-cyan);margin-top:2px;">●</span>先发优势 · 早期红利抢占中</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div style="font-size:22px;margin-bottom:12px;">🔮</div>
+                <h3 style="font-size:17px;color:var(--text-primary);margin-bottom:12px;">当前痛点 & 未来方向</h3>
+                <div style="background:rgba(255,107,53,0.04);border-radius:10px;padding:16px;margin-bottom:12px;border-left:3px solid #ff6b35;">
+                    <div style="font-size:13px;color:#ff6b35;font-weight:600;margin-bottom:6px;">⚠️ 当前痛点</div>
+                    <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;">AI 平台（如豆包）<strong>尚未开放数据后台</strong><br>效果无法量化验证（曝光/点击/转化缺失）<br>目前交易基于「占坑展示」+ 合同信任</p>
+                </div>
+                <div style="background:rgba(0,245,255,0.04);border-radius:10px;padding:16px;border-left:3px solid var(--accent-cyan);">
+                    <div style="font-size:13px;color:var(--accent-cyan);font-weight:600;margin-bottom:6px;">🚀 未来方向</div>
+                    <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;">待 AI 平台开放数据后：<br>从 <strong>CPT（卖展示）</strong> → <strong style="color:var(--accent-cyan)">CPC（按点击）</strong> → <strong style="color:var(--accent-purple)">按成交付费</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 十一、SEO vs GEO -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-number">11</span>
+            <h2 class="section-title">SEO vs GEO ：时代更迭</h2>
+        </div>
+        <div class="compare-grid">
+            <div class="compare-col compare-seo">
+                <div class="compare-label">SEO</div>
+                <div class="compare-item">
+                    <span class="compare-key">目标</span>
+                    <span class="compare-val">搜索引擎排名靠前</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-key">用户行为</span>
+                    <span class="compare-val">点击链接列表</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-key">竞争逻辑</span>
+                    <span class="compare-val">关键词排名竞争</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-key">优化对象</span>
+                    <span class="compare-val">关键词、外链、页面结构</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-key">时代特征</span>
+                    <span class="compare-val">Web 2.0 时代</span>
+                </div>
+            </div>
+            <div class="compare-col compare-geo">
+                <div class="compare-label">GEO</div>
+                <div class="compare-item">
+                    <span class="compare-key">目标</span>
+                    <span class="compare-val">AI 生成答案中被推荐</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-key">用户行为</span>
+                    <span class="compare-val">直接获取答案</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-key">竞争逻辑</span>
+                    <span class="compare-val">答案竞争（赢者通吃）</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-key">优化对象</span>
+                    <span class="compare-val">内容质量、权威性、可理解性</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-key">时代特征</span>
+                    <span class="compare-val">AI 时代 · 未来已来</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>未来属于被 AI 选择的品牌</h2>
+            <p>GEO 不是趋势，而是正在发生的现实</p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>GEO Report © 2026 · 四川丰火传媒 × 成都弯道超车传媒 · 数言科技 · 让品牌成为AI首选答案</p>
+</footer>
+
+<!-- 水印生成脚本 -->
+<script>
+(function() {
+    var wrap = document.getElementById('watermark');
+    if (!wrap) return;
+    var text = '四川丰火传媒 × 弯道超车 × 数言科技';
+    var cw = window.innerWidth, ch = document.documentElement.scrollHeight;
+    var cols = Math.ceil(cw / 280);
+    var rows = Math.ceil(ch / 180);
+    for (var r = 0; r < rows; r++) {
+        for (var c = 0; c < cols; c++) {
+            var el = document.createElement('div');
+            el.className = 'watermark-item';
+            el.textContent = text;
+            el.style.left = (c * 280 - 100) + 'px';
+            el.style.top = (r * 180 - 40) + 'px';
+            wrap.appendChild(el);
+        }
+    }
+})();
+</script>
+
+</body>
+</html>
