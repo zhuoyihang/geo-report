@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五一后推广达人合作BF | 300杯天廊/华商/芭利与彩虹</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",sans-serif; background:#f0ebe3; color:#2d2d2d; line-height:1.7; }
+
+/* ===== Cover Page ===== */
+.cover { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:linear-gradient(135deg,#1a3a2a 0%,#2d5a40 50%,#1a3a2a 100%); color:#e8e0d4; position:relative; overflow:hidden; }
+.cover::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 50%,rgba(255,215,120,0.06) 0%,transparent 60%); }
+.cover-inner { text-align:center; z-index:1; padding:60px 40px; }
+.cover-tag { display:inline-block; background:rgba(255,215,120,0.15); border:1px solid rgba(255,215,120,0.3); border-radius:20px; padding:6px 24px; font-size:13px; letter-spacing:3px; margin-bottom:30px; color:#ffd778; }
+.cover h1 { font-size:36px; letter-spacing:6px; margin-bottom:12px; font-weight:300; }
+.cover h2 { font-size:18px; font-weight:300; opacity:0.8; margin-bottom:50px; letter-spacing:2px; }
+.cover-meta { font-size:13px; opacity:0.55; line-height:2.2; }
+.cover-line { width:60px; height:1px; background:rgba(255,215,120,0.35); margin:30px auto; }
+
+/* ===== Page Container ===== */
+.page { max-width:980px; margin:0 auto; padding:50px 45px; background:#fffdf9; min-height:100vh; }
+.page:first-of-type { border-radius:0; }
+
+/* ===== Section Headers ===== */
+.section-head { text-align:center; margin-bottom:40px; padding-top:10px; }
+.section-head h2 { font-size:26px; color:#1a3a2a; letter-spacing:4px; position:relative; display:inline-block; padding:0 25px; }
+.section-head h2::before,.section-head h2::after { content:''; position:absolute; top:50%; width:40px; height:1px; background:linear-gradient(90deg,transparent,#c9a962); }
+.section-head h2::before { right:100%; }
+.section-head h2::after { left:100%; background:linear-gradient(-90deg,transparent,#c9a962); }
+.section-desc { color:#888; font-size:13px; margin-top:10px; }
+
+/* ===== Strategy Cards ===== */
+.strategies { display:flex; gap:16px; margin-bottom:45px; flex-wrap:wrap; }
+.strategy-card { flex:1; min-width:240px; background:#fafafa; border-radius:12px; overflow:hidden; transition:transform .2s; border:1px solid #eee; }
+.strategy-card:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,0.08); }
+.sc-header { padding:18px 20px 14px; position:relative; }
+.sc-num { display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; color:#fff; font-size:14px; font-weight:bold; margin-right:10px; vertical-align:middle; }
+.sc-title { font-size:16px; font-weight:bold; color:#2d2d2d; vertical-align:middle; }
+.sc-sub { font-size:11px; margin-left:42px; margin-top:2px; display:block; }
+.sc-body { padding:0 20px 16px; }
+.sc-body li { font-size:12.5px; color:#555; margin-bottom:7px; padding-left:16px; position:relative; line-height:1.65; }
+.sc-body li::before { content:'●'; position:absolute; left:0; font-size:7px; top:6px; }
+
+/* Color themes */
+.c-blue .sc-num,.c-blue .sc-body li::before,.c-blue .sc-sub { color:#2563eb; } .c-blue .sc-num { background:#2563eb; }
+.c-blue { border-top:3px solid #2563eb; }
+.c-orange .sc-num,.c-orange .sc-body li::before,.c-orange .sc-sub { color:#ea580c; } .c-orange .sc-num { background:#ea580c; }
+.c-orange { border-top:3px solid #ea580c; }
+.c-green .sc-num,.c-green .sc-body li::before,.c-green .sc-sub { color:#059669; } .c-green .sc-num { background:#059669; }
+.c-green { border-top:3px solid #059669; }
+
+/* ===== Trend Insights ===== */
+.trends { margin-top:35px; }
+.trend-item { display:flex; align-items:flex-start; gap:16px; padding:16px 20px; background:#fefcf8; border-radius:10px; margin-bottom:12px; border-left:3px solid #c9a962; }
+.trend-icon { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:17px; flex-shrink:0; font-weight:bold; }
+.trend-text h4 { font-size:14.5px; color:#2d2d2d; margin-bottom:4px; }
+.trend-text p { font-size:12.5px; color:#666; line-height:1.7; }
+
+/* ===== Brand Section ===== */
+.brand-section { margin-bottom:50px; page-break-inside:avoid; }
+.brand-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:2px solid #f0e8dc; }
+.brand-badge { padding:6px 16px; border-radius:6px; color:#fff; font-size:13px; font-weight:bold; white-space:nowrap; }
+.brand-name { font-size:19px; color:#1a3a2a; font-weight:bold; }
+.brand-slogan { font-size:12.5px; color:#999; margin-left:auto; }
+
+.direction { background:#fdfbf7; border:1px solid #f0e8dc; border-radius:10px; padding:20px 22px; margin-bottom:14px; }
+.direction-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.d-icon { width:28px; height:28px; border-radius:7px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; flex-shrink:0; }
+.d-title { font-size:14.5px; font-weight:bold; color:#333; }
+.d-tags { display:flex; gap:6px; flex-wrap:wrap; margin-left:auto; }
+.d-tag { font-size:10px; padding:2px 9px; border-radius:10px; background:#f0ebe3; color:#777; }
+.d-desc { font-size:12.5px; color:#555; line-height:1.75; margin-bottom:10px; }
+.d-points { background:#fff; border-radius:8px; padding:12px 16px; }
+.d-points li { font-size:12px; color:#666; margin-bottom:5px; padding-left:14px; position:relative; }
+.d-points li::before { content:'▸'; position:absolute; left:0; color:#bbb; font-size:10px; }
+
+.ban-box { background:#fff8f0; border:1px dashed #e8c89a; border-radius:8px; padding:10px 16px; margin-top:12px; font-size:11.5px; color:#b8860b; }
+.ban-box strong { color:#cc7000; }
+
+/* ===== Gantt Chart ===== */
+.gantt-wrap { margin:30px 0; }
+.gantt-table { width:100%; border-collapse:collapse; font-size:11px; }
+.gantt-table th { background:#1a3a2a; color:#e8e0d4; padding:9px 8px; font-weight:normal; text-align:center; font-size:11px; border:1px solid #2a4a3a; }
+.gantt-table td { padding:7px 8px; border:1px solid #e8e0; text-align:center; vertical-align:middle; color:#444; }
+.gantt-table tr:nth-child(even) td { background:#fcfbf8; }
+.gantt-bar { height:18px; border-radius:4px; display:inline-block; min-width:20px; position:relative; line-height:18px; color:#fff; font-size:9px; font-weight:bold; }
+.bar-hs { background:#2563eb; } .bar-tl { background:#ea580c; } .bar-bc { background:#7c3aed; } .bar-all { background:#6b7280; }
+.milestone { background:#dc2626 !important; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+
+.gantt-legend { display:flex; gap:20px; justify-content:center; margin-top:14px; flex-wrap:wrap; }
+.gl-item { display:flex; align-items:center; gap:6px; font-size:11px; color:#666; }
+.gl-dot { width:14px; height:14px; border-radius:3px; }
+
+/* ===== Budget Advice ===== */
+.advice-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:25px 0; }
+.advice-card { background:#f9f6f1; border-radius:10px; padding:20px; border:1px solid #efe5d6; }
+.advice-num { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; background:#1a3a2a; color:#fff; font-size:12px; font-weight:bold; margin-bottom:10px; }
+.advice-card h4 { font-size:14px; color:#2d2d2d; margin-bottom:6px; }
+.advice-card p { font-size:12px; color:#666; line-height:1.7; }
+.advice-note { background:#fffbf0; border:1px solid #f0d890; border-radius:8px; padding:14px 20px; font-size:12px; color:#996600; margin-top:20px; text-align:center; }
+
+/* ===== Timeline Table ===== */
+.timeline-table { width:100%; border-collapse:collapse; margin:25px 0; font-size:11.5px; }
+.timeline-table th { background:#1a3a2a; color:#e8e0d4; padding:10px 12px; text-align:left; font-weight:normal; }
+.timeline-table td { padding:9px 12px; border-bottom:1px solid #f0e8dc; color:#555; }
+.timeline-table tr:hover td { background:#faf8f3; }
+
+/* ===== Rules Section ===== */
+.rule-section { margin-bottom:35px; }
+.rule-section h3 { font-size:15px; color:#1a3a2a; margin-bottom:12px; padding-left:10px; border-left:3px solid #c9a962; }
+.rule-list { list-style:none; }
+.rule-list li { font-size:12.5px; color:#555; padding:7px 0 7px 18px; position:relative; border-bottom:1px dashed #f0ece4; }
+.rule-list li::before { content:'✦'; position:absolute; left:0; color:#c9a962; font-size:10px; }
+
+/* ===== Footer ===== */
+.doc-footer { text-align:center; padding:30px; color:#aaa; font-size:11px; border-top:1px solid #f0e8dc; margin-top:40px; }
+
+/* ===== Page break for print ===== */
+.page-break { page-break-before:always; }
+@media print {
+  body { background:#fff; }
+  .cover { background:#1a3a2a !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page { box-shadow:none; padding:30px; }
+  .page-break { page-break-before:always; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== COVER ========== -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-tag">弯道超车传媒 · WANDAO</div>
+    <h1>五一后推广达人合作BF</h1>
+    <h2>300杯天廊 / 300杯华商 / 芭利与彩虹</h2>
+    <div class="cover-line"></div>
+    <div class="cover-meta">
+      执行周期：2026年5月初 — 6月底<br>
+      核心节点：520 → 端午节 → 618<br><br>
+      <span style="font-size:11px;opacity:0.4;">版本 v5.0 · HTML版 · 2026.04</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE 1: 策略总纲 ========== -->
+<div class="page">
+
+<div class="section-head">
+  <h2>策略总纲</h2>
+  <div class="section-desc">基于2026小红书平台趋势与51节后营销节奏制定的三大核心策略</div>
+</div>
+
+<!-- 三大策略 -->
+<div class="strategies">
+
+  <div class="strategy-card c-blue">
+    <div class="sc-header">
+      <span class="sc-num">01</span>
+      <span class="sc-title">AIO内容矩阵</span>
+      <span class="sc-sub">2026新SEO策略 — 让AI优先推荐你的笔记</span>
+    </div>
+    <div class="sc-body">
+      <li>结构化标题：场景 + 情绪 + 品牌（如「被问了一百遍的约会餐厅」）</li>
+      <li>真实过程：从进门到空盘完整决策路径，Live图 > 精修九宫格</li>
+      <li>数据化种草：「209元吃X道肉」「排队Y分钟」替代主观评价</li>
+      <li>评论区埋锚：补充人均/停车/预约等实用信息，提升搜索权重</li>
+    </div>
+  </div>
+
+  <div class="strategy-card c-orange">
+    <div class="sc-header">
+      <span class="sc-num">02</span>
+      <span class="sc-title">节点情绪节奏</span>
+      <span class="sc-sub">520 → 端午递进承接，不浪费每一篇种草资产</span>
+    </div>
+    <div class="sc-body">
+      <li>520预热截流（5/7-5/18）：抢平台520话题流量池前置卡位</li>
+      <li>520集中爆发（5/19-5/21）：3天内密集发布形成声量波峰</li>
+      <li>余温→端午承接（5/22-6/2）：用情绪连接不浪费种草长尾</li>
+      <li>618初夏犒赏（6/3-6/20）：心理账户转换，持续获流</li>
+    </div>
+  </div>
+
+  <div class="strategy-card c-green">
+    <div class="sc-header">
+      <span class="sc-num">03</span>
+      <span class="sc-title">圈层反漏斗</span>
+      <span class="sc-sub">精准打透圈层 → 口碑辐射 — 不追大V追对的人</span>
+    </div>
+    <div class="sc-body">
+      <li>华商 → 职场女性精品生活博主（商务宴请/仪式感）</li>
+      <li>天廊 → 学生党校园攻略博主（性价比/放题攻略）</li>
+      <li>芭利 → 温江本地校园博主（大学城客群/下午茶）</li>
+      <li>每圈层3-4篇密集覆盖，形成信任涟漪效应</li>
+    </div>
+  </div>
+
+</div>
+
+<!-- 趋势洞察 -->
+<div class="trends">
+  <h3 style="font-size:16px;color:#1a3a2a;margin-bottom:16px;padding-left:12px;border-left:3px solid #c9a962;">📈 2026趋势洞察</h3>
+
+  <div class="trend-item">
+    <div class="trend-icon" style="background:linear-gradient(135deg,#ec4899,#db2777);">!</div>
+    <div class="trend-text">
+      <h4>活人感取代精致感</h4>
+      <p>用户对"完美探店"已产生免疫。Live图、第一视角、Vlog日常正在取代精修九宫格。真实感 = 信任感 = 转化率。</p>
+    </div>
+  </div>
+
+  <div class="trend-item">
+    <div class="trend-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);">~</div>
+    <div class="trend-text">
+      <h4>情绪价值 &gt; 功能价值</h4>
+      <p>"为什么去"比"吃什么"更重要。520浪漫氛围、端午家庭仪式感、618自我犒赏——情绪是第一购买驱动力。</p>
+    </div>
+  </div>
+
+  <div class="trend-item">
+    <div class="trend-icon" style="background:linear-gradient(135deg,#0891b2,#0e7490);">@</div>
+    <div class="trend-text">
+      <h4>圈层反漏斗打法</h4>
+      <p>平台流量逻辑从"爆款破圈"转向"先打透小众圈层再口碑辐射"。深耕精准圈层形成的信任链路远优于泛流量投放。</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== PAGE 2: 华商店 BF ========== -->
+<div class="page page-break">
+
+<div class="section-head">
+  <h2>300杯华商金融中心店</h2>
+  <div class="section-desc">盛唐意境里的和牛盛宴 — 高端商务宴请定位</div>
+</div>
+
+<div class="brand-section">
+  <div class="brand-header">
+    <div class="brand-badge" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);">HS</div>
+    <span class="brand-name">华商金融中心店</span>
+    <span class="brand-slogan">交子大道33号中国华商金融中心4楼</span>
+  </div>
+
+  <!-- 方向1 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#2563eb,#3b82f6);">①</div>
+      <span class="d-title">端午宴请 · 商务种草方向</span>
+      <div class="d-tags"><span class="d-tag">职场女性</span><span class="d-tag">精品生活博主</span><span class="d-tag">商务宴请</span></div>
+    </div>
+    <div class="d-desc">面向需要请客户、请领导的高端人群。突出盛唐意境包间环境、管家式烤制服务、高端食材品质感。选题强调"成都请客户餐厅推荐""这顿饭值了"的情绪价值。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「被问了N遍的成都请客餐厅」「在成都，这顿饭让我很有面子」</li>
+      <li><strong>内容重点：</strong>包间私密性 → 管家全程服务 → 盛唐装修出片 → 餐品仪式感呈现</li>
+      <li><strong>目标博主：</strong>职场穿搭/精品生活类，粉丝画像25-35岁都市女性，客单价敏感度低</li>
+      <li><strong>评论区埋锚：</strong>需提前预约 / 包间最低消费 / 停车信息 / 人均范围引导</li>
+    </ul>
+    <div class="ban-box">🚫 <strong>禁用词：</strong>放题、自助餐、无限量、性价比、便宜、划算、学生党</div>
+  </div>
+
+  <!-- 方向2 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6);">②</div>
+      <span class="d-title">初夏约会 · 氛围感种草方向</span>
+      <div class="d-tags"><span class="d-tag">情侣博主</span><span class="d-tag">颜值/探店</span><span class="d-tag">约会餐厅</span></div>
+    </div>
+    <div class="d-desc">瞄准520前后及初夏约会需求。红金中式园林环境天然适合出片，定位"有仪式感的约会地"。不走硬广路线，走"被安利了一百遍"的真实分享口吻。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「男朋友选的约会餐厅，这次没踩雷」「成都约会有面子的地方」</li>
+      <li><strong>内容重点：</strong>红金环境出片 → 和牛现场烤制 → 约会氛围感 → Live图真实记录</li>
+      <li><strong>目标博主：</strong>情侣/颜值/生活方式类，注重画面质感和情感共鸣</li>
+      <li><strong>AIO要点：</strong>标题含"约会"+图片Live图+评论回复人均和预约方式</li>
+    </ul>
+    <div class="ban-box">🚫 <strong>禁用词：</strong>放题、自助餐、无限量、便宜、学生党优惠、团购价</div>
+  </div>
+
+  <!-- 方向3 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#dc2626,#ef4444);">③</div>
+      <span class="d-title">盛唐美学 · 环境出片方向</span>
+      <div class="d-tags"><span class="d-tag">摄影/设计</span><span class="d-tag">美学博主</span><span class="d-tag">空间打卡</span></div>
+    </div>
+    <div class="d-desc">以"盛唐建筑美学"为核心切入点，吸引对审美有要求的人群。环境即内容，让空间本身成为传播载体。适合摄影/室内设计/国风爱好者博主。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「藏在写字楼的盛唐美学」「成都吃饭最有仪式感的地方」</li>
+      <li><strong>内容重点：</strong>建筑细节特写 → 光影变化 → 中式摆盘艺术 → 穿搭搭配建议</li>
+      <li><strong>目标博主：</strong>摄影/设计/国风/汉服类博主，视觉质量要求极高</li>
+      <li><strong>差异化：</strong>其他竞品无法复制的核心壁垒——独有盛唐装修风格</li>
+    </ul>
+    <div class="ban-box">🚫 <strong>禁用词：</strong>放题、自助餐、无限续、性价比高、平价、打折</div>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== PAGE 3: 天廊店 BF ========== -->
+<div class="page page-break">
+
+<div class="section-head">
+  <h2>300杯锦江天廊店</h2>
+  <div class="section-desc">和牛自由继续！初夏放题好时节 — 性价比路线</div>
+</div>
+
+<div class="brand-section">
+  <div class="brand-header">
+    <div class="brand-badge" style="background:linear-gradient(135deg,#ea580c,#c2410c);">TL</div>
+    <span class="brand-name">锦江天廊店</span>
+    <span class="brand-slogan">东大路街道通宝街88号锦江天廊L4层</span>
+  </div>
+
+  <!-- 方向1 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#ea580c,#f97316);">①</div>
+      <span class="d-title">初夏放题攻略 · 回本挑战方向</span>
+      <div class="d-tags"><span class="d-tag">美食攻略</span><span class="d-tag">闺蜜博主</span><span class="d-tag">学生党</span></div>
+    </div>
+    <div class="desc">以"回本挑战"作为内容钩子，天然引发互动和数据讨论。"209元能吃到多少道肉？""空盘挑战"这类内容在小红书自带话题热度。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「209元挑战：一个人能吃完多少道肉？」「天廊放题回本攻略来了」</li>
+      <li><strong>内容重点：</strong>菜单全盘点 → 推荐必点TOP5 → 空盘实拍 → 人均计算</li>
+      <li><strong>目标博主：</strong>美食攻略/测评/闺蜜类，数据化表达能力强</li>
+      <li><strong>互动钩子：</strong>文末提问"你们觉得209能吃几道？"引导评论</li>
+    </ul>
+    <div class="ban-box">🚫 <strong>禁用词：</strong>私密包间、商务宴请、M9+级别、管家服务、高端奢华、顶级食材</div>
+  </div>
+
+  <!-- 方向2 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">②</div>
+      <span class="d-title">端午聚餐 · AA友好方向</span>
+      <div class="d-tags"><span class="d-tag">聚会美食</span><span class="d-tag">学生党</span><span class="d-tag">AA制</span></div>
+    </div>
+    <div class="d-desc">端午节朋友/同事聚餐场景。主打"不用纠结去哪""AA公平""丰俭由人"的痛点解决方案。放题模式天然适合多人聚会。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「端午节聚餐不用纠结了」「和朋友AA吃顿好的，人均200+」</li>
+      <li><strong>内容重点：</strong>多人聚餐场景 → 菜品丰富度 → AA账单透明 → 聚会氛围</li>
+      <li><strong>目标博主：</strong>校园/本地生活/聚会类，亲和力强接地气</li>
+      <li><strong>时间节点：</strong>5月下旬开始铺垫，端午前一周集中爆发</li>
+    </ul>
+    <div class="ban-box">🚫 <strong>禁用词：</strong>私密、商务、M9及更高等级、包间、管家服务、顶级、奢华</div>
+  </div>
+
+  <!-- 方向3 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#16a34a,#22c55e);">③</div>
+      <span class="d-title">初夏薅羊毛 · 学生党福音方向</span>
+      <div class="d-tags"><span class="d-tag">省钱攻略</span><span class="d-tag">学生党</span><span class="d-tag">性价比</span></div>
+    </div>
+    <div class="d-desc">针对大学生群体的"花小钱吃大餐"心智占领。结合618前后的犒赏消费心理，定位"学期结束对自己好一点"的情感出口。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「学生党也能实现和牛自由」「期末考完对自己好一点」</li>
+      <li><strong>内容重点：</strong>价格对比（vs单点）→ 学生党友好 → 交通便利地铁直达 → 实拍菜品分量</li>
+      <li><strong>目标博主：</strong>校园/省钱攻略/大学生日常类</li>
+      <li><strong>618联动：</strong>"上半年辛苦了，吃顿好的犒劳自己"的情绪切入</li>
+    </ul>
+    <div class="ban-box">🚫 <strong>禁用词：</strong>私密包间、商务定位、M9+、顶级和牛、管家服务、奢华体验</div>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== PAGE 4: 芭利与彩虹 BF ========== -->
+<div class="page page-break">
+
+<div class="section-head">
+  <h2>芭利与彩虹（温江合生汇）</h2>
+  <div class="section-desc">夏日晚风里，吃一口彩虹 — 西餐品类差异化打法</div>
+</div>
+
+<div class="brand-section">
+  <div class="brand-header">
+    <div class="brand-badge" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);">B&amp;C</div>
+    <span class="brand-name">芭利与彩虹</span>
+    <span class="brand-slogan">温江区凤凰北大街合生汇L2层</span>
+  </div>
+
+  <!-- 方向1 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">①</div>
+      <span class="d-title">初夏约会 · 爱尔兰绿出片方向</span>
+      <div class="d-tags"><span class="d-tag">温江本地</span><span class="d-tag">情侣约会</span><span class="d-tag">环境打卡</span></div>
+    </div>
+    <div class="d-desc">温江大学城周边稀缺的高品质西餐约会地。爱尔兰绿主色调环境独特出片，差异化竞争（周边多为火锅/串串）。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「温江约会不用进城」「合生汇这家被我安利了一百遍」</li>
+      <li><strong>内容重点：</strong>爱尔兰绿环境出片 → 西餐仪式感 → 不用进城到温江 → 烛光晚餐氛围</li>
+      <li><strong>目标博主：</strong>温江本地/情侣/颜值探店类，粉丝覆盖温江/大学城</li>
+      <li><strong>差异化卖点：</strong>温江少有的高品质西餐选择，避免同质化竞争</li>
+    </ul>
+  </div>
+
+  <!-- 方向2 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#ec4899,#f472b6);">②</div>
+      <span class="d-title">闺蜜下午茶/聚餐 · 大学城方向</span>
+      <div class="d-tags"><span class="d-tag">大学城客群</span><span class="d-tag">闺蜜下午茶</span><span class="d-tag">学生党</span></div>
+    </div>
+    <div class="d-desc">面向西南财大/交大等高校学生的社交餐饮需求。下午茶+正餐组合，满足不同时段消费场景。强调"温江就能吃到的品质西餐"。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「温江大学城的宝藏西餐」「和姐妹的周末下午茶」</li>
+      <li><strong>内容重点：</strong>甜品饮品颜值 → 闺蜜合照场景 → 学生友好人均 → 合生汇交通便利</li>
+      <li><strong>目标博主：</strong>校园生活/闺蜜/温江本地类，亲和力强</li>
+      <li><strong>运营动作：</strong>评论区置顶"大学生凭学生证享X折"等福利信息（如有）</li>
+    </ul>
+  </div>
+
+  <!-- 方向3 -->
+  <div class="direction">
+    <div class="direction-header">
+      <div class="d-icon" style="background:linear-gradient(135deg,#059669,#34d399);">③</div>
+      <span class="d-title">端午家庭聚餐 · 西餐差异方向</span>
+      <div class="d-tags"><span class="d-tag">家庭聚餐</span><span class="d-tag">温江本地</span><span class="d-tag">节日换口味</span></div>
+    </div>
+    <div class="d-desc">端午假期温江本地家庭的"换口味"选择。西餐品类在节假日形成差异化（大家都在吃火锅/串串），抢占"过节吃点不一样的"心智。</div>
+    <ul class="d-points">
+      <li><strong>标题参考：</strong>「端午节带家人换个口味」「温江过节不想排队的餐厅推荐」</li>
+      <li><strong>内容重点：</strong>家庭套餐 → 儿童友好 → 不用排大队 → 停车方便</li>
+      <li><strong>目标博主：</strong>温江本地生活/亲子/家庭美食类</li>
+      <li><strong>时间节奏：</strong>端午前5天开始推送，抢占"过节吃什么"的搜索流量</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== PAGE 5: 甘特图 + 时间表 ========== -->
+<div class="page page-break">
+
+<div class="section-head">
+  <h2>执行节奏 · 甘特图</h2>
+  <div class="section-desc">5月-6月全周期投放节奏，三大品牌错峰排期，形成情绪递进承接</div>
+</div>
+
+<div class="gantt-wrap">
+<table class="gantt-table">
+  <thead>
+    <tr>
+      <th style="width:130px;text-align:left;">&nbsp; 任务</th>
+      <th>5/5</th><th>5/10</th><th>5/17</th><th>5/20❗</th><th>5/24</th><th>5/31</th><th>6/7</th><th>6/14</th><th>6/21</th><th>6/28</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 华商店 -->
+    <tr><td colspan="11" style="background:#e8f0fe;color:#2563eb;font-weight:bold;padding:6px 12px;">▎ 300杯华商金融中心店</td></tr>
+    <tr><td>&nbsp; 达人筛选沟通</td><td><span class="gantt-bar bar-hs" style="width:70%;">●●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; Brief确认+寄拍</td><td></td><td><span class="gantt-bar bar-hs" style="width:80%;">●●●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 520预热发布</td><td></td><td></td><td><span class="gantt-bar bar-hs" style="width:90%;">●●●●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 520集中爆发日</td><td></td><td></td><td></td><td><span class="gantt-bar bar-hs milestone" style="width:100%;">★爆发</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 端午承接发布</td><td></td><td></td><td></td><td></td><td><span class="gantt-bar bar-hs" style="width:85%;">●●●●</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <!-- 天廊店 -->
+    <tr><td colspan="11" style="background:#fff3e0;color:#ea580c;font-weight:bold;padding:6px 12px;">▎ 300杯锦江天廊店</td></tr>
+    <tr><td>&nbsp; 达人筛选沟通</td><td><span class="gantt-bar bar-tl" style="width:70%;">●●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; Brief确认+寄拍</td><td></td><td><span class="gantt-bar bar-tl" style="width:80%;">●●●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 520预热发布</td><td></td><td></td><td><span class="gantt-bar bar-tl" style="width:85%;">●●●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 520集中爆发日</td><td></td><td></td><td></td><td><span class="gantt-bar bar-tl milestone" style="width:100%;">★爆发</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 618犒赏主题发布</td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="gantt-bar bar-tl" style="width:90%;">●●●●●</span></td><td></td><td></td><td></td></tr>
+    <!-- 芭利与彩虹 -->
+    <tr><td colspan="11" style="background:#f3e8ff;color:#7c3aed;font-weight:bold;padding:6px 12px;">▎ 芭利与彩虹（温江）</td></tr>
+    <tr><td>&nbsp; 达人筛选沟通</td><td><span class="gantt-bar bar-bc" style="width:65%;">●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; Brief确认+拍摄</td><td></td><td><span class="gantt-bar bar-bc" style="width:75%;">●●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 520+初夏发布</td><td></td><td></td><td><span class="gantt-bar bar-bc" style="width:80%;">●●●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 端午家庭聚餐专题</td><td></td><td></td><td></td><td></td><td><span class="gantt-bar bar-bc" style="width:85%;">●●●●</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 618持续获流</td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="gantt-bar bar-bc" style="width:95%;">●●●●●</span></td><td></td><td></td><td></td></tr>
+    <!-- 公共任务 -->
+    <tr><td colspan="11" style="background:#f5f5f5;color:#6b7280;font-weight:bold;padding:6px 12px;">▎ 公共投流 & 数据复盘</td></tr>
+    <tr><td>&nbsp; 聚光充值+计划搭建</td><td><span class="gantt-bar bar-all" style="width:50%;">●●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 520期间水上投流</td><td></td><td></td><td></td><td><span class="gantt-bar bar-all" style="width:100%;min-width:50px;">▶投流中</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp; 数据复盘+优化</td><td></td><td></td><td></td><td></td><td><span class="gantt-bar bar-all" style="width:60%;">●●●</span></td><td></td><td><span class="gantt-bar bar-all" style="width:60%;">●●●</span></td><td></td><td><span class="gantt-bar bar-all" style="width:60%;">●●●</span></td><td></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="gantt-legend">
+  <div class="gl-item"><span class="gl-dot bar-hs"></span>华商金融中心</div>
+  <div class="gl-item"><span class="gl-dot bar-tl"></span>锦江天廊</div>
+  <div class="gl-item"><span class="gl-dot bar-bc"></span>芭利与彩虹</div>
+  <div class="gl-item"><span class="gl-dot bar-all"></span>公共/投流</div>
+  <div class="gl-item"><span class="gl-dot" style="background:#dc2626;"></span>关键里程碑❗</div>
+</div>
+
+<h3 style="font-size:15px;color:#1a3a2a;margin:35px 0 16px 0;padding-left:12px;border-left:3px solid #c9a962;">📅 统一发布时间表</h3>
+<table class="timeline-table">
+  <thead>
+    <tr><th style="width:110px;">时间段</th><th>阶段目标</th><th>主要动作</th><th>负责品牌</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>5/5 - 5/10</td><td>达人筛选期</td><td>确认达人名单、发送Brief、安排寄拍/到店</td><td>三品牌并行</td></tr>
+    <tr><td>5/11 - 5/18</td><td>520预热期</td><td>达人陆续发布预热笔记，抢占520话题流量池</td><td>三品牌并行</td></tr>
+    <tr><td><strong>5/19 - 5/21</strong></td><td><strong>520爆发日 ❗</strong></td><td><strong>3天内集中发布，配合聚光投流放大声量</strong></td><td><strong>全部品牌</strong></td></tr>
+    <tr><td>5/22 - 6/2</td><td>端午承接期</td><td>520余温自然溢出到端午场景，发布端午相关内容</td><td>华商+芭利为主</td></tr>
+    <tr><td><strong>6/3 - 6/10</strong></td><td><strong>端午节收割 D</strong></td><td><strong>端午假期流量高峰，确保笔记在线可搜</strong></td><td><strong>全部品牌</strong></td></tr>
+    <tr><td>6/11 - 6/20</td><td>618犒赏期</td><td>心理账户转换："上半年辛苦了"，持续获流</td><td>天廊为主</td></tr>
+    <tr><td>6/21 - 6/28</td><td>收尾复盘期</td><td>数据汇总、ROI分析、下月规划输入</td><td>全部</td></tr>
+  </tbody>
+</table>
+
+</div>
+
+<!-- ========== PAGE 6: 预算建议 + 合作须知 ========== -->
+<div class="page page-break">
+
+<div class="section-head">
+  <h2>预算建议</h2>
+  <div class="section-desc">基于投放策略的建议方案（具体报价参考点星主题包价格表）</div>
+</div>
+
+<div class="advice-grid">
+  <div class="advice-card">
+    <div class="advice-num">1</div>
+    <h4>点星笔记为主，聚光兜底为辅</h4>
+    <p>4月已采购的点星主题包继续沿用。点评-小红书内流互通，一篇笔记双平台曝光。聚光投流仅用于520等关键节点的爆款笔记放大，不做常态化投放。</p>
+  </div>
+  <div class="advice-card">
+    <div class="advice-num">2</div>
+    <h4>资源向520倾斜，端午自然承接</h4>
+    <p>5月预算的60%以上集中在520前后使用。端午节利用520笔记的自然余温和搜索长尾即可，无需额外大量投入。618视520表现灵活调配。</p>
+  </div>
+  <div class="advice-card">
+    <div class="advice-num">3</div>
+    <h4>华商重质不重量，天廊重覆盖密度</h4>
+    <p>华商店定位高端，达人数量不求多但每篇质量要高（建议4-5位精品达人）。天廊走量路线，建议6-8位达人形成覆盖密度，用规模换取搜索占位。</p>
+  </div>
+  <div class="advice-card">
+    <div class="advice-num">4</div>
+    <h4>芭利与彩虹聚焦温江本地</h4>
+    <p>不需要全成都范围的达人，优先选择温江本地或大学城相关的中小博主。粉丝量不是唯一指标，地域匹配度和互动质量更重要。</p>
+  </div>
+</div>
+
+<div class="advice-note">💡 以上为策略建议，具体金额分配需根据实际达人报价和点星主题包剩余额度确定。详细报价请参阅《4月投放方案预算表》。</div>
+
+
+<div style="margin-top:50px;" class="section-head">
+  <h2>通用合作须知</h2>
+</div>
+
+<div class="rule-section">
+  <h3>📋 审稿红线</h3>
+  <ul class="rule-list">
+    <li>禁止出现竞品名称、对比贬低其他品牌的内容</li>
+    <li>禁止出现未经证实的功效宣传、夸大描述</li>
+    <li>各门店禁用词必须严格遵守（见各品牌方向页底部标注）</li>
+    <li>涉及价格信息须与实际一致，不得自行杜撰优惠活动</li>
+  </ul>
+</div>
+
+<div class="rule-section">
+  <h3>💬 评论区维护</h3>
+  <ul class="rule-list">
+    <li>达人发布后48小时内需完成首轮评论回复</li>
+    <li>评论区引导关注官方账号，置顶实用信息（预约方式/地址/营业时间）</li>
+    <li>负面评论24小时内响应，严重问题升级处理</li>
+    <li>鼓励达人主动回复粉丝关于菜品/交通/人均等问题</li>
+  </ul>
+</div>
+
+<div class="rule-section">
+  <h3>📸 内容规范</h3>
+  <ul class="rule-list">
+    <li>图片必须包含至少1张环境全景、1张招牌菜品特写</li>
+    <li>鼓励Live图发布（2026平台偏好算法加权）</li>
+    <li>视频内容不少于15秒，开头3秒必须有吸引力</li>
+    <li>文案必须带品牌关键词（店名+区域关键词便于搜索收录）</li>
+  </ul>
+</div>
+
+<div class="rule-section">
+  <h3>⚖️ 版权与授权</h3>
+  <ul class="rule-list">
+    <li>达人产出内容的商业使用权归品牌方所有（付费合作默认条款）</li>
+    <li>品牌方可将内容用于官方账号二次分发、广告素材、线下物料等</li>
+    <li>达人保留个人账号展示权，双方互不干涉正常使用</li>
+    <li>合作结束后内容不下架（除非出现严重违规情况）</li>
+  </ul>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="doc-footer">
+  <p>弯道超车传媒 · WANDAO MEDIA</p>
+  <p style="margin-top:5px;">本文件为内部策略文档 · 请勿外传 · 版本 v5.0 HTML</p>
+</div>
+
+</body>
+</html>
