@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>300杯宜宾店·520抖音推广BF</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body { font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background:#0d0d0d; color:#f5f0e8; line-height:1.8; -webkit-font-smoothing:antialiased; word-break:keep-all; overflow-wrap:break-word; }
+
+/* ===== Cover ===== */
+.cover { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:linear-gradient(160deg,#1a0a0a 0%,#2d1515 40%,#1a0a0a 100%); position:relative; overflow:hidden; padding:40px 24px; }
+.cover::before { content:''; position:absolute; width;360px; height:360px; border-radius:50%; background:radial-gradient(circle,rgba(200,160,80,0.1) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); }
+.cover-tag { display:inline-block; border:1px solid rgba(200,160,80,0.5); border-radius:20px; padding:6px 22px; font-size:12px; letter-spacing:4px; color:#c8a050; margin-bottom:32px; position:relative; z-index:1; font-weight:500; white-space:nowrap; }
+.cover h1 { font-size:42px; letter-spacing:8px; font-weight:700; color:#f5f0e8; position:relative; z-index:1; text-align:center; line-height:1.3; white-space:nowrap; }
+.cover h2 { font-size:18px; font-weight:400; color:rgba(245,240,232,0.7); letter-spacing:3px; margin-top:16px; position:relative; z-index:1; white-space:nowrap; }
+.cover-line { width:60px; height:2px; background:linear-gradient(90deg,transparent,#c8a050,transparent); margin:28px auto; }
+.cover-meta { font-size:13px; color:rgba(245,240,232,0.5); line-height:2.2; text-align:center; position:relative; z-index:1; }
+.cover-meta span { display:inline-block; background:rgba(200,160,80,0.1); padding:3px 14px; border-radius:6px; margin:0 5px; font-size:12px; border:1px solid rgba(200,160,80,0.15); }
+
+/* ===== Section ===== */
+.section { max-width:100%; padding:36px 20px; }
+.section:nth-child(even) { background:#111; }
+.section-head { text-align:center; margin-bottom:28px; }
+.section-head h2 { font-size:20px; color:#c8a050; letter-spacing:4px; font-weight:600; white-space:nowrap; }
+.section-head .line { width:30px; height:1px; background:#c8a050; margin:12px auto 8px; opacity:0.5; }
+.section-head .desc { font-size:12px; color:#888; margin-top:4px; }
+
+/* ===== 拍摄任务表 ===== */
+.task-table { width:100%; border-collapse:collapse; margin-top:16px; }
+.task-table th { background:rgba(200,160,80,0.1); color:#c8a050; padding:10px 8px; font-size:12px; font-weight:600; text-align:left; border-bottom:1px solid rgba(200,160,80,0.15); }
+.task-table td { padding:9px 8px; font-size:12.5px; color:#ccc; border-bottom:1px solid rgba(255,255,255,0.04); white-space:nowrap; }
+.task-table tr:last-child td { border-bottom:none; }
+
+/* ===== 套餐卡片 ===== */
+.menu-cards { display:flex; flex-direction:column; gap:16px; margin-top:16px; }
+.menu-card { background:rgba(255,255,255,0.03); border:1px solid rgba(200,160,80,0.15); border-radius:14px; overflow:hidden; }
+.mc-header { padding:16px 20px; background:linear-gradient(135deg,rgba(200,160,80,0.12),rgba(200,160,80,0.03)); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.mc-badge { background:linear-gradient(135deg,#c8a050,#a07830); color:#1a0a0a; padding:4px 12px; border-radius:6px; font-size:12px; font-weight:bold; flex-shrink:0; letter-spacing:1px; white-space:nowrap; }
+.mc-title { font-size:17px; color:#f5f0e8; font-weight:600; white-space:nowrap; }
+.mc-sub { font-size:11px; color:#888; margin-left:auto; width:100%; margin-top:4px; margin-left:0; white-space:nowrap; }
+.mc-body { padding:16px 20px; }
+
+/* 重点拍摄区 */
+.highlight-box { background:linear-gradient(135deg,rgba(200,160,80,0.08),rgba(200,160,80,0.02)); border:1px solid rgba(200,160,80,0.2); border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+.highlight-title { font-size:13px; color:#c8a050; font-weight:600; margin-bottom:10px; display:flex; align-items:center; gap:6px; white-space:nowrap; }
+.highlight-title::before { content:'★'; font-size:11px; }
+.platter-grid { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+.platter-item { flex:1; min-width:90px; background:rgba(0,0,0,0.3); border:1px solid rgba(200,160,80,0.15); border-radius:8px; padding:10px 12px; text-align:center; white-space:nowrap; }
+.platter-item .pname { font-size:12.5px; color:#f5f0e8; font-weight:500; display:block; margin-bottom:2px; }
+.platter-item .pwt { font-size:10.5px; color:#c8a050; }
+.heart-note { background:rgba(220,80,80,0.1); border:1px solid rgba(220,80,80,0.25); border-radius:8px; padding:10px 14px; font-size:12px; color:#f0d0d0; display:flex; align-items:center; gap:8px; line-height:1.7; }
+.heart-note::before { content:'💝'; font-size:14px; flex-shrink:0; }
+
+.mc-items { display:grid; grid-template-columns:1fr 1fr; gap:4px 16px; }
+.mc-item { font-size:12px; color:#bbb; padding:3px 0; display:flex; justify-content:space-between; }
+.mc-item .name { color:#ddd; white-space:nowrap; }
+.mc-item .price { color:#c8a050; font-size:11px; }
+.mc-footer { padding:14px 20px; border-top:1px solid rgba(200,160,80,0.1); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; }
+.mc-total { font-size:16px; color:#f5f0e8; white-space:nowrap; }
+.mc-total strong { color:#c8a050; font-size:20px; }
+.mc-cost { font-size:11px; color:#888; width:100%; margin-top:2px; }
+
+/* ===== 内容方向 ===== */
+.dir-cards { display:flex; flex-direction:column; gap:14px; margin-top:16px; }
+.dir-card { background:rgba(255,255,255,0.03); border-left:3px solid #c8a050; border-radius:0 10px 10px 0; padding:16px 18px; }
+.dir-num { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#c8a050; color:#1a0a0a; font-size:12px; font-weight:bold; margin-right:8px; vertical-align:middle; flex-shrink:0; }
+.dir-title { font-size:15px; color:#f5f0e8; font-weight:600; vertical-align:middle; white-space:normal; }
+.dir-desc { font-size:12.5px; color:#aaa; margin-top:10px; line-height:1.75; }
+.dir-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+.dir-tag { font-size:10.5px; padding:3px 10px; border-radius:10px; background:rgba(200,160,80,0.1); color:#c8a050; white-space:nowrap; }
+
+/* ===== 拍摄须知 ===== */
+.notice-box { background:rgba(200,160,80,0.05); border:1px solid rgba(200,160,80,0.15); border-radius:10px; padding:16px 18px; margin-top:16px; }
+.notice-box h4 { font-size:13.5px; color:#c8a050; margin-bottom:10px; font-weight:600; white-space:nowrap; }
+.notice-box li { font-size:12px; color:#aaa; padding:5px 0 5px 18px; position:relative; line-height:1.75; }
+.notice-box li::before { content:''; position:absolute; left:0;top:12px; width:5px; height:5px; border-radius:50%; background:#c8a050; }
+
+/* ===== 禁用词 ===== */
+.ban-box { background:rgba(220,50,50,0.07); border:1px solid rgba(220,50,50,0.2); border-radius:10px; padding:14px 18px; margin-top:16px; }
+.ban-box .ban-title { font-size:13px; color:#ef4444; margin-bottom:8px; font-weight:600; white-space:nowrap; }
+.ban-box .ban-words { font-size:11.5px; color:#ccc; line-height:1.85; }
+
+/* ===== 时间轴 ===== */
+.timeline { margin-top:16px; }
+.tl-item { display:flex; gap:14px; position:relative; padding-bottom:22px; }
+.tl-item::before { content:''; position:absolute; left:15px; top:30px; bottom:-2px; width:1px; background:rgba(200,160,80,0.15); }
+.tl-item:last-child::before { display:none; }
+.tl-dot { width:30px; height:30px; border-radius:50%; background:rgba(200,160,80,0.1); border:1px solid rgba(200,160,80,0.35); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; color:#c8a050; z-index:1; }
+.tl-content { flex:1; padding-top:4px; }
+.tl-date { font-size:11.5px; color:#c8a050; margin-bottom:3px; font-weight:500; white-space:nowrap; }
+.tl-title { font-size:14px; color:#f5f0e8; margin-bottom:4px; font-weight:550; white-space:nowrap; }
+.tl-desc { font-size:11.5px; color:#888; line-height:1.65; }
+
+/* ===== Footer ===== */
+.footer { text-align:center; padding:36px 20px; color:#555; font-size:11px; border-top:1px solid rgba(255,255,255,0.04); }
+.footer .brand { color:#c8a050; font-size:13px; margin-bottom:6px; font-weight:500; }
+
+@media (min-width:600px) {
+  .section { max-width:540px; margin:0 auto; padding:44px 24px; }
+  .cover h1 { font-size:48px; letter-spacing:10px; }
+  .cover h2 { font-size:20px; }
+  .mc-items { grid-template-columns:1fr 1fr 1fr; }
+  .platter-grid { flex-wrap:nowrap; }
+}
+
+@media screen and (max-width:420px) {
+  .cover h1 { font-size:32px; letter-spacing:5px; white-space:normal; word-break:keep-all; }
+  .cover h2 { font-size:15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== COVER ========== -->
+<div class="cover">
+  <div class="cover-tag">弯道超车传媒 · WANDAO</div>
+  <h1>520抖音推广BF</h1>
+  <h2>300杯宜宾店</h2>
+  <div class="cover-line"></div>
+  <div class="cover-meta">
+    <span>拍摄日 5月7日</span>
+    <span>推广节点 520</span><br>
+    <span style="opacity:0.45;font-size:10.5px;margin-top:14px;display:inline;border:none;background:none;padding:0;">版本 v2 · 抖音版 · 2026.05</span>
+  </div>
+</div>
+
+<!-- ========== 拍摄任务 ========== -->
+<div class="section">
+  <div class="section-head">
+    <h2>拍摄任务表</h2>
+    <div class="line"></div>
+    <div class="desc">5月7日 · 300杯宜宾店 · 共9位达人</div>
+  </div>
+
+  <table class="task-table">
+    <thead>
+      <tr><th>抖音昵称</th><th>到店时间</th><th>桌号</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="color:#f5f0e8;font-weight:500;">宜宾开朗张</td><td>18:00</td><td>一号桌</td></tr>
+      <tr><td style="color:#f5f0e8;font-weight:500;">宜宾王冰冰</td><td>18:00</td><td>一号桌</td></tr>
+      <tr><td style="color:#f5f0e8;font-weight:500;">李白逛宜宾</td><td>18:00</td><td>一号桌</td></tr>
+      <tr><td style="color:#f5f0e8;font-weight:500;">王大炮吃半饱</td><td>11:00</td><td>二号桌</td></tr>
+      <tr><td style="color:#f5f0e8;font-weight:500;">飞大大</td><td>11:00</td><td>二号桌</td></tr>
+      <tr><td style="color:#f5f0e8;font-weight:500;">毛大大</td><td>11:00</td><td>二号桌</td></tr>
+      <tr><td style="color:#f5f0e8;font-weight:500;">笨痴痴</td><td>11:00</td><td>二号桌</td></tr>
+      <tr><td style="color:#f5f0e8;font-weight:500;">成钱罐</td><td>13:00</td><td>品宣</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:14px;font-size:11.5px;color:#777;line-height:1.8;padding:10px 14px;background:rgba(200,160,80,0.04);border-radius:8px;">
+    <strong style="color:#c8a050;">安排说明：</strong>一号桌晚市3人同批；二号桌午市4人分两批；成钱罐品宣单独安排不占餐位
+  </div>
+</div>
+
+<!-- ========== 520主推套餐 ========== -->
+<div class="section">
+  <div class="section-head">
+    <h2>520主推套餐</h2>
+    <div class="line"></div>
+    <div class="desc">抖音挂载团购 · 评论区引导到店</div>
+  </div>
+
+  <div class="menu-cards">
+
+    <!-- 只保留套餐A -->
+    <div class="menu-card">
+      <div class="mc-header">
+        <span class="mc-badge">520限定</span>
+        <span class="mc-title">雪花和牛套餐</span>
+        <span class="mc-sub">¥973 / 2人 · 宜宾店520主推</span>
+      </div>
+      <div class="mc-body">
+
+        <!-- 重点拍摄区 -->
+        <div class="highlight-box">
+          <div class="highlight-box">
+            <div class="highlight-title">重点拍摄 · 雪花和牛三款拼盘</div>
+            <div class="platter-grid">
+              <div class="platter-item"><span class="pname">板腱</span><span class="pwt">50g</span></div>
+              <div class="platter-item"><span class="pname">三角肉</span><span class="pwt">50g</span></div>
+              <div class="platter-item"><span class="pname">腹心肉</span><span class="pwt">50g</span></div>
+            </div>
+            <div class="heart-note">
+              雪花和牛玫瑰芯切<strong>心形厚片</strong>（100g），单独摆盘上镜，520氛围拉满
+            </div>
+          </div>
+        </div>
+
+        <!-- 其余菜品 -->
+        <div class="mc-items">
+          <div class="mc-item"><span class="name">雪花和牛板腱</span><span class="price">50g</span></div>
+          <div class="mc-item"><span class="name">雪花和牛三角肉</span><span class="price">50g</span></div>
+          <div class="mc-item"><span class="name">雪花和牛腹心肉</span><span class="price">50g</span></div>
+          <div class="mc-item"><span class="name" style="color:#c8a050;">★ 雪花和牛玫瑰芯（心形）</span><span class="price">100g</span></div>
+          <div class="mc-item"><span class="name">沙葱牛肉卷</span><span class="price">1份</span></div>
+          <div class="mc-item"><span class="name">300杯沙拉</span><span class="price">1份</span></div>
+          <div class="mc-item"><span class="name">和牛炙烧手握</span><span class="price">2贯</span></div>
+          <div class="mc-item"><span class="name">季节蔬菜组合</span><span class="price">1份</span></div>
+          <div class="mc-item"><span class="name">火腿和牛菌菇釜饭</span><span class="price">1份</span></div>
+          <div class="mc-item"><span class="name">椰桃云朵</span><span class="price">2个</span></div>
+          <div class="mc-item"><span class="name">幻境</span><span class="price">2杯</span></div>
+          <div class="mc-item"><span class="name">酒渍樱桃</span><span class="price">1份</span></div>
+          <div class="mc-item"><span class="name">前菜 / 酱料</span><span class="price">各1份</span></div>
+        </div>
+      </div>
+      <div class="mc-footer">
+        <span class="mc-total">套餐价：<strong>¥973</strong> <span style="font-size:12px;color:#888;">/ 2人</span></span>
+        <span class="mc-cost">以门店定价为准</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="notice-box" style="margin-top:18px;">
+    <h4>📋 挂载说明</h4>
+    <li>视频挂载「300杯宜宾店·520限定」团购链接</li>
+    <li>评论区引导：「搜300杯宜宾店就能看到」或「左下角有链接」</li>
+    <li>价格口播用「九百七十三块两个人」，不要说「不到一千」「才九百多」</li>
+  </div>
+</div>
+
+<!-- ========== 内容方向 ========== -->
+<div class="section">
+  <div class="section-head">
+    <h2>内容方向</h2>
+    <div class="line"></div>
+    <div class="desc">三个方向，按达人风格分配</div>
+  </div>
+
+  <div class="dir-cards">
+
+    <div class="dir-card">
+      <div>
+        <span class="dir-num">1</span>
+        <span class="dir-title">520约会首选 · 宜宾也有高品质和牛了</span>
+      </div>
+      <div class="dir-desc">
+        本地情侣向。核心话术：不用跑成都，宜宾本地就能吃到正经和牛。520带对象来这儿，比送花实在。<br><br>
+        开头钩子参考：「在宜宾吃和牛是什么体验？今天带你们看看。」或者「男朋友520带我来的地方，进门前我以为他疯了…」
+      </div>
+      <div class="dir-tags">
+        <span class="dir-tag">适合：宜宾开朗张 / 宜宾王冰冰 / 李白逛宜宾</span>
+      </div>
+    </div>
+
+    <div class="dir-card" style="border-left-color:#e8c870;">
+      <div>
+        <span class="dir-num" style="background:#e8c870;color:#1a0a0a;">2</span>
+        <span class="dir-title">质价比 · 吃得比别人好，花的比别人少</span>
+      </div>
+      <div class="dir-desc">
+        吃播测评向。不是便宜货那种便宜，是同样品质下你花得更值。973块两个人，雪花和牛+甜品饮品全包，去成都同等配置起码1500往上。<br><br>
+        开头钩子参考：「973块钱两个人，在宜宾能吃到什么水平？」
+      </div>
+      <div class="dir-tags">
+        <span class="dir-tag" style="background:rgba(232,200,112,0.1);color:#e8c870;">适合：王大炮吃半饱 / 飞大大 / 毛大大 / 笨痴痴</span>
+      </div>
+    </div>
+
+    <div class="dir-card" style="border-left-color:#999;">
+      <div>
+        <span class="dir-num" style="background:#666;color:#fff;">3</span>
+        <span class="dir-title">品牌故事 · 一家做和牛的店为什么要来宜宾</span>
+      </div>
+      <div class="dir-desc">
+        品宣向，不硬推套餐。讲清楚300杯来宜宾的原因——这座城市值得一家像样的和牛专门店。侧重环境、服务、食材来源，让观众自己产生兴趣。<br><br>
+        风格偏纪录片/探店vlog，不要太像广告。
+      </div>
+      <div class="dir-tags">
+        <span class="dir-tag" style="background:rgba(255,255,255,0.06);color:#999;">适合：成钱罐（品宣拍摄）</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 拍摄须知 ========== -->
+<div class="section">
+  <div class="section-head">
+    <h2>拍摄须知</h2>
+    <div class="line"></div>
+    <div class="desc">到场后照着拍就行</div>
+  </div>
+
+  <div class="notice-box">
+    <h4>📸 必须拍到的画面</h4>
+    <li><strong>门头</strong>——带「300杯」LOGO的全景，白天晚上各一条</li>
+    <li><strong>和牛现切</strong>——师傅切肉的特写，纹理要清晰可见</li>
+    <li><strong>烤制过程</strong>——油花滋滋声一定要录进去，这是完播率的关键</li>
+    <li><strong>成品特写</strong>——焦褐色泽 + 表面油脂光泽，别用滤镜过度美化</li>
+    <li><strong>品尝反应</strong>——真实的就行，别演过头</li>
+    <li><strong>心形玫瑰芯</strong>——单独给一个镜头，摆盘好看点</li>
+  </div>
+
+  <div class="notice-box" style="margin-top:12px;">
+    <h4>🎵 配乐</h4>
+    <li>约会向：520热歌榜选一首，提前确认没版权问题</li>
+    <li>测评向：节奏感强的，卡着画面切换点</li>
+    <li>品宣向：偏暖的纯音乐，别抢画面的戏</li>
+  </div>
+
+  <div class="ban-box">
+    <div class="ban-title">🚫 不能用的词</div>
+    <div class="ban-words">
+      放题 · 自助 · 无限 · 性价比高（说「很值」就行） · 便宜 · 划算 · 学生价 · 打折 · 团购价（说「套餐价」）<br>
+      最好吃 · 顶级 · 最 · 第一 · 绝对 · M9+ · 全市唯一<br>
+      以上是抖音广告法红线，踩了会被限流/下架
+    </div>
+  </div>
+</div>
+
+<!-- ========== 时间节奏 ========== -->
+<div class="section">
+  <div class="section-head">
+    <h2>时间安排</h2>
+    <div class="line"></div>
+    <div class="desc">从明天拍到520收割</div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot">📅</div>
+      <div class="tl-content">
+        <div class="tl-date">5月7日 明天</div>
+        <div class="tl-title">拍摄</div>
+        <div class="tl-desc">午市11:00 四人分批 / 品宣13:00 成钱罐 / 晚市18:00 三人同批。门店提前备菜到位。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">✂️</div>
+      <div class="tl-content">
+        <div class="tl-date">5月8日-15日</div>
+        <div class="tl-title">审稿剪辑</div>
+        <div class="tl-desc">达人交片→我们审核→返修→再确认。重点查禁用词、价格写错没、地址对不对。48小时内走完流程。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">🚀</div>
+      <div class="tl-content">
+        <div class="tl-date">5月13日-18日</div>
+        <div class="tl-title">先发几条铺路</div>
+        <div class="tl-desc">挑3-4条先发，占住「520宜宾约会」相关搜索。评论区置顶门店信息+团购入口。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">🔥</div>
+      <div class="tl-content">
+        <div class="tl-date">5月19日-21日</div>
+        <div class="tl-title">520集中发</div>
+        <div class="tl-desc">剩下的集中在这三天放出来。本地推预算如果充裕就这时候加码投流。盯紧评论，有人问就回。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">📊</div>
+      <div class="tl-content">
+        <div class="tl-date">5月22日起</div>
+        <div class="tl-title">看数据说话</div>
+        <div class="tl-desc">核销率、评论数、收藏数拉一遍。哪条跑得好就追投一点。520过了但热度还能续几天。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== Footer ========== -->
+<div class="footer">
+  <div class="brand">弯道超车传媒 · WANDAO MEDIA</div>
+  300杯宜宾店 · 520抖音推广BF<br>
+  内部文档 · 请勿外传 · v2
+</div>
+
+</body>
+</html>
