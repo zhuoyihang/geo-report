@@ -6,12 +6,22 @@
   <title>三品牌 · 新店围挡小红书营销整合方案</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", "Noto Sans SC", sans-serif;
       background: #f5f5f0;
       color: #1a1a2e;
       line-height: 1.8;
       padding: 0;
+      word-break: keep-all;
+      line-break: strict;
+      overflow-wrap: break-word;
+      -webkit-hyphens: none;
+      hyphens: none;
+    }
+    p, .section-desc, .case-point, .tl-desc, .info-row, .quote-box, .card div:not(.card-title) {
+      word-break: keep-all;
+      line-break: strict;
     }
 
     /* === HERO === */
@@ -103,7 +113,7 @@
     }
 
     /* === SECTIONS === */
-    .section { display: none; padding: 28px 20px 48px; }
+    .section { display: none; padding: 28px 16px 48px; }
     .section.active { display: block; }
 
     .section-title {
@@ -122,7 +132,7 @@
     .card {
       background: #fff;
       border-radius: 14px;
-      padding: 22px;
+      padding: 22px 20px;
       margin-bottom: 18px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: box-shadow 0.2s;
@@ -208,7 +218,7 @@
     .brand-header .icon.jiwu { background: linear-gradient(135deg, #6b4fa0, #8e6fc0); }
     .brand-header .info h3 { font-size: 18px; font-weight: 700; }
     .brand-header .info p { font-size: 12px; color: #888; margin-top: 2px; }
-    .brand-body { padding: 0 22px 22px; }
+    .brand-body { padding: 0 20px 22px; }
 
     .info-row {
       display: flex;
