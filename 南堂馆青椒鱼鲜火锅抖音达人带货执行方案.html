@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>南堂馆青椒鱼鲜火锅 · 抖音长期经营策略</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: #f5f3f0; color: #2c2c2c; line-height: 1.6;
+    padding: 16px 12px;
+  }
+  .doc { max-width: 640px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 24px 16px 32px; position: relative; overflow: hidden; }
+
+  /* 水印 */
+  .wm-wrapper {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; z-index: 9999;
+    overflow: hidden;
+  }
+  .wm-text {
+    position: absolute;
+    font-size: 14px; font-weight: 700; color: rgba(180,50,50,0.08); letter-spacing: 4px;
+    transform: rotate(-30deg); white-space: nowrap;
+    user-select: none;
+  }
+
+  .header { text-align: center; padding-bottom: 18px; border-bottom: 1px solid #eee; margin-bottom: 18px; position: relative; }
+  .header h1 { font-size: 21px; font-weight: 800; color: #1a1a1a; letter-spacing: 1.5px; }
+  .header .subtitle { font-size: 13px; color: #999; margin-top: 2px; }
+  .badge-line { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-red { background: #e74c3c; color: #fff; }
+  .badge-dark { background: #2c3e50; color: #fff; }
+
+  .summary-bar {
+    background: #1a1a2e; color: #fff; padding: 14px 16px; border-radius: 12px; font-size: 14px; line-height: 1.7; margin-bottom: 22px;
+  }
+  .summary-bar strong { color: #f1c40f; }
+  .summary-bar .hl { color: #f1c40f; font-size: 16px; }
+
+  .section { margin-bottom: 26px; }
+  .section-title {
+    font-size: 15px; font-weight: 700; color: #1a1a2e; padding-left: 12px;
+    border-left: 4px solid #e74c3c; margin-bottom: 12px;
+  }
+
+  .card { background: #fafafa; border-radius: 10px; padding: 14px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 400px; }
+  th, td { padding: 7px 9px; text-align: left; border-bottom: 1px solid #e8e8e8; }
+  th { background: #1a1a2e; color: #fff; font-weight: 600; font-size: 12px; }
+  tr:nth-child(even) td { background: #f8f8f8; }
+  .highlight { background: #fff3cd !important; }
+  .highlight-green { background: #e8f5e9 !important; }
+
+  .list-dot { list-style: none; padding: 0; }
+  .list-dot li { padding-left: 16px; position: relative; margin-bottom: 5px; font-size: 13px; }
+  .list-dot li::before { content: "\25CF"; position: absolute; left: 0; color: #e74c3c; font-size: 8px; top: 5px; }
+
+  .divider { height: 1px; background: #eee; margin: 18px 0; }
+
+  .phase-box { border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+  .phase-box .phase-num { font-size: 11px; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; }
+  .phase-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .phase-box p { font-size: 13px; }
+  .phase-1 { background: #fef2f2; border: 1px solid #f5c6cb; }
+  .phase-2 { background: #fff8e1; border: 1px solid #ffeeba; }
+  .phase-3 { background: #e8f5e9; border: 1px solid #c3e6cb; }
+  .phase-box .mid-card { background: rgba(0,0,0,0.15); border-radius: 8px; padding: 10px 12px; margin-top: 8px; }
+  .phase-box .mid-card p { font-size: 12px; line-height: 1.6; }
+
+  .warn-block { border-left: 4px solid #e74c3c; background: #fdf2f2; padding: 12px; border-radius: 0 8px 8px 0; margin-bottom: 10px; }
+  .warn-block h4 { font-size: 13px; color: #c0392b; margin-bottom: 4px; }
+  .warn-block p { font-size: 13px; color: #555; }
+
+  .flow-arrow { text-align: center; font-size: 16px; color: #bbb; margin: -4px 0; }
+
+  .logic-flow { display: flex; flex-direction: column; gap: 4px; padding: 8px 0; }
+  .logic-step { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; padding: 7px 10px; background: #f5f5f5; border-radius: 8px; }
+  .logic-step .arrow { flex-shrink: 0; color: #e74c3c; font-weight: 700; font-size: 14px; }
+
+  .sop-step { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
+  .sop-num { flex-shrink: 0; width: 26px; height: 26px; background: #1a1a2e; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+  .sop-content { font-size: 13px; padding-top: 3px; }
+  .sop-content strong { display: block; margin-bottom: 1px; }
+
+  .note-box { background: #e8f4fd; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #2c5282; margin: 8px 0; }
+
+  .footer { text-align: center; padding-top: 14px; border-top: 1px solid #eee; margin-top: 18px; font-size: 11px; color: #bbb; }
+
+  /* 价格卡片 */
+  .price-row { display: flex; gap: 10px; margin: 10px 0; }
+  .price-box { flex: 1; text-align: center; padding: 12px 6px; border-radius: 10px; }
+  .price-box .big { font-size: 28px; font-weight: 800; }
+  .price-box .lbl { font-size: 12px; color: #666; margin-top: 2px; }
+
+  .tag-up { display: inline-block; background: #27ae60; color: #fff; font-size: 10px; padding: 1px 6px; border-radius: 4px; margin-left: 3px; font-weight: 600; vertical-align: middle; }
+  .tag-same { color: #999; font-size: 12px; vertical-align: middle; }
+  .tag-limit { display: inline-block; background: #f39c12; color: #fff; font-size: 10px; padding: 1px 6px; border-radius: 4px; margin-left: 3px; font-weight: 600; vertical-align: middle; }
+
+  .hl-num { font-size: 20px; font-weight: 800; color: #e74c3c; }
+  .hl-green { font-size: 20px; font-weight: 800; color: #27ae60; }
+
+  @media (max-width: 480px) { .doc { padding: 18px 12px 24px; } .header h1 { font-size: 18px; } }
+</style>
+</head>
+<body>
+
+<div class="wm-wrapper" id="wm"></div>
+<script>
+  (function() {
+    var wm = document.getElementById('wm');
+    var lines = ['成都弯道超车', 'CONFIDENTIAL', '成都弯道超车文化传媒', '内部文件·请勿外传'];
+    for (var i = 0; i < 80; i++) {
+      var el = document.createElement('div');
+      el.className = 'wm-text';
+      el.textContent = lines[i % lines.length];
+      el.style.top = (Math.random() * 100) + '%';
+      el.style.left = (Math.random() * 100) + '%';
+      el.style.fontSize = (12 + Math.random() * 10) + 'px';
+      el.style.opacity = 0.04 + Math.random() * 0.06;
+      wm.appendChild(el);
+    }
+  })();
+</script>
+
+<div class="doc">
+
+  <div class="header">
+    <h1>南堂馆青椒鱼鲜火锅 · 抖音长期经营策略</h1>
+    <div class="subtitle">大博主引爆 → 100位V5/V6达人持续种草 → 每周2场直播转化</div>
+    <div class="badge-line">
+      <span class="badge badge-red">内部文件</span>
+      <span class="badge badge-dark">2026.05</span>
+    </div>
+  </div>
+
+  <div class="summary-bar">
+    <strong>一句话讲清楚：</strong><span class="hl">大博主</span>轰炸流量，<span class="hl">100位</span>美食博主持续种草，<span class="hl">每周2场</span>直播做复购。<br>
+    推的是<span class="hl">298元套餐</span>，卖点是 <strong>翘壳+笋壳鱼+海参+雪花牛肉八头鲍不限量+白桃乌龙桃胶香梨+三种茶</strong>，比198多花100块，品质全面升级。
+  </div>
+
+  <!-- 三阶段 -->
+  <div class="section">
+    <div class="section-title">整体经营逻辑：三阶段递进</div>
+
+    <div class="phase-box phase-1">
+      <div class="phase-num" style="color:#c0392b;">阶段一 已就位</div>
+      <h3>大博主 · 流量引爆</h3>
+      <p>品牌通过星图投放700万粉丝大博主，视频即将发布。高投入换取区域级别曝光密度，打响南堂馆青椒鱼鲜火锅在抖音的认知度。</p>
+    </div>
+    <div class="flow-arrow">↓</div>
+
+    <div class="phase-box phase-2">
+      <div class="phase-num" style="color:#e67e22;">阶段二 本方案核心</div>
+      <h3>100位V5/V6 · 持续种草</h3>
+      <p>在大博主视频发布带来的流量窗口期内，通过100位美食探店博主的真实测评内容，把<strong>"南堂=翘壳笋壳鱼雪花牛肉八头鲍不限量"</strong>的标签反复植入，形成叠加效应。这是品牌真正的<strong>内容资产积累</strong>。</p>
+    </div>
+    <div class="flow-arrow">↓</div>
+
+    <div class="phase-box phase-3">
+      <div class="phase-num" style="color:#27ae60;">阶段三 新增</div>
+      <h3>每周2场直播 · 持续转化</h3>
+      <p>达人种草积累信任后，通过定期直播完成最后转化。每周固定2场，开佣8%（含平台2.5%），不额外收坑位费，免费安排，长期跑。</p>
+      <div class="mid-card">
+        <p>阶段一 = 把"南堂"这个名字塞进消费者耳朵 · 阶段二 = 让消费者反复看到"南堂=好火锅" · 阶段三 = 给消费者一个随时下单的理由</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 一、套餐对比 -->
+  <div class="section">
+    <div class="section-title">一、198元 vs 298元 差在哪</div>
+
+    <div class="price-row">
+      <div class="price-box" style="background:#f0f0f0;"><div class="big" style="color:#2c3e50;">198</div><div class="lbl">招牌畅享套餐</div></div>
+      <div class="price-box" style="background:#fff3cd;"><div class="big" style="color:#e67e22;">+100</div><div class="lbl">多花100元</div></div>
+      <div class="price-box" style="background:#e8f5e9;"><div class="big" style="color:#27ae60;">298</div><div class="lbl">海味臻选套餐</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">两套餐菜品对比</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>品类</th><th>198元</th><th>298元</th></tr></thead>
+          <tbody>
+            <tr><td>锅底/前菜</td><td colspan="2" style="text-align:center;color:#999;">完全一致</td></tr>
+            <tr style="background:#fef9e7;"><td><strong>渔鲜类</strong></td>
+              <td>江团、黄辣丁、花鮨、雪鱼、草鱼、土鳝鱼、牛蛙</td>
+              <td class="highlight-green">以上全有 + <strong>翘壳(半条/份)</strong> + <strong>笋壳鱼(半条/份)</strong></td></tr>
+            <tr style="background:#fef9e7;"><td><strong>牛肉类</strong></td>
+              <td>雪花牛肉(每人限1份)<span class="tag-limit">限1份</span></td>
+              <td class="highlight-green">雪花牛肉<span class="tag-up">升级不限量</span> / 其他同左</td></tr>
+            <tr style="background:#fef9e7;"><td><strong>海鲜类</strong></td>
+              <td>手钓鱿鱼(每人限1份)、八头鲍(每人限2只)<span class="tag-limit">限2只</span>、深水大黄鱼、墨鱼仔</td>
+              <td class="highlight-green">鱿鱼同左、八头鲍<span class="tag-up">升级不限量</span>、大黄鱼墨鱼仔同左<br>+ <strong>新增海参(每人限1个)</strong><span class="tag-limit">限1个</span></td></tr>
+            <tr><td>手工/菌子/素菜</td><td colspan="2" style="text-align:center;color:#999;">完全一致</td></tr>
+            <tr><td>川式甜品</td><td colspan="2" style="text-align:center;color:#999;">一致：红糖凉糕/红糖冰粉/蜜银耳</td></tr>
+            <tr style="background:#fef9e7;"><td><strong>西式甜品</strong></td><td style="color:#999;">—</td>
+              <td class="highlight-green"><strong>新增：白桃乌龙(位)、桃胶香梨(位)</strong></td></tr>
+            <tr><td>小吃/主食</td><td colspan="2" style="text-align:center;color:#999;">完全一致</td></tr>
+            <tr style="background:#fef9e7;"><td><strong>饮品</strong></td>
+              <td>雪碧/可乐/桂花酸梅汤</td>
+              <td class="highlight-green">以上全有 + <strong>普洱茶、茉莉花茶、正山小种</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box" style="background:#fef9e7;color:#8a6d3b;">
+        深水大黄鱼、墨鱼仔两套都有。198的八头鲍限2只→298不限量。298新增：翘壳、笋壳鱼、海参、西式甜品、三种茶。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">多花100元，买到了什么</div>
+      <ul class="list-dot">
+        <li><strong>翘壳 + 笋壳鱼</strong> — 198没有的两种高端鱼</li>
+        <li><strong>海参(每人限1个)</strong> — 198没有的顶级食材</li>
+        <li><strong>雪花牛肉：从限1份 → 不限量</strong></li>
+        <li><strong>八头鲍：从限2只 → 不限量</strong></li>
+        <li><strong>白桃乌龙 + 桃胶香梨</strong> — 198没有</li>
+        <li><strong>普洱茶、茉莉花茶、正山小种</strong> — 三种茶饮</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 二、策略 -->
+  <div class="section">
+    <div class="section-title">二、为什么这么卖</div>
+    <div class="card">
+      <div class="warn-block"><h4>方案B：按场景分</h4><p>强行贴标签，消费者落座发现两桌菜差不多，信任感崩塌。</p></div>
+      <div class="warn-block"><h4>方案C：只推298下架198</h4><p>198元是流量入口，下架等于自断客流。</p></div>
+      <div class="warn-block" style="border-left-color:#27ae60;background:#f0faf0;">
+        <h4 style="color:#27ae60;">最终方案：让消费者看见100块差在哪</h4>
+        <p>核心差异——翘壳+笋壳鱼（198没有）+海参（198没有）+雪花牛肉/八头鲍从限量升级不限量+西式甜品+茶。建议在摆盘上突出翘壳/笋壳鱼整鱼呈现、海参和八头鲍摆拍，甜品和茶饮单独出镜。</p>
+      </div>
+      <div class="logic-flow">
+        <div class="logic-step"><span class="arrow">→</span><span><strong>事实：</strong>198和298锅底/前菜/手工/菌子/素菜/川式甜品完全一样</span></div>
+        <div class="logic-step"><span class="arrow">→</span><span><strong>关键差异：</strong>翘壳+笋壳鱼+海参+雪花牛肉/八头鲍不限量+西式甜品+茶</span></div>
+        <div class="logic-step"><span class="arrow">→</span><span><strong>视觉策略：</strong>翘壳/笋壳鱼整鱼+海参+八头鲍做视觉锚点，甜品茶饮单独出镜</span></div>
+        <div class="logic-step"><span class="arrow">→</span><span><strong>验证：</strong>先铺20位博主试跑，数据好再放大</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三、直播 -->
+  <div class="section">
+    <div class="section-title">三、直播：长期经营的复购入口</div>
+    <div class="card" style="background:#e8f5e9;border:1px solid #c3e6cb;">
+      <div class="card-title">直播安排</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>项目</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>场次</td><td>每周2场，固定时间（建议周三/周六晚）</td></tr>
+            <tr><td>达人</td><td>由我们免费安排，不额外收坑位费</td></tr>
+            <tr><td>佣金</td><td>开佣8%（含抖音平台2.5%扣点）</td></tr>
+            <tr><td>目的</td><td>长期复购入口 + 达人种草触达人群的临门一脚</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">直播在整体经营中的位置</div>
+      <ul class="list-dot">
+        <li>大博主视频发完后流量自然回落，直播是承接工具</li>
+        <li>达人种草积累信任后，直播做最后转化</li>
+        <li>每周固定节奏，逐步培养用户购买习惯</li>
+        <li>直播数据反哺内容策略——热卖菜品和用户问题做下一轮脚本素材</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">直播开佣8%分账明细</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>项目</th><th>比例</th><th>金额/单</th></tr></thead>
+          <tbody>
+            <tr><td>品牌支付总佣金</td><td>8%</td><td>23.84元</td></tr>
+            <tr><td>抖音平台抽成</td><td>2.5%</td><td>7.45元</td></tr>
+            <tr><td>达人所得+服务商留存</td><td>5.5%</td><td>16.39元</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 四、选人 -->
+  <div class="section">
+    <div class="section-title">四、选什么人种草</div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>标准</th><th>硬性要求</th></tr></thead>
+          <tbody>
+            <tr><td>等级</td><td>V5（50万-100万粉）或 V6（100万-500万粉）</td></tr>
+            <tr><td>赛道</td><td>美食探店 > 本地生活 > 生活方式</td></tr>
+            <tr><td>带货记录</td><td>近30天至少3条挂车视频</td></tr>
+            <tr><td>评论质量</td><td>无明显刷评、负面舆情</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 五、佣金 -->
+  <div class="section">
+    <div class="section-title">五、达人种草佣金</div>
+    <div class="card">
+      <p style="font-size:13px;margin-bottom:8px;">V5和V6的<strong>总佣金统一为6%</strong>，服务商统一抽取。服务商从6%里拿出<strong>1%给达人</strong>，剩余5%含平台抽成2.5%。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>项目</th><th>比例</th><th>金额/单</th></tr></thead>
+          <tbody>
+            <tr><td>品牌支付总佣金</td><td>6%</td><td>17.88元</td></tr>
+            <tr><td>达人所得</td><td>1%</td><td>2.98元</td></tr>
+            <tr><td>抖音平台抽成</td><td>2.5%</td><td>7.45元</td></tr>
+            <tr><td>服务商留存</td><td>2.5%</td><td>7.45元</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px;">坑位费</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>等级</th><th>坑位费</th></tr></thead>
+          <tbody>
+            <tr><td>V5</td><td>250元/位</td></tr>
+            <tr><td>V6</td><td>300元/位</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 六、排号 -->
+  <div class="section">
+    <div class="section-title">六、达人种草排号节奏（5轮*20人）</div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>轮次</th><th>V5</th><th>V6</th><th>做什么</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><td><strong>第1轮（验证）</strong></td><td>14</td><td>6</td><td>混投跑数据，测转化率</td></tr>
+            <tr><td>第2轮</td><td>16</td><td>4</td><td>V5铺量，看CPS走不走得通</td></tr>
+            <tr><td>第3轮</td><td>12</td><td>8</td><td>加V6试客单价提升空间</td></tr>
+            <tr><td>第4轮</td><td>14</td><td>6</td><td>前三轮最优配比放量</td></tr>
+            <tr><td>第5轮</td><td>18</td><td>2</td><td>V5集中收尾</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 七、脚本 -->
+  <div class="section">
+    <div class="section-title">七、达人视频怎么拍</div>
+    <div class="card">
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px;">统一标题：</p>
+      <p style="font-size:14px;color:#c0392b;font-weight:600;padding:8px 12px;background:#fef2f2;border-radius:8px;margin-bottom:12px;">「成都这家鱼火锅 198起/298就有翘壳笋壳鱼雪花牛肉八头鲍不限量」</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>时间</th><th>画面</th><th>台词</th></tr></thead>
+          <tbody>
+            <tr><td>0-3秒</td><td>198和298价位+整鱼特写</td><td>"成都这家鱼火锅，198起，298就能翘壳笋壳鱼全部安排上！"</td></tr>
+            <tr><td>3-8秒</td><td>整鱼+海参+八头鲍摆拍入锅</td><td>"多花100块，翘壳笋壳鱼海参全有，雪花牛肉八头鲍不限量"</td></tr>
+            <tr><td>8-12秒</td><td>雪花牛肉下锅+锅底沸腾</td><td>"雪花牛肉随便吃，锅底青花椒鲜椒味"</td></tr>
+            <tr><td>12-18秒</td><td>白桃乌龙桃胶香梨+茶饮特写</td><td>"吃完还有白桃乌龙桃胶香梨，普洱茶也随便喝"</td></tr>
+            <tr><td>18-25秒</td><td>环境+满桌菜切屏</td><td>"左下角有298的团购，3到4个人吃完全够"</td></tr>
+            <tr><td>25-30秒</td><td>博主真吃对镜头笑</td><td>"想吃好的，左下角领"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">内容红线</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <div style="flex:1;min-width:120px;">
+          <p style="font-size:12px;font-weight:600;color:#27ae60;margin-bottom:3px;">必须做</p>
+          <ul class="list-dot"><li>翘壳/笋壳鱼整鱼出镜≥5秒</li><li>海参+八头鲍摆拍</li><li>白桃乌龙/桃胶香梨出镜</li><li>真吃镜头+引导链接</li></ul>
+        </div>
+        <div style="flex:1;min-width:120px;">
+          <p style="font-size:12px;font-weight:600;color:#e74c3c;margin-bottom:3px;">不能出现</p>
+          <ul class="list-dot"><li>"性价比超高"</li><li>模板化转场</li><li>评论区刷屏"左下角"</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 八、执行 -->
+  <div class="section">
+    <div class="section-title">八、执行节奏</div>
+    <div class="card">
+      <div class="sop-step">
+        <div class="sop-num">D-5</div>
+        <div class="sop-content"><strong>定人</strong>确认20位博主名单</div></div>
+      <div class="sop-step">
+        <div class="sop-num">D-4</div>
+        <div class="sop-content"><strong>发Brief</strong>Brief+安排到店试吃时间</div></div>
+      <div class="sop-step">
+        <div class="sop-num">D-3</div>
+        <div class="sop-content"><strong>拍摄</strong>到店拍摄素材</div></div>
+      <div class="sop-step">
+        <div class="sop-num">D-2</div>
+        <div class="sop-content"><strong>审片</strong>检查翘壳笋壳鱼海参出镜、红线合规</div></div>
+      <div class="sop-step">
+        <div class="sop-num">D-1</div>
+        <div class="sop-content"><strong>挂链</strong>团购链接确认</div></div>
+      <div class="sop-step">
+        <div class="sop-num">D0</div>
+        <div class="sop-content"><strong>发布</strong>视频上线</div></div>
+      <div class="sop-step">
+        <div class="sop-num">D3</div>
+        <div class="sop-content"><strong>看数据</strong>核销率→决定是否启动第2轮</div></div>
+      <div class="sop-step">
+        <div class="sop-num">D5</div>
+        <div class="sop-content"><strong>第2轮启动</strong>调整配比后推进</div></div>
+      <div class="sop-step">
+        <div class="sop-num">D7</div>
+        <div class="sop-content"><strong>复盘</strong>出第1轮完整数据</div></div>
+      <p style="font-size:13px;color:#666;padding-top:8px;">每5天启动一轮，5轮约35天。种草启动后第2周开始排直播，每周2场。</p>
+    </div>
+  </div>
+
+  <!-- 九、预算 -->
+  <div class="section">
+    <div class="section-title">九、坑位费预算</div>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>项目</th><th>首轮（20位）</th><th style="color:#f1c40f;">总计（100位）</th></tr></thead>
+          <tbody>
+            <tr><td>V5坑位费</td><td>14人×250元=3,500元</td><td>74人×250元=18,500元</td></tr>
+            <tr><td>V6坑位费</td><td>6人×300元=1,800元</td><td>26人×300元=7,800元</td></tr>
+            <tr style="background:#1a1a2e;color:#f1c40f;"><td><strong>小计</strong></td><td><strong>5,300元</strong></td><td><strong>26,300元</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px;color:#999;margin-top:6px;">直播不计坑位费，开佣8%实结。</p>
+    </div>
+  </div>
+
+  <!-- 十、注意事项 -->
+  <div class="section">
+    <div class="section-title">十、注意事项</div>
+    <div class="card">
+      <ul class="list-dot">
+        <li><strong>翘壳/笋壳鱼整鱼摆拍效果直接决定视频转化。</strong>开拍前先试做样菜拍照验证，视觉不够诱人先调整摆盘灯光。</li>
+        <li><strong>大博主视频发布后7天是关键窗口。</strong>期间达人内容要密集发布，形成叠加效应。</li>
+        <li><strong>达人种草和直播节奏不要打架。</strong>直播固定时间，避免冲突。</li>
+      </ul>
+    </div>
+    <div class="card" style="background:#f0faf0;">
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px;">如果第1轮核销率低于20%：</p>
+      <ul class="list-dot"><li>改推198元套餐（客单价低，转化更容易）</li><li>或提高佣金测试市场</li></ul>
+      <p style="font-size:13px;font-weight:600;margin:8px 0 6px;">如果第1轮核销率高于40%：</p>
+      <ul class="list-dot"><li>第2轮翻倍到40人，加速铺量</li></ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section">
+    <div class="card" style="background:#1a1a2e;color:#fff;text-align:center;padding:16px;">
+      <p style="font-size:14px;line-height:2;">
+        <strong style="color:#f1c40f;">三阶段逻辑：</strong>大博主引爆→100位达人持续种草→每周2场直播做复购<br>
+        <strong style="color:#f1c40f;">种草坑位费：</strong>首轮5,300元，整体26,300元<br>
+        <strong style="color:#f1c40f;">直播：</strong>免费安排，开佣8%（含平台2.5%），每周2场<br>
+        <strong style="color:#f1c40f;">周期：</strong>达人种草约35天，直播持续运营
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">南堂馆青椒鱼鲜火锅 · 成都弯道超车文化传媒有限公司</div>
+
+</div>
+</body>
+</html>
