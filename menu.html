@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南堂馆青椒鱼鲜火锅 · 套餐对比与菜品展示</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #0f0f0f; color: #f5f5f5; padding: 20px 12px 40px; }
+  .container { max-width: 800px; margin: 0 auto; }
+
+  .header { text-align: center; padding: 30px 0 20px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 30px; }
+  .header h1 { font-size: 24px; font-weight: 800; letter-spacing: 3px; color: #f1c40f; }
+  .header .sub { font-size: 13px; color: #999; margin-top: 4px; }
+
+  /* 价格对比表 */
+  .price-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 14px; }
+  .price-table th { padding: 14px 12px; font-weight: 700; font-size: 16px; }
+  .price-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+  .price-table th.left-col { background: #2c3e50; color: #fff; text-align: center; width: 22%; }
+  .price-table th.mid-col { background: #e67e22; color: #fff; text-align: center; width: 22%; }
+  .price-table th.right-col { background: #27ae60; color: #fff; text-align: center; width: 56%; }
+  .price-table .cat-row { background: rgba(255,255,255,0.04); font-weight: 700; color: #f1c40f; }
+  .price-table .highlight-198 { background: rgba(44,62,80,0.15); }
+  .price-table .highlight-298 { background: rgba(39,174,96,0.15); }
+  .new-badge { display: inline-block; background: #e74c3c; color: #fff; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-right: 3px; }
+  .upgrade-badge { display: inline-block; background: #f39c12; color: #fff; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-right: 3px; }
+
+  .section-title { font-size: 16px; font-weight: 700; padding-left: 14px; border-left: 4px solid #f1c40f; margin: 32px 0 16px; color: #f1c40f; }
+
+  .dish-card { display: flex; gap: 18px; margin-bottom: 20px; background: rgba(255,255,255,0.03); border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+  .dish-card .img-wrap { flex: 0 0 200px; min-height: 160px; overflow: hidden; background: #1a1a1a; }
+  .dish-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .dish-card .info { flex: 1; padding: 16px 18px 16px 0; display: flex; flex-direction: column; justify-content: center; }
+  .dish-card .info h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .dish-card .info .limit-note { font-size: 12px; color: #f39c12; font-weight: 600; margin-bottom: 6px; }
+  .dish-card .info .desc { font-size: 13px; color: #ccc; line-height: 1.7; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-bottom: 30px; }
+  .grid .item { background: rgba(255,255,255,0.03); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+  .grid .item img { width: 100%; height: 140px; object-fit: cover; display: block; }
+  .grid .item p { padding: 8px 10px; font-size: 12px; color: #aaa; text-align: center; }
+
+  .compare-box { background: rgba(255,255,255,0.03); border-radius: 14px; padding: 18px 20px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.06); line-height: 2; font-size: 14px; }
+  .compare-box .row { display: flex; gap: 20px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .compare-box .row:last-child { border: none; }
+  .compare-box .name { flex: 2; color: #ccc; }
+  .compare-box .p198 { flex: 1; color: #bbb; }
+  .compare-box .p298 { flex: 1; color: #f1c40f; }
+
+  .footer { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 20px; font-size: 12px; color: #666; }
+
+  @media (max-width: 560px) {
+    .dish-card { flex-direction: column; }
+    .dish-card .img-wrap { flex: none; height: 200px; }
+    .dish-card .info { padding: 14px; }
+    .price-table { font-size: 12px; }
+    .price-table th, .price-table td { padding: 8px 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>南堂馆青椒鱼鲜火锅</h1>
+    <div class="sub">套餐对比与菜品视觉参考 · 抖音达人带货素材</div>
+  </div>
+
+  <!-- 两档价格直接对比 -->
+  <div class="price-table-wrap" style="overflow-x:auto;">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th class="left-col">品类</th>
+          <th class="mid-col">198元 招牌畅享</th>
+          <th class="right-col">298元 海味臻选 <span style="font-size:12px;font-weight:400;color:#ffd700;">（多花100元）</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="3">渔鲜类</td></tr>
+        <tr>
+          <td>翘壳</td><td class="highlight-198" style="color:#666;">—</td>
+          <td class="highlight-298"><span class="new-badge">新增</span>半条/份</td></tr>
+        <tr>
+          <td>笋壳鱼</td><td class="highlight-198" style="color:#666;">—</td>
+          <td class="highlight-298"><span class="new-badge">新增</span>半条/份</td></tr>
+        <tr>
+          <td>江团、黄辣丁、花鮨、雪鱼、草鱼、土鳝鱼、牛蛙</td>
+          <td class="highlight-198" style="color:#ccc;">均有</td>
+          <td class="highlight-298" style="color:#ccc;">均有</td></tr>
+
+        <tr class="cat-row"><td colspan="3">牛肉类</td></tr>
+        <tr>
+          <td>雪花牛肉</td><td class="highlight-198">每人限1份</td>
+          <td class="highlight-298"><span class="upgrade-badge">升级</span>不限量</td></tr>
+        <tr><td>雪花肥牛/吊龙/毛肚/千层肚/蹄筋/黄喉</td><td colspan="2" style="text-align:center;color:#666;">两套一致</td></tr>
+
+        <tr class="cat-row"><td colspan="3">海鲜类</td></tr>
+        <tr>
+          <td>手钓鱿鱼</td><td class="highlight-198" style="color:#666;">—</td>
+          <td class="highlight-298"><span class="new-badge">新增</span>每人限1份</td></tr>
+        <tr>
+          <td>八头鲍</td><td class="highlight-198">每人限2只</td>
+          <td class="highlight-298"><span class="upgrade-badge">升级</span>不限量</td></tr>
+        <tr>
+          <td>海参</td><td class="highlight-198" style="color:#666;">—</td>
+          <td class="highlight-298"><span class="new-badge">新增</span>每人限1个</td></tr>
+        <tr><td>深水大黄鱼 / 墨鱼仔</td><td colspan="2" style="text-align:center;color:#666;">两套均有</td></tr>
+
+        <tr class="cat-row"><td colspan="3">手工 / 菌子 / 素菜 / 川式甜品 / 小吃 / 主食</td></tr>
+        <tr><td colspan="3" style="text-align:center;color:#666;padding:6px;">两套完全一致</td></tr>
+
+        <tr class="cat-row"><td colspan="3">西式甜品</td></tr>
+        <tr>
+          <td>白桃乌龙 / 桃胶香梨</td><td class="highlight-198" style="color:#666;">—</td>
+          <td class="highlight-298"><span class="new-badge">新增</span>各1份</td></tr>
+
+        <tr class="cat-row"><td colspan="3">饮品</td></tr>
+        <tr>
+          <td>雪碧/可乐/酸梅汤</td><td colspan="2" style="text-align:center;color:#666;">两套均有</td></tr>
+        <tr>
+          <td>普洱 / 茉莉花茶 / 正山小种</td><td class="highlight-198" style="color:#666;">—</td>
+          <td class="highlight-298"><span class="new-badge">新增</span>三种茶饮</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 限量说明卡片 -->
+  <div class="intro" style="margin-top:16px;">
+    <p style="color:#f1c40f;"><strong>限量说明：</strong></p>
+    <p style="font-size:13px;line-height:1.8;margin-top:4px;color:#ccc;">
+      198元套餐限量菜品：雪花牛肉(每人限1份)、八头鲍(每人限2只)<br>
+      298元套餐限量菜品：手钓鱿鱼(每人限1份)、海参(每人限1个)<br>
+      其余菜品两套均为不限量供应。
+    </p>
+  </div>
+
+  <!-- 主推菜品单图 -->
+  <div class="section-title">298元主推菜品单拍参考</div>
+
+  <div class="dish-card">
+    <div class="img-wrap"><img src="dish_photos/海参中餐做法1.jpg" alt="海参" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;color:#666;font-size:12px>图片加载中</div>'"></div>
+    <div class="info">
+      <h3>海参</h3>
+      <div class="limit-note">每人限1个 · 298新增</div>
+      <div class="desc">198没有的硬菜，涮煮后口感软糯，建议拍入锅特写</div>
+    </div>
+  </div>
+
+  <div class="dish-card">
+    <div class="img-wrap"><img src="dish_photos/笋壳鱼和涮煮海参.jpg" alt="笋壳鱼" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;color:#666;font-size:12px>图片加载中</div>'"></div>
+    <div class="info">
+      <h3>笋壳鱼</h3>
+      <div class="limit-note">不限量 · 298新增</div>
+      <div class="desc">肉质鲜嫩的高端鱼种，建议整鱼摆盘出镜</div>
+    </div>
+  </div>
+
+  <div class="dish-card">
+    <div class="img-wrap"><img src="dish_photos/8头鲍.jpg" alt="八头鲍" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;color:#666;font-size:12px>图片加载中</div>'"></div>
+    <div class="info">
+      <h3>八头鲍</h3>
+      <div class="limit-note">198限2只 → 298升级不限量</div>
+      <div class="desc">升级感最明显的菜品，建议成盘摆拍突出不限量气势</div>
+    </div>
+  </div>
+
+  <div class="dish-card">
+    <div class="img-wrap"><img src="dish_photos/手钓鱿鱼限1份120g.jpg" alt="手钓鱿鱼" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;color:#666;font-size:12px>图片加载中</div>'"></div>
+    <div class="info">
+      <h3>手钓鱿鱼</h3>
+      <div class="limit-note">每人限1份 · 298独有</div>
+      <div class="desc">新鲜手钓鱿鱼，口感脆嫩，建议特写摆盘</div>
+    </div>
+  </div>
+
+  <div class="dish-card">
+    <div class="img-wrap"><img src="dish_photos/牛肉类.jpg" alt="雪花牛肉" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;color:#666;font-size:12px>图片加载中</div>'"></div>
+    <div class="info">
+      <h3>雪花牛肉</h3>
+      <div class="limit-note">198限1份 → 298升级不限量</div>
+      <div class="desc">牛肉自由，建议下锅沸腾画面突出不限量</div>
+    </div>
+  </div>
+
+  <div class="dish-card">
+    <div class="img-wrap"><img src="dish_photos/冷水雪鱼.jpg" alt="冷水雪鱼" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;color:#666;font-size:12px>图片加载中</div>'"></div>
+    <div class="info">
+      <h3>冷水雪鱼</h3>
+      <div class="limit-note">不限量 · 两套均有</div>
+      <div class="desc">肉质细嫩，适合整块涮煮展示</div>
+    </div>
+  </div>
+
+  <div class="dish-card">
+    <div class="img-wrap"><img src="dish_photos/瘦身草鱼.jpg" alt="瘦身草鱼" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;color:#666;font-size:12px>图片加载中</div>'"></div>
+    <div class="info">
+      <h3>瘦身草鱼</h3>
+      <div class="limit-note">不限量 · 两套均有</div>
+      <div class="desc">去油脂处理，口感更清爽</div>
+    </div>
+  </div>
+
+  <!-- 锅底 -->
+  <div class="section-title">锅底（两套通用）</div>
+  <div class="dish-card">
+    <div class="img-wrap"><img src="dish_photos/双拼鱼椒、青花椒锅底。.jpg" alt="锅底双拼" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;color:#666;font-size:12px>图片加载中</div>'"></div>
+    <div class="info">
+      <h3>青椒原味 / 鱼椒原味 / 番茄酸汤 / 菌菇鸡汤</h3>
+      <div class="limit-note">单人仅限一味，单桌仅限两味</div>
+      <div class="desc">青椒原味和鱼椒原味是招牌必推，建议视频同时拍两味锅底</div>
+    </div>
+  </div>
+
+  <!-- 其他菜品 -->
+  <div class="section-title">其他菜品（两套均有）</div>
+  <div class="grid">
+    <div class="item"><img src="dish_photos/大黄鱼.jpg" alt="大黄鱼" onerror="this.style.display='none'"><p>深水大黄鱼</p></div>
+    <div class="item"><img src="dish_photos/大黄鱼墨鱼仔.jpg" alt="墨鱼仔" onerror="this.style.display='none'"><p>墨鱼仔</p></div>
+    <div class="item"><img src="dish_photos/肥牛.jpg" alt="肥牛" onerror="this.style.display='none'"><p>雪花肥牛</p></div>
+    <div class="item"><img src="dish_photos/毛肚黄喉千层肚.jpg" alt="毛肚黄喉" onerror="this.style.display='none'"><p>毛肚/黄喉/千层肚</p></div>
+    <div class="item"><img src="dish_photos/鳝鱼.jpg" alt="鳝鱼" onerror="this.style.display='none'"><p>去骨土鳝鱼</p></div>
+    <div class="item"><img src="dish_photos/土凤（花?）和黄辣丁.jpg" alt="黄辣丁" onerror="this.style.display='none'"><p>黄辣丁 / 花鮨</p></div>
+    <div class="item"><img src="dish_photos/前菜类.jpg" alt="前菜" onerror="this.style.display='none'"><p>前菜</p></div>
+    <div class="item"><img src="dish_photos/甜品1.jpg" alt="甜品" onerror="this.style.display='none'"><p>川式甜品</p></div>
+    <div class="item"><img src="dish_photos/甜品2.jpg" alt="白桃乌龙" onerror="this.style.display='none'"><p>白桃乌龙 / 桃胶香梨</p></div>
+  </div>
+
+  <!-- 菜单参考 -->
+  <div class="section-title">菜单参考</div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));">
+    <div class="item"><img src="dish_photos/菜单298限量1.jpg" alt="菜单限量说明" onerror="this.style.display='none'"><p>298限量说明</p></div>
+    <div class="item"><img src="dish_photos/菜单298鱼鲜类.jpg" alt="菜单鱼鲜类" onerror="this.style.display='none'"><p>298鱼鲜类菜单</p></div>
+  </div>
+
+  <div class="footer">南堂馆青椒鱼鲜火锅 · 成都弯道超车文化传媒有限公司</div>
+</div>
+</body>
+</html>

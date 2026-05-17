@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>三品牌 · 新店围挡小红书营销整合方案</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", "Noto Sans SC", sans-serif;
+      background: #f5f5f0;
+      color: #1a1a2e;
+      line-height: 1.8;
+      padding: 0;
+      word-break: keep-all;
+      line-break: strict;
+      overflow-wrap: break-word;
+      -webkit-hyphens: none;
+      hyphens: none;
+    }
+    p, .section-desc, .case-point, .tl-desc, .info-row, .quote-box, .card div:not(.card-title) {
+      word-break: keep-all;
+      line-break: strict;
+    }
+
+    /* === HERO === */
+    .hero {
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #2c1810 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero .company {
+      font-size: 11px;
+      letter-spacing: 6px;
+      color: rgba(255,215,0,0.6);
+      font-weight: 300;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero .company::before, .hero .company::after {
+      content: '——';
+      margin: 0 12px;
+      opacity: 0.4;
+    }
+    .hero h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, #fff 30%, #d4a853 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .tagline {
+      font-size: 16px;
+      margin-top: 14px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero .meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 16px;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* === NAV === */
+    .nav-tabs {
+      display: flex;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .nav-tabs .tab {
+      flex: 0 0 auto;
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #999;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .nav-tabs .tab.active {
+      color: #c0392b;
+      border-bottom-color: #c0392b;
+      font-weight: 700;
+    }
+
+    /* === SECTIONS === */
+    .section { display: none; padding: 28px 16px 48px; }
+    .section.active { display: block; }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 24px;
+    }
+
+    /* === CARD === */
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .badge {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 12px;
+      border-radius: 20px;
+      background: #f0f0eb;
+      color: #666;
+    }
+    .card-title .badge.heat { background: #fce4e4; color: #c0392b; }
+    .card-title .badge.gold { background: #f5e6c8; color: #8b6914; }
+    .card-title .badge.cool { background: #e3f0f7; color: #2563eb; }
+
+    /* === IMG WRAP === */
+    .img-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: #f8f8f4;
+    }
+    .img-wrap img {
+      width: 100%;
+      display: block;
+    }
+    .img-wrap .img-caption {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      padding: 8px 12px;
+      background: #fafaf8;
+    }
+
+    /* === TAG === */
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 3px 12px;
+      border-radius: 4px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .tag.case { background: #f0edf7; color: #5a3e8a; }
+    .tag.spot { background: #fef3e2; color: #c06500; }
+
+    /* === BRAND BLOCK === */
+    .brand-block {
+      background: #fff;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      border: 1px solid #ecece5;
+    }
+    .brand-header {
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-header .icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .brand-header .icon.lele { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+    .brand-header .icon.xinjishan { background: linear-gradient(135deg, #1a1a2e, #2c3e50); }
+    .brand-header .icon.jiwu { background: linear-gradient(135deg, #6b4fa0, #8e6fc0); }
+    .brand-header .info h3 { font-size: 18px; font-weight: 700; }
+    .brand-header .info p { font-size: 12px; color: #888; margin-top: 2px; }
+    .brand-body { padding: 0 20px 22px; }
+
+    .info-row {
+      display: flex;
+      margin-bottom: 8px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .info-row .label {
+      color: #999;
+      width: 72px;
+      flex-shrink: 0;
+    }
+    .info-row .value { color: #333; }
+
+    /* === CASE GRID === */
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .case-item {
+      background: #fafaf8;
+      border-radius: 10px;
+      padding: 14px;
+      border: 1px solid #efefe8;
+    }
+    .case-item .case-type { font-size: 11px; color: #aaa; margin-bottom: 4px; }
+    .case-item .case-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .case-item .case-point { font-size: 12px; color: #666; line-height: 1.6; }
+    .case-item .case-link {
+      font-size: 11px;
+      margin-top: 6px;
+      display: inline-block;
+    }
+    .case-item .case-link a {
+      color: #2563eb;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .case-item .case-link a:hover { text-decoration: underline; }
+    .case-item .case-link a::before { content: '🔗 '; font-size: 10px; }
+
+    /* === TIMELINE === */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e0d8cc;
+    }
+    .tl-node {
+      position: relative;
+      margin-bottom: 22px;
+    }
+    .tl-node::before {
+      content: '';
+      position: absolute;
+      left: -26px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #c0392b;
+      border: 3px solid #f5f5f0;
+    }
+    .tl-node .tl-date { font-size: 12px; color: #c0392b; font-weight: 700; margin-bottom: 4px; }
+    .tl-node .tl-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .tl-node .tl-desc { font-size: 13px; color: #555; }
+
+    /* === MATRIX === */
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .matrix th {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 12px 10px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .matrix td {
+      padding: 11px 10px;
+      border-bottom: 1px solid #f0f0e8;
+      vertical-align: top;
+    }
+    .matrix tr:last-child td { border-bottom: none; }
+    .matrix .brand-col { font-weight: 700; color: #1a1a2e; }
+
+    /* === QUOTE BOX === */
+    .quote-box {
+      background: linear-gradient(135deg, #fdf6ec, #fef9f0);
+      border-left: 4px solid #d4a853;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    .quote-box strong { color: #8b6914; }
+
+    /* === FOOTER === */
+    .footer {
+      background: #0f0f1a;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 12px;
+      line-height: 2;
+    }
+    .footer .f-company {
+      color: rgba(255,215,0,0.5);
+      letter-spacing: 3px;
+    }
+
+    /* === WATERMARK OVERLAY === */
+    .watermark-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+    .watermark-overlay .wm-line {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(180,150,100,0.10);
+      transform: rotate(-35deg);
+      letter-spacing: 4px;
+      user-select: none;
+    }
+    /* 多行水印均匀铺满 */
+    .watermark-overlay .wm1 { top: 5%; left: -5%; }
+    .watermark-overlay .wm2 { top: 20%; left: 15%; }
+    .watermark-overlay .wm3 { top: 35%; left: 35%; }
+    .watermark-overlay .wm4 { top: 50%; left: -10%; }
+    .watermark-overlay .wm5 { top: 65%; left: 20%; }
+    .watermark-overlay .wm6 { top: 80%; left: 40%; }
+    .watermark-overlay .wm7 { top: 95%; left: 5%; }
+
+    @media (min-width: 768px) {
+      .hero { padding: 72px 48px 56px; }
+      .hero h1 { font-size: 44px; }
+      .section { padding: 36px 48px 56px; max-width: 820px; margin: 0 auto; }
+      .case-grid { grid-template-columns: 1fr 1fr; }
+      .brand-header { padding: 24px 28px; }
+      .brand-body { padding: 0 28px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== 全页水印 ==================== -->
+<div class="watermark-overlay">
+  <div class="wm-line wm1">成都弯道超车文化传媒有限公司</div>
+  <div class="wm-line wm2">成都弯道超车文化传媒有限公司</div>
+  <div class="wm-line wm3">成都弯道超车文化传媒有限公司</div>
+  <div class="wm-line wm4">成都弯道超车文化传媒有限公司</div>
+  <div class="wm-line wm5">成都弯道超车文化传媒有限公司</div>
+  <div class="wm-line wm6">成都弯道超车文化传媒有限公司</div>
+  <div class="wm-line wm7">成都弯道超车文化传媒有限公司</div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="company">成都弯道超车文化传媒有限公司</div>
+  <h1>三品牌 · 新店围挡</h1>
+  <div class="tagline">小红书营销整合方案</div>
+  <div class="meta">楽乐烧 · 新極膳 · 極屋鮨牛  ｜  执行周期：5月18日 — 5月26日</div>
+</div>
+
+<!-- ==================== NAV ==================== -->
+<div class="nav-tabs" id="navTabs">
+  <div class="tab active" data-section="intro">策略总纲</div>
+  <div class="tab" data-section="cases">案例拆解</div>
+  <div class="tab" data-section="lele">楽乐烧</div>
+  <div class="tab" data-section="xinjishan">新極膳</div>
+  <div class="tab" data-section="jiwu">極屋鮨牛</div>
+  <div class="tab" data-section="timeline">执行节奏</div>
+  <div class="tab" data-section="matrix">内容矩阵</div>
+</div>
+
+<!-- ==================== 第一章：策略总纲 ==================== -->
+<div class="section active" id="section-intro">
+
+  <div class="card" style="background:linear-gradient(135deg,#1a1a2e,#2c1810);color:#fff;">
+    <div style="font-size:20px;font-weight:700;margin-bottom:12px;">🔥 核心策略一句话</div>
+    <div style="font-size:15px;line-height:1.9;opacity:0.9;">
+      三个品牌，三种性格，同一套围挡打法。<br>
+      悬念打码制造好奇 → 打卡有礼驱动UGC → 520节点集中引爆 → 品鉴官机制沉淀口碑
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 为什么围挡营销值得做？</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      <span class="tag spotlight" style="background:#fce4e4;color:#c0392b;">围挡=免费广告位</span>
+      <span class="tag spotlight" style="background:#e3f0f7;color:#2563eb;">UGC裂变=零成本传播</span>
+      <span class="tag spotlight" style="background:#e0f0e3;color:#27ae60;">悬念=高互动</span>
+      <br><br>
+      围挡的底层逻辑变了——它不再只是遮住工地的布，而是品牌和路人第一次对话的窗口。<br>
+      路人与围挡合影 → 小红书自发笔记 → 评论区互动 → 到店转化 → 真实测评二次传播。<br>
+      对餐饮品牌来说，这是性价比最高的新店预热手段。
+    </div>
+  </div>
+
+  <div class="img-wrap">
+    <img src="generated-images/小红书风格的围挡打卡营销案例合集拼贴_4个不同角度_左上角是_2026-05-10T06-46-56.png" alt="围挡打卡案例合集" loading="lazy">
+    <div class="img-caption">路人围挡打卡→发布小红书笔记→评论区互动→到店转化——完整的裂变闭环</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 三品牌定位速览</div>
+    <table class="matrix">
+      <tr><th>品牌</th><th>围挡调性</th><th>核心钩子</th></tr>
+      <tr>
+        <td class="brand-col" style="color:#c0392b;">楽乐烧</td>
+        <td>食欲感+悬念</td>
+        <td>「改了7次的发光菜」打码70%</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#2c3e50;">新極膳</td>
+        <td>高冷+稀缺</td>
+        <td>「第？家店」全信息打码</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#6b4fa0;">極屋鮨牛</td>
+        <td>可爱治愈+双城联动</td>
+        <td>「和牛心形摆盘」+昆明限定</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="quote-box">
+    <strong>💡 策略内核：</strong><br>
+    节奏分三段——<strong>预热期</strong>用打码悬念把路人变成"侦探"，在评论区玩猜谜互动；<strong>爆发期</strong>520当天揭晓所有谜底，福利同步放送，到店转化一步到位；<strong>长尾期</strong>通过品鉴官和到店顾客的UGC，把这次围挡事件的势能沉淀成品牌口碑资产。<br>
+    每个品牌还埋了一明一暗两条内容线：明线是官方预告号，暗线是"路人偶遇"号，用真实感对冲官方号的营销味。
+  </div>
+</div>
+
+<!-- ==================== 第二章：案例拆解 ==================== -->
+<div class="section" id="section-cases">
+  <h2 class="section-title">💡 他们是这样玩围挡的</h2>
+  <p class="section-sub">8个真实围挡案例，拆解背后的打法逻辑</p>
+
+  <div class="case-grid">
+    <div class="case-item">
+      <div class="case-type">📸 围挡打卡有礼</div>
+      <div class="case-name">永庆坊广州首店</div>
+      <div class="case-point">围挡=打卡点+互动装置，拍照发小红书送限定周边，UGC直接裂变</div>
+      <div class="case-link"><a href="http://xhslink.com/o/6Xf67zdIHFm" target="_blank" rel="noopener">查看原笔记</a></div>
+    </div>
+    <div class="case-item">
+      <div class="case-type">📸 围挡打卡有礼</div>
+      <div class="case-name">青岛炸鸡围挡</div>
+      <div class="case-point">Q版可爱视觉+「ju可爱」钩子文案，路人拍照传播欲拉满</div>
+      <div class="case-link"><a href="http://xhslink.com/o/AJqzoeN3wL7" target="_blank" rel="noopener">查看原笔记</a></div>
+    </div>
+    <div class="case-item">
+      <div class="case-type">🔮 新店预告·悬念</div>
+      <div class="case-name">SeRoRi香料厨房</div>
+      <div class="case-point">「正在悄悄准备…」悬念文案，只露调性不露菜品，好奇心拉满</div>
+      <div class="case-link"><a href="http://xhslink.com/o/8FmmwgSrQjT" target="_blank" rel="noopener">查看原笔记</a></div>
+    </div>
+    <div class="case-item">
+      <div class="case-type">🔮 新店预告·偶遇</div>
+      <div class="case-name">东方福来德</div>
+      <div class="case-point">「扫街发现…」路人视角发现围挡，制造偶遇感和稀缺感</div>
+      <div class="case-link"><a href="http://xhslink.com/o/5SwL7sdSpZc" target="_blank" rel="noopener">查看原笔记</a></div>
+    </div>
+    <div class="case-item">
+      <div class="case-type">🎁 福利诱饵</div>
+      <div class="case-name">上海1000杯免费</div>
+      <div class="case-point">「1000杯免费喝」福利数字化，低门槛引流到店</div>
+      <div class="case-link"><a href="http://xhslink.com/o/9PwqLLhgPn3" target="_blank" rel="noopener">查看原笔记</a></div>
+    </div>
+    <div class="case-item">
+      <div class="case-type">🎁 福利诱饵</div>
+      <div class="case-name">天府烧烤免费吃</div>
+      <div class="case-point">绑定闺蜜社交场景，「免费吃」+周末聚会需求双锚点</div>
+      <div class="case-link"><a href="http://xhslink.com/o/9p3Qa8FHsNR" target="_blank" rel="noopener">查看原笔记</a></div>
+    </div>
+    <div class="case-item">
+      <div class="case-type">👑 品鉴官招募</div>
+      <div class="case-name">醒仔·打卡招募</div>
+      <div class="case-point">打卡围挡→招募品鉴官→霸王餐换UGC，低门槛高回报模式</div>
+      <div class="case-link"><a href="http://xhslink.com/o/8rNcwGvOdB2" target="_blank" rel="noopener">查看原笔记</a></div>
+    </div>
+    <div class="case-item">
+      <div class="case-type">🥩 免费菜引流</div>
+      <div class="case-name">开业免费菜组合</div>
+      <div class="case-point">到店出示笔记即送招牌菜，适合新升级版本开业引流</div>
+      <div class="case-link"><span style="color:#aaa;font-size:11px;">截图参考（无单独链接）</span></div>
+    </div>
+  </div>
+
+  <div class="quote-box" style="margin-top:8px;">
+    <strong>▸ 总结四条核心逻辑：</strong><br>
+    ① <strong>悬念是最便宜的流量</strong>——信息打码比直接告知多3倍互动<br>
+    ② <strong>打卡=内容触发器</strong>——围挡设计要有「拍照冲动」，不是好看就行<br>
+    ③ <strong>福利要「可感知」</strong>——说"1000杯"比说"大力度优惠"有效100倍<br>
+    ④ <strong>品鉴官=信任背书</strong>——第三方的口碑永远比品牌自夸值钱
+  </div>
+</div>
+
+<!-- ==================== 第三章：楽乐烧 ==================== -->
+<div class="section" id="section-lele">
+  <h2 class="section-title">🔥 楽乐烧 · 铁板烧</h2>
+  <p class="section-sub">北城天街店 · 菜品升级2.0版 ｜ 「发光菜」悬念引爆</p>
+
+  <div class="img-wrap">
+    <img src="generated-images/一张高级感的小红书围挡营销海报_暗绿色背景_围挡画面中心有一_2026-05-10T06-46-26.png" alt="楽乐烧围挡实拍图" loading="lazy">
+    <div class="img-caption">楽乐烧围挡实拍效果：发光菜打码悬念 + 路人拍照打卡</div>
+  </div>
+
+  <div class="brand-block">
+    <div class="brand-header">
+      <div class="icon lele">楽</div>
+      <div class="info">
+        <h3>楽乐烧2.0 · 「发光菜」悬念计划</h3>
+        <p>策略定位：用一道改了7次的菜，让全城好奇</p>
+      </div>
+    </div>
+    <div class="brand-body">
+      <div class="info-row"><span class="label">围挡调性</span><span class="value">暗绿色高级质感 + 中心发光菜品 + 黑色部分打码70%</span></div>
+      <div class="info-row"><span class="label">核心文案</span><span class="value">「这道菜，改了7次才敢见你」+「520那天，给你答案」</span></div>
+      <div class="info-row"><span class="label">互动玩法</span><span class="value">扫码评论区猜菜名 → 前3位猜中 → 到店免费试吃「发光菜」</span></div>
+      <div class="info-row"><span class="label">到店转化</span><span class="value">到店出示围挡打卡笔记 → 赠送「发光菜」一份</span></div>
+      <div class="info-row"><span class="label">参考案例</span><span class="value">开业免费菜组合 + SeRoRi悬念预告 + 永庆坊打卡有礼</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 小红书内容规划</div>
+    <table class="matrix">
+      <tr><th>阶段</th><th>标题</th><th>互动钩子</th><th>时间</th></tr>
+      <tr>
+        <td class="brand-col">预热</td>
+        <td>「这道菜改了7次…你猜是什么？🤔」</td>
+        <td>评论猜菜名→前3位免费试吃</td>
+        <td>5/18</td>
+      </tr>
+      <tr>
+        <td class="brand-col">爆发</td>
+        <td>「520，这道菜终于可以见人了🔥」</td>
+        <td>到店出示笔记→送发光菜</td>
+        <td>5/20</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="quote-box">
+    <strong>▸ 弯道超车点评：</strong>楽乐烧的核心优势是"铁板烧的烟火气+发光菜的视觉冲击力"，打码悬念天然适合小红书的信息流环境。围挡实拍图发出去，评论区一定会有人问「到底是什么菜」——这就是我们要的。
+  </div>
+</div>
+
+<!-- ==================== 第四章：新極膳 ==================== -->
+<div class="section" id="section-xinjishan">
+  <h2 class="section-title">🦀 新極膳 · 海鲜艺食料理</h2>
+  <p class="section-sub">解放碑大都会店 · 品牌开新店 ｜ 高冷悬念+品鉴官招募</p>
+
+  <div class="img-wrap">
+    <img src="generated-images/高级日料品牌围挡设计_极简暗黑色背景_巨型打码海鲜特写_帝王_2026-05-10T06-46-30.png" alt="新極膳围挡实拍图" loading="lazy">
+    <div class="img-caption">新極膳围挡实拍效果：暗黑高级质感 + 打码海鲜 + 悬念文案</div>
+  </div>
+
+  <div class="brand-block">
+    <div class="brand-header">
+      <div class="icon xinjishan">新</div>
+      <div class="info">
+        <h3>新極膳 · 秘密新店</h3>
+        <p>策略定位：越神秘越高级，用稀缺感制造期待</p>
+      </div>
+    </div>
+    <div class="brand-body">
+      <div class="info-row"><span class="label">围挡调性</span><span class="value">极简暗黑背景 + 巨型帝王蟹/海胆特写打码 + 金色日式书法字体</span></div>
+      <div class="info-row"><span class="label">核心文案</span><span class="value">「第？家店，选址选了6个月」「包厢能看到？」（对景观打码）</span></div>
+      <div class="info-row"><span class="label">互动玩法</span><span class="value">扫码评论区猜新店地址 → 最接近的3位 → 邀约内测品鉴</span></div>
+      <div class="info-row"><span class="label">到店转化</span><span class="value">双人第二位半价（仅限520当天）+ 到店可约主厨交流</span></div>
+      <div class="info-row"><span class="label">参考案例</span><span class="value">醒仔品鉴官招募 + 东方福来德偶遇感</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 小红书内容规划</div>
+    <table class="matrix">
+      <tr><th>阶段</th><th>标题</th><th>互动钩子</th><th>时间</th></tr>
+      <tr>
+        <td class="brand-col">预热</td>
+        <td>「新極膳的第？家店，520这天见🦀」</td>
+        <td>评论猜地址→3位品鉴官内测</td>
+        <td>5/18</td>
+      </tr>
+      <tr>
+        <td class="brand-col">爆发</td>
+        <td>「520，我们在新店等你🦀」</td>
+        <td>到店可约主厨交流+赠海鲜拼盘</td>
+        <td>5/20</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="quote-box">
+    <strong>▸ 弯道超车点评：</strong>新極膳的客单价决定了它不能走"热闹"路线。越神秘越高冷，反而越符合高端料理的调性。"选址选了6个月"这个信息本身就是故事——在一个快节奏的时代，愿意花半年选址的品牌，菜品一定值得期待。
+  </div>
+</div>
+
+<!-- ==================== 第五章：極屋鮨牛 ==================== -->
+<div class="section" id="section-jiwu">
+  <h2 class="section-title">🥩 極屋鮨牛 · 和牛烧肉</h2>
+  <p class="section-sub">昆明新店 · 双城联动 ｜ 和牛告白+520节点+可爱风破圈</p>
+
+  <div class="img-wrap">
+    <img src="generated-images/可爱治愈风格的和牛烧肉围挡_超大可爱情侣和牛角色插画_Q版牛_2026-05-10T06-46-38.png" alt="極屋鮨牛围挡实拍图" loading="lazy">
+    <div class="img-caption">極屋鮨牛围挡实拍效果：可爱治愈Q版和牛插画 + 心形摆盘打码</div>
+  </div>
+
+  <div class="brand-block">
+    <div class="brand-header">
+      <div class="icon jiwu">極</div>
+      <div class="info">
+        <h3>極屋鮨牛 · 双城告白</h3>
+        <p>策略定位：用可爱打破烧肉的固有认知，双城联动放大声量</p>
+      </div>
+    </div>
+    <div class="brand-body">
+      <div class="info-row"><span class="label">围挡调性</span><span class="value">超大可爱情侣和牛插画 + 心形摆盘打码 + 粉色点缀深色底</span></div>
+      <div class="info-row"><span class="label">核心文案</span><span class="value">「極屋鮨牛的第？家店，来了🥩」+「和牛还可以这样吃？」</span></div>
+      <div class="info-row"><span class="label">互动玩法</span><span class="value">评论区猜昆明区域 → 前10位开业送和牛套餐</span></div>
+      <div class="info-row"><span class="label">双城联动</span><span class="value">重庆端「你们把国金店吃成了4.8分，我们把快乐带到昆明」/ 昆明端「重庆排队王来昆明了」</span></div>
+      <div class="info-row"><span class="label">参考案例</span><span class="value">青岛可爱围挡 + 1000杯免费福利 + 天府烧烤闺蜜场景</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 小红书内容规划</div>
+    <table class="matrix">
+      <tr><th>阶段</th><th>标题</th><th>互动钩子</th><th>时间</th></tr>
+      <tr>
+        <td class="brand-col">预热</td>
+        <td>「極屋鮨牛的第？家店，来了🥩」</td>
+        <td>评论猜昆明区域→前10免费吃</td>
+        <td>5/18</td>
+      </tr>
+      <tr>
+        <td class="brand-col">爆发</td>
+        <td>「520，和牛还可以这样吃？🥩❤️」</td>
+        <td>到店情侣享和牛心形摆盘+拍照</td>
+        <td>5/20</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="quote-box">
+    <strong>▸ 弯道超车点评：</strong>極屋鮨牛是这次最有破圈潜力的品牌。和牛烧肉天然的「贵」感容易劝退路人，但可爱风格的围挡画风降低了心理门槛——先被画吸引，再被福利打动，最后被口味征服。双城联动更是把一次新店开业变成了品牌大事件。
+  </div>
+</div>
+
+<!-- ==================== 第六章：执行节奏 ==================== -->
+<div class="section" id="section-timeline">
+  <h2 class="section-title">⏰ 执行时间线</h2>
+  <p class="section-sub">5月18日 → 5月26日 · 紧凑节奏 · 三店同频</p>
+
+  <div class="timeline">
+    <div class="tl-node">
+      <div class="tl-date">📅 5月18日 · 围挡落地+预热引爆</div>
+      <div class="tl-title">悬念笔记上线 + 首波UGC启动</div>
+      <div class="tl-desc">
+        三店围挡画面安装完成，二维码铺设到位，打卡指引牌就位。
+        三品牌同步发布悬念笔记（打码版），员工/朋友率先围挡打卡，带动首波UGC。
+        楽乐烧猜发光菜 → 新極膳猜地址 → 極屋鮨牛猜昆明区域。
+      </div>
+    </div>
+    <div class="tl-node">
+      <div class="tl-date">📅 5月19日 · 蓄水发酵</div>
+      <div class="tl-title">评论区互动 + 品鉴官筛选</div>
+      <div class="tl-desc">
+        评论区持续回复猜谜用户，保持笔记热度；围挡路过打卡UGC开始自然产生；
+        品鉴官招募筛选，确定内测人选。
+      </div>
+    </div>
+    <div class="tl-node">
+      <div class="tl-date">📅 5月20日 · 🔥 全面引爆</div>
+      <div class="tl-title">520终极揭晓 + 福利放送</div>
+      <div class="tl-desc">
+        三店同步解锁全部悬念——发光菜完整版、新店地址、昆明区域+和牛心形摆盘。
+        楽乐烧前20对免费试吃 / 新極膳第二位半价 / 極屋鮨牛双城福利同步生效。
+      </div>
+    </div>
+    <div class="tl-node">
+      <div class="tl-date">📅 5月21日-26日 · 长尾收割</div>
+      <div class="tl-title">UGC二次传播 + 口碑沉淀</div>
+      <div class="tl-desc">
+        到店顾客持续产出「围挡照→店内实拍」对比笔记；
+        品鉴官发布正式测评内容；福利活动持续一周。
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 执行清单</div>
+    <div style="font-size:13px;color:#444;line-height:2.2;">
+      ✅ <strong>围挡物料</strong> — 三店围挡画面设计+制作+安装（5/18前完成）<br>
+      ✅ <strong>二维码互动系统</strong> — 扫码跳转小红书评论区，引导猜谜互动<br>
+      ✅ <strong>笔记内容</strong> — 6篇小红书笔记文案+配图（预热3篇+爆发3篇）<br>
+      ✅ <strong>品鉴官筛选</strong> — 新極膳品鉴官3位邀约+内测日程安排<br>
+      ✅ <strong>员工培训</strong> — 到店福利兑换流程说明+围挡打卡引导话术<br>
+      ✅ <strong>数据追踪</strong> — 各店围挡打卡数、笔记互动量、到店转化率
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 第七章：内容矩阵 ==================== -->
+<div class="section" id="section-matrix">
+  <h2 class="section-title">📌 内容发布矩阵</h2>
+  <p class="section-sub">三品牌 × 两阶段 × 六篇笔记 + 视觉规范 + 标签策略</p>
+
+  <table class="matrix">
+    <tr><th>品牌</th><th>阶段</th><th>标题</th><th>互动玩法</th><th>发布</th></tr>
+    <tr>
+      <td class="brand-col" style="color:#c0392b;" rowspan="2">楽乐烧</td>
+      <td>预热</td>
+      <td>「这道菜改了7次…你猜是什么？🤔」</td>
+      <td>评论猜菜名→前3位免费试吃</td>
+      <td>5/18</td>
+    </tr>
+    <tr>
+      <td>爆发</td>
+      <td>「520，这道菜终于可以见人了🔥」</td>
+      <td>到店出示围挡笔记→送发光菜</td>
+      <td>5/20</td>
+    </tr>
+    <tr>
+      <td class="brand-col" style="color:#2c3e50;" rowspan="2">新極膳</td>
+      <td>预热</td>
+      <td>「新極膳的第？家店，520这天见🦀」</td>
+      <td>评论猜地址→3位品鉴官内测</td>
+      <td>5/18</td>
+    </tr>
+    <tr>
+      <td>爆发</td>
+      <td>「520，我们在新店等你🦀」</td>
+      <td>到店可约主厨交流+赠海鲜拼盘</td>
+      <td>5/20</td>
+    </tr>
+    <tr>
+      <td class="brand-col" style="color:#6b4fa0;" rowspan="2">極屋鮨牛</td>
+      <td>预热</td>
+      <td>「極屋鮨牛的第？家店，来了🥩」</td>
+      <td>评论猜昆明区域→前10免费吃</td>
+      <td>5/18</td>
+    </tr>
+    <tr>
+      <td>爆发</td>
+      <td>「520，和牛还可以这样吃？🥩❤️」</td>
+      <td>到店情侣享和牛心形摆盘+拍照</td>
+      <td>5/20</td>
+    </tr>
+  </table>
+
+  <div class="card" style="margin-top:18px;">
+    <div class="card-title">🎨 视觉规范</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      <span class="tag" style="background:#1a1a2e;color:#fff;">比例</span> 3:4竖版（小红书信息流最佳展示比例）<br>
+      <span class="tag" style="background:#1a1a2e;color:#fff;">底色</span> 暗绿/深色背景（三品牌统一视觉基调，节日规范）<br>
+      <span class="tag" style="background:#1a1a2e;color:#fff;">悬念</span> 关键信息打码30%-70%，留白神秘感<br>
+      <span class="tag" style="background:#1a1a2e;color:#fff;">字体</span> 思源黑体/Noto Sans SC，干净利落无装饰<br>
+      <span class="tag" style="background:#1a1a2e;color:#fff;">水印</span> 全图覆盖品牌水印+弯道超车传媒版权声明<br>
+      <span class="tag" style="background:#1a1a2e;color:#fff;">实拍</span> 围挡实拍+后期，拒绝纯AI生成，保持人味
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏷️ 话题标签矩阵</div>
+    <div style="font-size:13px;color:#444;line-height:2.2;">
+      <strong>品牌词：</strong> #楽乐烧 #新極膳 #極屋鮨牛<br>
+      <strong>品类词：</strong> #重庆铁板烧 #重庆日料 #和牛烧肉 #重庆海鲜自助<br>
+      <strong>城市词：</strong> #重庆美食 #解放碑美食 #观音桥美食 #昆明美食 #昆明新店<br>
+      <strong>活动词：</strong> #520美食 #520约会餐厅 #重庆520 #双城联动 #新店开业<br>
+      <strong>流量词：</strong> #重庆探店 #周末去哪儿 #重庆打卡 #美食日记
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="footer">
+  <div class="f-company">成都弯道超车文化传媒有限公司</div>
+  餐饮品牌小红书整合营销 ｜ 方案编号：WDC-2026-0510<br>
+  生成时间：2026年5月10日 ｜ 本方案仅供内部沟通使用
+</div>
+
+<script>
+  (function() {
+    var tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var sectionId = this.getAttribute('data-section');
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+        this.classList.add('active');
+        document.getElementById('section-' + sectionId).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
