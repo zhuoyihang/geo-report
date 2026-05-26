@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>三品牌6月开业全案 — 楽乐烧/新極膳/極屋鮨牛</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", "Noto Sans SC", sans-serif;
+      background: #f5f5f0;
+      color: #1a1a2e;
+      line-height: 1.8;
+      padding: 0;
+      word-break: keep-all;
+      line-break: strict;
+      overflow-wrap: break-word;
+      -webkit-hyphens: none;
+      hyphens: none;
+    }
+    p, .section-desc, .tl-desc, .info-row, .quote-box, .card div:not(.card-title) {
+      word-break: keep-all;
+      line-break: strict;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #2c1810 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero .company {
+      font-size: 11px;
+      letter-spacing: 6px;
+      color: rgba(255,215,0,0.6);
+      font-weight: 300;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero .company::before, .hero .company::after {
+      content: '——';
+      margin: 0 12px;
+      opacity: 0.4;
+    }
+    .hero h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, #fff 30%, #d4a853 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .tagline {
+      font-size: 16px;
+      margin-top: 14px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero .meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 16px;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero .store-list {
+      font-size: 13px;
+      color: rgba(255,215,0,0.7);
+      margin-top: 12px;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-tabs {
+      display: flex;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .nav-tabs .tab {
+      flex: 0 0 auto;
+      padding: 14px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #999;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .nav-tabs .tab.active {
+      color: #c0392b;
+      border-bottom-color: #c0392b;
+      font-weight: 700;
+    }
+
+    .section { display: none; padding: 28px 16px 48px; }
+    .section.active { display: block; }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .badge {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 12px;
+      border-radius: 20px;
+      background: #f0f0eb;
+      color: #666;
+    }
+    .card-title .badge.heat { background: #fce4e4; color: #c0392b; }
+    .card-title .badge.gold { background: #f5e6c8; color: #8b6914; }
+    .card-title .badge.cool { background: #e3f0f7; color: #2563eb; }
+    .card-title .badge.new { background: #e0f0e3; color: #27ae60; }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 3px 12px;
+      border-radius: 4px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .tag.case { background: #f0edf7; color: #5a3e8a; }
+    .tag.spotlight { color: #444; }
+
+    .brand-block {
+      background: #fff;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      border: 1px solid #ecece5;
+    }
+    .brand-header {
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-header .icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .brand-header .icon.lele { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+    .brand-header .icon.xinjishan { background: linear-gradient(135deg, #1a1a2e, #2c3e50); }
+    .brand-header .icon.jiwu { background: linear-gradient(135deg, #6b4fa0, #8e6fc0); }
+    .brand-header .info h3 { font-size: 18px; font-weight: 700; }
+    .brand-header .info p { font-size: 12px; color: #888; margin-top: 2px; }
+    .brand-body { padding: 0 20px 22px; }
+
+    .info-row {
+      display: flex;
+      margin-bottom: 8px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .info-row .label {
+      color: #999;
+      width: 72px;
+      flex-shrink: 0;
+    }
+    .info-row .value { color: #333; }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #d4a853;
+    }
+    .tl-node {
+      position: relative;
+      margin-bottom: 22px;
+    }
+    .tl-node::before {
+      content: '';
+      position: absolute;
+      left: -26px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #c0392b;
+      border: 3px solid #f5f5f0;
+    }
+    .tl-node .tl-date { font-size: 12px; color: #c0392b; font-weight: 700; margin-bottom: 4px; }
+    .tl-node .tl-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .tl-node .tl-desc { font-size: 13px; color: #555; }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .matrix th {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 12px 10px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .matrix td {
+      padding: 11px 10px;
+      border-bottom: 1px solid #f0f0e8;
+      vertical-align: top;
+    }
+    .matrix tr:last-child td { border-bottom: none; }
+    .matrix .brand-col { font-weight: 700; color: #1a1a2e; }
+
+    .quote-box {
+      background: linear-gradient(135deg, #fdf6ec, #fef9f0);
+      border-left: 4px solid #d4a853;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    .quote-box strong { color: #8b6914; }
+
+    .sop-step {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .sop-step .sop-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1a1a2e;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer {
+      background: #0f0f1a;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 12px;
+      line-height: 2;
+    }
+    .footer .f-company {
+      color: rgba(255,215,0,0.5);
+      letter-spacing: 3px;
+    }
+
+    @media (min-width: 768px) {
+      .hero { padding: 72px 48px 56px; }
+      .hero h1 { font-size: 44px; }
+      .section { padding: 36px 48px 56px; max-width: 820px; margin: 0 auto; }
+      .brand-header { padding: 24px 28px; }
+      .brand-body { padding: 0 28px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="company">成都弯道超车文化传媒有限公司</div>
+  <h1>三品牌 · 6月开业全案</h1>
+  <div class="tagline">围挡预热 → 蓄水发酵 → 开业引爆 → 长尾运营</div>
+  <div class="store-list">
+    楽乐烧·光环花园城店 ｜ 新極膳·源著天街店 ｜ 極屋鮨牛·昆明爱琴海/重庆万象城
+  </div>
+  <div class="meta">执行周期：5月26日 — 7月5日 ｜ 开业日：6月20日（周六）</div>
+</div>
+
+<!-- ==================== NAV ==================== -->
+<div class="nav-tabs" id="navTabs">
+  <div class="tab active" data-section="overview">总览</div>
+  <div class="tab" data-section="fence">围挡策略</div>
+  <div class="tab" data-section="content">内容日历</div>
+  <div class="tab" data-section="lele">楽乐烧</div>
+  <div class="tab" data-section="xinjishan">新極膳</div>
+  <div class="tab" data-section="jiwu">極屋鮨牛</div>
+  <div class="tab" data-section="opening">开业日SOP</div>
+  <div class="tab" data-section="koc">KOC/达人</div>
+  <div class="tab" data-section="budget">预算</div>
+</div>
+
+<!-- ==================== 总览 ==================== -->
+<div class="section active" id="section-overview">
+
+  <div class="card" style="background:linear-gradient(135deg,#1a1a2e,#2c1810);color:#fff;">
+    <div style="font-size:20px;font-weight:700;margin-bottom:12px;">📌 项目概览</div>
+    <div style="font-size:14px;line-height:1.9;opacity:0.9;">
+      4家新店，3个品牌，统一在6月20日（周六）开业。<br>
+      围挡从5月下旬开始搭建，6月20日是开业引爆日，之后持续运营到7月初。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏪 四家门店信息</div>
+    <table class="matrix">
+      <tr><th>品牌</th><th>门店</th><th>城市</th><th>围挡风格</th><th>核心卖点</th></tr>
+      <tr>
+        <td class="brand-col" style="color:#c0392b;">楽乐烧</td>
+        <td>光环花园城店</td>
+        <td>重庆</td>
+        <td>暗绿高级感+发光菜悬念</td>
+        <td>铁板烧2.0升级，一道改了N次的招牌菜</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#2c3e50;">新極膳</td>
+        <td>源著天街店</td>
+        <td>重庆</td>
+        <td>暗黑日式+全信息打码</td>
+        <td>海鲜艺食料理，预约制高端体验</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#6b4fa0;" rowspan="2">極屋鮨牛</td>
+        <td>万象城店</td>
+        <td>重庆</td>
+        <td rowspan="2" style="font-size:12px;">可爱治愈风、双城联动线</td>
+        <td rowspan="2" style="font-size:12px;">和牛烧肉，心形摆盘，昆明+重庆双城</td>
+      </tr>
+      <tr>
+        <td>爱琴海店</td>
+        <td>昆明</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⏱ 五大阶段节奏</div>
+    <div style="font-size:13px;line-height:2.2;color:#444;">
+      <strong style="color:#c0392b;">第一阶段 · 围挡搭建（5/26-6/5）</strong> — 围挡画面设计制作安装，悬念文案上墙，二维码铺设<br>
+      <strong style="color:#c0392b;">第二阶段 · 预热蓄水（6/6-6/15）</strong> — 小红书悬念笔记发布、围挡打卡启动、品鉴官招募、KOC邀约<br>
+      <strong style="color:#c0392b;">第三阶段 · 倒计时冲刺（6/16-6/19）</strong> — 每天一条倒计时内容、品鉴官到店试吃产出UGC、开业预约开通<br>
+      <strong style="color:#c0392b;">第四阶段 · 开业爆发（6/20-6/21）</strong> — 四店同步开业、福利全线生效、达人探店集中引爆<br>
+      <strong style="color:#c0392b;">第五阶段 · 长尾运营（6/22-7/5）</strong> — 到店UGC二次传播、CPS达人持续探店、口碑沉淀
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <strong>💡 核心逻辑：</strong><br>
+    围挡阶段做悬念（让人好奇）→ 预热阶段做互动（让人参与）→ 冲刺阶段做转化（让人预约）→ 开业阶段做爆发（让人到店）→ 长尾阶段做沉淀（让人复购+传播）。<br>
+    每一步的结果都是下一步的素材，环环相扣，不浪费任何一个流量。
+  </div>
+</div>
+
+<!-- ==================== 围挡策略 ==================== -->
+<div class="section" id="section-fence">
+  <h2 class="section-title">🧱 围挡策略与执行细节</h2>
+  <p class="section-sub">5月26日-6月5日完成搭建，围挡作为内容触发器持续到开业</p>
+
+  <div class="brand-block">
+    <div class="brand-header">
+      <div class="icon lele">楽</div>
+      <div class="info"><h3>楽乐烧 · 光环花园城店</h3><p>围挡调性：暗绿高级感 + 发光菜悬念</p></div>
+    </div>
+    <div class="brand-body">
+      <div class="info-row"><span class="label">围挡画面</span><span class="value">竖版3:4比例，暗绿色背景，中心一道发光菜品（打码70%），左上角品牌Logo，底部「6.20 见面」</span></div>
+      <div class="info-row"><span class="label">侧板文案</span><span class="value">「这道菜，改了7次才敢见你。6月20日，光环花园城见。」</span></div>
+      <div class="info-row"><span class="label">二维码互动</span><span class="value">扫码进入小红书笔记评论区 → 猜发光菜是什么 → 开业当天揭晓 → 猜中到店免费试吃</span></div>
+      <div class="info-row"><span class="label">打卡引导</span><span class="value">围挡旁设置拍照脚标「最佳拍摄点」，地面贴「拍照发小红书送发光菜」引导贴</span></div>
+      <div class="info-row"><span class="label">物料清单</span><span class="value">围挡画面×1组、打卡脚标×1、地面引导贴×3、二维码立牌×1、周边展架×1</span></div>
+    </div>
+  </div>
+
+  <div class="brand-block">
+    <div class="brand-header">
+      <div class="icon xinjishan">新</div>
+      <div class="info"><h3>新極膳 · 源著天街店</h3><p>围挡调性：暗黑日式 + 全信息打码</p></div>
+    </div>
+    <div class="brand-body">
+      <div class="info-row"><span class="label">围挡画面</span><span class="value">极简暗黑背景，巨型帝王蟹/海胆特写（打码），金色日式书法「新極膳」，底部「6.20 OPEN」</span></div>
+      <div class="info-row"><span class="label">侧板文案</span><span class="value">「第？家店，选址选了6个月。包厢能看到什么？6月20日，源著天街揭晓。」</span></div>
+      <div class="info-row"><span class="label">二维码互动</span><span class="value">扫码进入小红书 → 评论区猜新店地址/猜包厢景观 → 接近答案的3位受邀开业前品鉴内测</span></div>
+      <div class="info-row"><span class="label">打卡引导</span><span class="value">围挡前铺设深色地毯+射灯打光，营造高级感拍照氛围，引导路人拍摄「氛围感打卡照」</span></div>
+      <div class="info-row"><span class="label">物料清单</span><span class="value">围挡画面×1组、地灯×2、地毯×1、二维码立牌×1（极简黑金风）</span></div>
+    </div>
+  </div>
+
+  <div class="brand-block">
+    <div class="brand-header">
+      <div class="icon jiwu">極</div>
+      <div class="info"><h3>極屋鮨牛 · 重庆万象城店 / 昆明爱琴海店</h3><p>围挡调性：可爱治愈风 + 双城联动</p></div>
+    </div>
+    <div class="brand-body">
+      <div class="info-row"><span class="label">围挡画面</span><span class="value">超大可爱情侣和牛插画（Q版牛），和牛心形摆盘打码50%，粉色点缀，底部「6.20，双城见」</span></div>
+      <div class="info-row"><span class="label">侧板文案（重庆）</span><span class="value">「你们把万象城店吃成了4.8分，我们决定把快乐再开一家。6.20，昆明也有了🥩」</span></div>
+      <div class="info-row"><span class="label">侧板文案（昆明）</span><span class="value">「重庆排队王来昆明了！6.20，爱琴海见🥩」</span></div>
+      <div class="info-row"><span class="label">二维码互动</span><span class="value">扫码评论猜万象城新店位置/猜昆明限定菜品 → 前10位开业当天免费吃和牛套餐</span></div>
+      <div class="info-row"><span class="label">打卡引导</span><span class="true">围挡旁设和牛人形立牌（可合影），配合「和牛抱抱」姿势打卡点，拍照发笔记</span></div>
+      <div class="info-row"><span class="label">物料清单</span><span class="value">围挡画面×2组（重庆/昆明各1）、和牛立牌×2、打卡脚标×2、二维码立牌×2</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 围挡执行Checklist</div>
+    <div style="font-size:13px;color:#444;line-height:2.2;">
+      <strong>5/26-6/5：</strong><br>
+      ✅ 围挡画面设计定稿（5/28前）<br>
+      ✅ 围挡物料制作下单（5/30前）<br>
+      ✅ 商场报备审批（5/31前）<br>
+      ✅ 围挡安装验收（6/5前）<br>
+      ✅ 二维码系统搭建+测试（6/5前）<br>
+      ✅ 打卡引导物料到位（6/5前）<br>
+      ✅ 门店员工围挡话术培训（6/5前）
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 内容日历 ==================== -->
+<div class="section" id="section-content">
+  <h2 class="section-title">📅 内容发布日历</h2>
+  <p class="section-sub">5月26日 → 7月5日 · 四店联动的完整内容节奏</p>
+
+  <div class="card">
+    <div class="card-title">🔴 围挡期 · 5/26-6/5</div>
+    <table class="matrix">
+      <tr><th>品牌</th><th>日期</th><th>内容类型</th><th>标题/核心信息</th><th>发布渠道</th></tr>
+      <tr>
+        <td class="brand-col" style="color:#c0392b;">楽乐烧</td>
+        <td>6/3</td>
+        <td>官方号悬念笔记</td>
+        <td>「光环花园城在发光？🤔」（配围挡实拍图）</td>
+        <td>品牌小红书</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#2c3e50;">新極膳</td>
+        <td>6/4</td>
+        <td>官方号悬念笔记</td>
+        <td>「今天路过源著天街，看到一个🦀..」（路人视角围挡偶遇）</td>
+        <td>品牌小红书</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#6b4fa0;">極屋鮨牛</td>
+        <td>6/5</td>
+        <td>官方号悬念笔记</td>
+        <td>「重庆→昆明，这头牛要跑两座城🥩」（双城故事+围挡）</td>
+        <td>品牌小红书</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🟡 预热蓄水期 · 6/6-6/15</div>
+    <table class="matrix">
+      <tr><th>品牌</th><th>日期</th><th>内容类型</th><th>标题/核心信息</th><th>发布渠道</th></tr>
+      <tr>
+        <td class="brand-col" style="color:#c0392b;">楽乐烧</td>
+        <td>6/10</td>
+        <td>猜菜名互动</td>
+        <td>「这道菜改了多少次？评论区猜菜名🔥」</td>
+        <td>品牌+员工号</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#2c3e50;">新極膳</td>
+        <td>6/11</td>
+        <td>品鉴官招募</td>
+        <td>「新極膳源著天街店，首波品鉴官招募3位🦀」</td>
+        <td>品牌小红书</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#6b4fa0;">極屋鮨牛</td>
+        <td>6/12</td>
+        <td>双城故事</td>
+        <td>「为什么一个和牛品牌要在双城开店？」（品牌故事向）</td>
+        <td>品牌小红书</td>
+      </tr>
+      <tr>
+        <td colspan="5" style="background:#f9f9f4;font-size:12px;color:#888;">└ KOC达人同步开始邀约，6/12-6/15安排首批到店拍摄（围挡打卡+店外观）</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🟠 倒计时冲刺 · 6/16-6/19</div>
+    <table class="matrix">
+      <tr><th>品牌</th><th>日期</th><th>内容类型</th><th>标题/核心信息</th><th>发布渠道</th></tr>
+      <tr>
+        <td class="brand-col">三品牌</td>
+        <td>6/16</td>
+        <td>倒计时4天</td>
+        <td>「倒计时4天，这个周六见🔥」+ 围挡画面</td>
+        <td>品牌号</td>
+      </tr>
+      <tr>
+        <td class="brand-col">三品牌</td>
+        <td>6/17</td>
+        <td>倒计时3天</td>
+        <td>「倒计时3天，福利预告👇」（预告开业福利）</td>
+        <td>品牌号</td>
+      </tr>
+      <tr>
+        <td class="brand-col">三品牌</td>
+        <td>6/18</td>
+        <td>倒计时2天</td>
+        <td>「倒计时2天，主厨/店长有话说👨‍🍳」（人物故事）</td>
+        <td>品牌号</td>
+      </tr>
+      <tr>
+        <td class="brand-col">三品牌</td>
+        <td>6/19</td>
+        <td>倒计时1天</td>
+        <td>「明天见。我们准备好了，你呢？」+ 门店内部首曝</td>
+        <td>品牌号</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔴 开业爆发 · 6/20-6/22</div>
+    <table class="matrix">
+      <tr><th>品牌</th><th>日期</th><th>内容类型</th><th>标题/核心信息</th><th>发布渠道</th></tr>
+      <tr>
+        <td class="brand-col" style="color:#c0392b;">楽乐烧</td>
+        <td>6/20</td>
+        <td>开业笔记</td>
+        <td>「光环花园城，今天开🔥 发光菜来了！」（揭晓谜底）</td>
+        <td>品牌+达人</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#2c3e50;">新極膳</td>
+        <td>6/20</td>
+        <td>开业笔记</td>
+        <td>「源著天街，今天开🦀 包厢里的风景终于揭晓」</td>
+        <td>品牌+达人</td>
+      </tr>
+      <tr>
+        <td class="brand-col" style="color:#6b4fa0;">極屋鮨牛</td>
+        <td>6/20</td>
+        <td>开业笔记</td>
+        <td>「重庆+昆明，今天双城开🥩 和牛心形摆盘来了」</td>
+        <td>品牌+达人</td>
+      </tr>
+      <tr>
+        <td colspan="5" style="background:#f9f9f4;font-size:12px;color:#888;">
+          └ 达人探店笔记集中发布（6/20-6/22），每家店安排3-5位达人当天到店拍摄产出
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🟢 长尾运营 · 6/23-7/5</div>
+    <table class="matrix">
+      <tr><th>品牌</th><th>日期</th><th>内容类型</th><th>核心信息</th><th>发布渠道</th></tr>
+      <tr>
+        <td class="brand-col">三品牌</td>
+        <td>6/23起</td>
+        <td>到店顾客UGC</td>
+        <td>「到店出示小红书笔记→赠送招牌菜」引导复购+UGC</td>
+        <td>到店顾客</td>
+      </tr>
+      <tr>
+        <td class="brand-col">三品牌</td>
+        <td>6/25起</td>
+        <td>CPS达人探店</td>
+        <td>V5/V6级美食达人持续招募，佣金制探店合作</td>
+        <td>达人矩阵</td>
+      </tr>
+      <tr>
+        <td class="brand-col">三品牌</td>
+        <td>6/28</td>
+        <td>首周数据复盘</td>
+        <td>各店核销数据、笔记互动量、到店转化率汇总</td>
+        <td>内部</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== 楽乐烧·执行细节 ==================== -->
+<div class="section" id="section-lele">
+  <h2 class="section-title">🔥 楽乐烧 · 光环花园城</h2>
+  <p class="section-sub">铁板烧2.0升级店 · 6月20日开业</p>
+
+  <div class="card">
+    <div class="card-title">🎯 开业活动方案</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      <span class="tag" style="background:#fce4e4;color:#c0392b;">6.20-6.22</span>
+      <span class="tag" style="background:#e0f0e3;color:#27ae60;">前3天</span>
+      <br><br>
+      <strong>① 猜菜名揭晓+免费试吃</strong><br>
+      围挡期猜中「发光菜」的用户，开业首周到店免费吃发光菜，每天限前20位。<br><br>
+      <strong>② 开业限定双人套餐</strong><br>
+      原价298元双人铁板烧套餐→开业价198元（6.20-6.22三天有效）<br>
+      含发光菜1份+精选铁板烧拼盘+甜品2份。<br><br>
+      <strong>③ 打卡送热菜</strong><br>
+      到店发小红书笔记，带#楽乐烧 #光环花园城，赠送价值38元热菜一份。<br><br>
+      <strong>④ 点评好评返券</strong><br>
+      大众点评5星好评→送20元无门槛代金券（下次可用，锁定复购）。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">👥 KOC/达人执行排期</div>
+    <table class="matrix">
+      <tr><th>类型</th><th>数量</th><th>执行时间</th><th>内容要求</th><th>费用</th></tr>
+      <tr>
+        <td>围挡打卡KOC</td>
+        <td>3-5位</td>
+        <td>6/6-6/10</td>
+        <td>围挡拍照+悬念文案，引导评论互动</td>
+        <td>置换/500-800元</td>
+      </tr>
+      <tr>
+        <td>品鉴官内测</td>
+        <td>3位</td>
+        <td>6/14-6/15</td>
+        <td>开业前试吃，产出真实测评笔记</td>
+        <td>免费试吃+伴手礼</td>
+      </tr>
+      <tr>
+        <td>开业探店达人</td>
+        <td>5-8位</td>
+        <td>6/20-6/22</td>
+        <td>到店拍摄完整用餐体验，带开业福利信息</td>
+        <td>1K-3K/位</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 门店执行SOP（开业前）</div>
+    <div style="font-size:13px;color:#444;">
+      <div class="sop-step"><div class="sop-num">1</div><div><strong>6/5前：</strong>围挡安装验收、打卡物料到位、员工话术培训（对客介绍围挡互动玩法）</div></div>
+      <div class="sop-step"><div class="sop-num">2</div><div><strong>6/10前：</strong>开业套餐菜单定稿、原材料备货量确认、发光菜SOP标准操作流程确认</div></div>
+      <div class="sop-step"><div class="sop-num">3</div><div><strong>6/13前：</strong>大众点评/美团商户装修完成、团购套餐上架、活动页面搭建</div></div>
+      <div class="sop-step"><div class="sop-num">4</div><div><strong>6/15前：</strong>店内试运营（邀请朋友/员工家属试吃，排查出餐流程问题）</div></div>
+      <div class="sop-step"><div class="sop-num">5</div><div><strong>6/18前：</strong>开业前全面检查（设备、食材、人员排班、收银系统、预约系统）</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 开业当天SOP</div>
+    <table class="matrix">
+      <tr><th>时间</th><th>事项</th><th>负责人</th></tr>
+      <tr><td>09:00</td><td>全员到岗，晨会，检查食材/设备/卫生/装饰</td><td>店长</td></tr>
+      <tr><td>10:00</td><td>最后一遍出餐测试，确认所有菜品可正常出品</td><td>主厨</td></tr>
+      <tr><td>10:30</td><td>开业花篮/气球/展架摆放到位，围挡打卡区检查</td><td>市场/店长</td></tr>
+      <tr><td>11:00</td><td>正式营业，迎客</td><td>全员</td></tr>
+      <tr><td>11:00-14:00</td><td>午市运营，重点关注出餐速度（新员工磨合）</td><td>主厨+店长</td></tr>
+      <tr><td>14:00-16:30</td><td>午休/复盘，调整晚市策略</td><td>店长</td></tr>
+      <tr><td>16:30-21:30</td><td>晚市运营（预计高峰期，增加人手）</td><td>全员</td></tr>
+      <tr><td>21:30-22:00</td><td>当日数据汇总（客流量、营业额、福利核销数、笔记数）</td><td>店长+市场</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== 新極膳·执行细节 ==================== -->
+<div class="section" id="section-xinjishan">
+  <h2 class="section-title">🦀 新極膳 · 源著天街</h2>
+  <p class="section-sub">海鲜艺食料理 · 6月20日开业</p>
+
+  <div class="card">
+    <div class="card-title">🎯 开业活动方案</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      <span class="tag" style="background:#fce4e4;color:#c0392b;">6.20-6.22</span>
+      <span class="tag" style="background:#e0f0e3;color:#27ae60;">预约制</span>
+      <span class="tag" style="background:#e3f0f7;color:#2563eb;">品鉴官</span>
+      <br><br>
+      <strong>① 猜地址品鉴官兑奖</strong><br>
+      围挡期猜中新店地址的3位品鉴官，开业当周到店享受全免品鉴并赠伴手礼。<br><br>
+      <strong>② 预约制到店</strong><br>
+      开业前三天（6/20-6/22）采用预约制，控制客流保证用餐体验。<br>
+      预约通道6/16上线小红书私信/大众点评。<br><br>
+      <strong>③ 双人体验套餐</strong><br>
+      原价588元双人海鲜料理套餐→开业价388元（限6.20-6.25）<br>
+      含前菜拼盘+主厨特选海鲜+甜品+饮品。<br><br>
+      <strong>④ 赠品鉴笔记</strong><br>
+      到店发布小红书笔记，定位源著天街，带#新極膳话题，送限定甜品一份。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">👥 KOC/达人执行排期</div>
+    <table class="matrix">
+      <tr><th>类型</th><th>数量</th><th>执行时间</th><th>内容要求</th><th>费用</th></tr>
+      <tr>
+        <td>悬念KOC</td>
+        <td>2-3位</td>
+        <td>6/6-6/8</td>
+        <td>「路过源著天街发现一家神秘围挡」偶遇视角</td>
+        <td>置换/500-800元</td>
+      </tr>
+      <tr>
+        <td>品鉴官</td>
+        <td>3位</td>
+        <td>6/13-6/15</td>
+        <td>提前到店深度品鉴，产出高质量图文</td>
+        <td>免费试吃+伴手礼</td>
+      </tr>
+      <tr>
+        <td>开业探店达人</td>
+        <td>3-5位</td>
+        <td>6/20-6/23</td>
+        <td>高端海鲜料理展示+环境拍摄+主厨互动</td>
+        <td>1.5K-4K/位</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 门店执行SOP</div>
+    <div style="font-size:13px;color:#444;">
+      <div class="sop-step"><div class="sop-num">1</div><div><strong>6/5前：</strong>围挡安装、黑金风物料到位、主厨培训准备（品鉴官环节的主厨互动话术）</div></div>
+      <div class="sop-step"><div class="sop-num">2</div><div><strong>6/10前：</strong>套餐/菜单定稿、海鲜供应链确认、预约系统搭建</div></div>
+      <div class="sop-step"><div class="sop-num">3</div><div><strong>6/14前：</strong>品鉴官到店试吃（拍素材）+ 预约系统开放测试</div></div>
+      <div class="sop-step"><div class="sop-num">4</div><div><strong>6/16：</strong>预约通道上线，控制开业前三天的客流到50%-60%满座率</div></div>
+      <div class="sop-step"><div class="sop-num">5</div><div><strong>6/18前：</strong>全面检查+员工排班确认+开业花艺/装饰到位</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 开业当天SOP</div>
+    <table class="matrix">
+      <tr><th>时间</th><th>事项</th><th>负责人</th></tr>
+      <tr><td>09:00</td><td>全员到岗，海鲜验收检查，备料清点</td><td>主厨</td></tr>
+      <tr><td>10:00</td><td>品鉴官接待准备（伴手礼、招待流程确认）</td><td>店长+市场</td></tr>
+      <tr><td>10:30</td><td>店内环境检查，灯光/音乐/装饰到位</td><td>店长</td></tr>
+      <tr><td>11:00</td><td>正式营业，按预约名单接待</td><td>全员</td></tr>
+      <tr><td>11:00-21:00</td><td>全天运营，主厨按预约时段与客人互动</td><td>主厨+店长</td></tr>
+      <tr><td>21:30</td><td>当日数据汇总（预约核销率、客单价、好评率）</td><td>店长+市场</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== 極屋鮨牛·执行细节 ==================== -->
+<div class="section" id="section-jiwu">
+  <h2 class="section-title">🥩 極屋鮨牛 · 重庆万象城 / 昆明爱琴海</h2>
+  <p class="section-sub">和牛烧肉 · 双城同步开业 · 6月20日</p>
+
+  <div class="card">
+    <div class="card-title">🎯 开业活动方案</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      <span class="tag" style="background:#fce4e4;color:#c0392b;">6.20-6.22</span>
+      <span class="tag" style="background:#6b4fa0;color:#fff;">双城联动</span>
+      <span class="tag" style="background:#e0f0e3;color:#27ae60;">520延续</span>
+      <br><br>
+      <strong>① 猜区域兑奖</strong><br>
+      围挡期猜中万象城位置/猜中昆明限定菜品的用户，开业当周到店免费吃和牛套餐。（重庆前10位/昆明前10位）<br><br>
+      <strong>② 双城联动套餐</strong><br>
+      重庆/昆明双城同步推出「和牛心形告白套餐」——开业价268元（原价388元）<br>
+      双城互认：持另一城市極屋鮨牛的消费记录→到新店享额外9折。<br><br>
+      <strong>③ 和牛抱抱打卡</strong><br>
+      店内设和牛玩偶打卡区，拍照发小红书带#極屋鮨牛 #双城见面 → 送和牛限定周边（和牛钥匙扣/和牛徽章）<br><br>
+      <strong>④ 双城MVP活动</strong><br>
+      6/20-6/30期间，双城各自核销最多的那位顾客→送全年和牛畅吃卡（每月一次免费双人套餐）。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">👥 KOC/达人执行排期</div>
+    <table class="matrix">
+      <tr><th>类型</th><th>数量</th><th>执行时间</th><th>内容要求</th><th>费用</th></tr>
+      <tr>
+        <td>双城KOC</td>
+        <td>重庆3位+昆明3位</td>
+        <td>6/6-6/10</td>
+        <td>探店极屋其他门店+预告围挡新店</td>
+        <td>置换/500-800元</td>
+      </tr>
+      <tr>
+        <td>品鉴官</td>
+        <td>重庆2位+昆明2位</td>
+        <td>6/14-6/16</td>
+        <td>开业前到店品鉴和牛，产出测评</td>
+        <td>免费试吃+伴手礼</td>
+      </tr>
+      <tr>
+        <td>开业探店达人</td>
+        <td>重庆4-6位+昆明4-6位</td>
+        <td>6/20-6/23</td>
+        <td>完整和牛烧肉体验+和牛心形摆盘+店内环境</td>
+        <td>1K-3K/位</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 门店执行SOP</div>
+    <div style="font-size:13px;color:#444;">
+      <div class="sop-step"><div class="sop-num">1</div><div><strong>6/5前：</strong>双城围挡安装验收、和牛立牌/打卡物料到位、员工话术培训</div></div>
+      <div class="sop-step"><div class="sop-num">2</div><div><strong>6/10前：</strong>双城菜单定稿、和牛供应链确认、双城联动核销方案（跨城验证做好）</div></div>
+      <div class="sop-step"><div class="sop-num">3</div><div><strong>6/15前：</strong>店内试运营，双城店长沟通会确认联动细节</div></div>
+      <div class="sop-step"><div class="sop-num">4</div><div><strong>6/18前：</strong>全面检查+和牛周边到货+打卡区搭建+员工排班确认</div></div>
+      <div class="sop-step"><div class="sop-num">5</div><div><strong>6/19：</strong>双城最后一次对表，确认物料/食材/人员全部就位</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 开业当天SOP（双城通用）</div>
+    <table class="matrix">
+      <tr><th>时间</th><th>事项</th><th>负责人</th></tr>
+      <tr><td>09:00</td><td>全员到岗，和牛验收/切配，备料清点</td><td>主厨</td></tr>
+      <tr><td>10:00</td><td>打卡区搭建完成（和牛玩偶就位）、周边陈列</td><td>店长+市场</td></tr>
+      <tr><td>10:30</td><td>双城同步进度确认（视频对表）</td><td>区域经理</td></tr>
+      <tr><td>11:00</td><td>正式营业，迎客</td><td>全员</td></tr>
+      <tr><td>11:00-21:00</td><td>全天运营，关注和牛心形摆盘出餐标准</td><td>主厨+店长</td></tr>
+      <tr><td>21:30</td><td>双城数据汇总（重庆vs昆明客流/核销/笔记数对比）</td><td>店长+市场</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== 开业日SOP ==================== -->
+<div class="section" id="section-opening">
+  <h2 class="section-title">🚀 开业日 · 统一执行SOP</h2>
+  <p class="section-sub">6月20日（周六）四店同步执行标准流程</p>
+
+  <div class="card">
+    <div class="card-title">📋 四店统一标准</div>
+    <div style="font-size:13px;color:#444;line-height:2.2;">
+      <strong>一、开业前3天（6/17-6/19）</strong><br>
+      ✅ 预约通道全开（美团/点评/小红书私信）<br>
+      ✅ 全员参加开业动员会，确认各岗位职责<br>
+      ✅ 最后一次设备/系统全量测试<br>
+      ✅ 开业花艺/装饰到位<br>
+      ✅ 所有福利物料（展架/桌卡/宣传单）到位<br><br>
+
+      <strong>二、开业当天（6/20）</strong><br>
+      ✅ 08:30-09:00 全员到岗，开工准备<br>
+      ✅ 09:00-10:00 食材验收、设备自检、卫生复查<br>
+      ✅ 10:00-10:30 开业氛围布置（气球/花篮/打卡区）<br>
+      ✅ 10:30-10:45 全员晨会（当日目标、客流预判、注意事项）<br>
+      ✅ 10:45-11:00 最后检查，开业倒计时<br>
+      ✅ 11:00 正式开门营业<br><br>
+
+      <strong>三、当日数据追踪（店长+市场双重确认）</strong><br>
+      📊 实时记录：客流量、翻台率、福利核销数<br>
+      📊 社交数据：小红书笔记发布数（关键词搜索统计）、笔记互动量<br>
+      📊 线上数据：团购核销数、预约到店率<br>
+      📊 口碑数据：大众点评实时评价、差评第一时间回复<br><br>
+
+      <strong>四、收尾工作（21:00-22:00）</strong><br>
+      ✅ 当日营业数据汇总，发至项目群<br>
+      ✅ 福利剩余量盘点（决定次日是否加码）<br>
+      ✅ 设备检查、收档<br>
+      ✅ 次日排班确认
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📸 开业现场拍照清单</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      ✅ 围挡→店内「开盲盒」对比照（开业前围挡 vs 开业后店内实景）<br>
+      ✅ 招牌菜特写（发光菜/海鲜拼盘/和牛心形摆盘）<br>
+      ✅ 开业第一桌顾客合影（授权后）<br>
+      ✅ 主厨/店长工作照<br>
+      ✅ 达人探店过程抓拍<br>
+      ✅ 门口排队盛况（侧面展示热度）<br>
+      ✅ 福利兑换区/打卡区互动画面<br>
+      ✅ 双城極屋鮨牛的跨城联动素材
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🆘 风险预案</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      <strong>客流过大：</strong>分时段放号制，扫码取号，提前排队可领等候饮品券（引流附近商圈）<br>
+      <strong>食材缺货：</strong>预留20%安全库存，开业前每日确认，联动其他店调货<br>
+      <strong>差评应急：</strong>开业前三天安排专人实时监控点评平台，差评15分钟内回复+致电处理<br>
+      <strong>设备故障：</strong>开业前三天安排设备厂家驻场支援<br>
+      <strong>达人缺席：</strong>每家店备1-2位候补达人，确认行程后预付定金锁位
+    </div>
+  </div>
+</div>
+
+<!-- ==================== KOC/达人 ==================== -->
+<div class="section" id="section-koc">
+  <h2 class="section-title">🤝 KOC/达人执行方案</h2>
+  <p class="section-sub">分层级达人矩阵 × 内容分配 × 佣金机制</p>
+
+  <div class="card">
+    <div class="card-title">📊 达人矩阵分层</div>
+    <table class="matrix">
+      <tr><th>层级</th><th>粉丝量</th><th>数量</th><th>合作形式</th><th>预算/位</th><th>核心任务</th></tr>
+      <tr>
+        <td>头部探店达人</td>
+        <td>50W+</td>
+        <td>1-2位/品牌</td>
+        <td>付费合作+置换</td>
+        <td>3K-5K</td>
+        <td>品牌声量启动，拍摄高质量探店视频</td>
+      </tr>
+      <tr>
+        <td>腰部KOC</td>
+        <td>5W-50W</td>
+        <td>3-5位/品牌</td>
+        <td>付费合作</td>
+        <td>1K-3K</td>
+        <td>到店深度体验+真实测评笔记</td>
+      </tr>
+      <tr>
+        <td>素人KOC</td>
+        <td>5W以下</td>
+        <td>5-8位/品牌</td>
+        <td>置换/小额付费</td>
+        <td>500-1K</td>
+        <td>围挡打卡+开业氛围+到店UGC铺量</td>
+      </tr>
+      <tr>
+        <td>品鉴官</td>
+        <td>-</td>
+        <td>3位/品牌</td>
+        <td>免费试吃</td>
+        <td>免费套餐</td>
+        <td>提前到店，产出真实口碑内容</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 达人内容方向</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      <strong>楽乐烧 内容方向：</strong><br>
+      「铁板烧2.0到底升级了什么？发光菜到底是什么？」「光环花园城新店探店」<br><br>
+      <strong>新極膳 内容方向：</strong><br>
+      「源著天街新开的海鲜料理，预约制到底值不值」「主厨亲自端菜的体验」<br><br>
+      <strong>極屋鮨牛 内容方向：</strong><br>
+      「重庆开出第3家极屋了！」「昆明也有了！排队王终于来了」「和牛心形摆盘太适合约会了」
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 达人Brief要点</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      <strong>给到达人的统一brief包含：</strong><br>
+      ✅ 品牌故事与核心卖点（一句话就能说清楚）<br>
+      ✅ 必拍菜品清单（3-5道招牌菜）<br>
+      ✅ 推荐的拍照角度/机位（围挡→门头→店内→菜品）<br>
+      ✅ 必带话题标签（品牌词+城市词+品类词+活动词）<br>
+      ✅ 发布时间和数量要求（如果有多条内容，错开发布）<br>
+      ✅ 对数据的要求（至少多少赞/多少曝光？看是否承诺）<br>
+      ✅ 福利信息准确传达（开业活动、优惠套餐、兑换方式）
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💰 CPS佣金方案（开业后持续）</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      开业热度期过后（6/25起），启动CPS佣金制达人探店：<br><br>
+      <strong>楽乐烧：</strong>佣金12%（平台抽佣2.5%，品牌实付9.5%），核销周期7天内<br>
+      <strong>新極膳：</strong>佣金10%（客单价高，利润率低），核销周期7天内<br>
+      <strong>極屋鮨牛：</strong>佣金12%（双城统一），核销周期7天内<br><br>
+      招募渠道：小红书通告平台、达人私信邀约、朋友圈转介绍。<br>
+      每个品牌持续招募10-20位CPS达人到7月中。
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 预算 ==================== -->
+<div class="section" id="section-budget">
+  <h2 class="section-title">💰 预算估算</h2>
+  <p class="section-sub">三项核心支出：达人费用 + 围挡物料 + 开业福利</p>
+
+  <div class="card">
+    <div class="card-title">📊 预算总表（估算）</div>
+    <table class="matrix">
+      <tr><th>项目</th><th>楽乐烧</th><th>新極膳</th><th>極屋鮨牛×2</th><th>合计</th></tr>
+      <tr>
+        <td><strong>达人/KOC费用</strong></td>
+        <td>1.2W-2W</td>
+        <td>1W-1.8W</td>
+        <td>2W-3.5W</td>
+        <td><strong>4.2W-7.3W</strong></td>
+      </tr>
+      <tr>
+        <td><strong>围挡物料</strong></td>
+        <td>3K-5K</td>
+        <td>3K-5K</td>
+        <td>5K-8K</td>
+        <td><strong>1.1W-1.8W</strong></td>
+      </tr>
+      <tr>
+        <td><strong>开业福利投入</strong></td>
+        <td>5K-8K</td>
+        <td>4K-6K</td>
+        <td>8K-1.2W</td>
+        <td><strong>1.7W-2.6W</strong></td>
+      </tr>
+      <tr>
+        <td><strong>品鉴官/试吃</strong></td>
+        <td>1.5K-2K</td>
+        <td>1.5K-2K</td>
+        <td>3K-4K</td>
+        <td><strong>6K-8K</strong></td>
+      </tr>
+      <tr>
+        <td><strong>周边/伴手礼</strong></td>
+        <td>1K-2K</td>
+        <td>1K-2K</td>
+        <td>2K-3K</td>
+        <td><strong>4K-7K</strong></td>
+      </tr>
+      <tr>
+        <td style="background:#f9f9f4;"><strong>品牌小计</strong></td>
+        <td style="background:#f9f9f4;"><strong>2.2W-3.5W</strong></td>
+        <td style="background:#f9f9f4;"><strong>1.9W-3W</strong></td>
+        <td style="background:#f9f9f4;"><strong>3.8W-6.2W</strong></td>
+        <td style="background:#f9f9f4;"><strong>8W-12.7W</strong></td>
+      </tr>
+    </table>
+    <div style="font-size:12px;color:#888;margin-top:8px;">
+      *以上为估算区间，具体以实际谈价为折扣为准。<br>
+      *极屋鮨牛双城乘以2的物料和达人费用有协同效应，实际低于单店×2。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💡 省钱技巧</div>
+    <div style="font-size:13px;color:#444;line-height:2;">
+      ① 围挡画面三品牌统一下单制作，量大价优<br>
+      ② 品鉴官可以用「免费试吃+送套餐券」替代现金，省达人费<br>
+      ③ 开业福利的食材成本控制在套餐售价的30%以内<br>
+      ④ KOC优先选择有粉丝积累但报价低的达人，重内容质量而不是粉丝量<br>
+      ⑤ 五店物料统一设计，一次设计费覆盖所有门店
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="footer">
+  <div class="f-company">成都弯道超车文化传媒有限公司</div>
+  餐饮品牌开业整合营销方案 ｜ 方案编号：WDC-2026-0526<br>
+  生成时间：2026年5月26日 ｜ 本方案仅供内部沟通使用
+</div>
+
+<script>
+  (function() {
+    var tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var sectionId = this.getAttribute('data-section');
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+        this.classList.add('active');
+        document.getElementById('section-' + sectionId).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
