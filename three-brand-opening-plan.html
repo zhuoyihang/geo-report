@@ -281,6 +281,58 @@
     }
     .quote-box strong { color: #8b6914; }
     .img-wrap { border-radius: 10px; overflow: hidden; background: #f8f8f4; }
+    .img-wrap img { width: 100%; display: block; }
+    .img-wrap .img-cap { font-size: 12px; color: #999; text-align: center; padding: 6px 10px; background: #fafaf8; }
+
+    /* === Case Gallery === */
+    .case-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .case-item {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #eee;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .case-item .case-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+    .case-item .case-info {
+      padding: 10px 12px 12px;
+    }
+    .case-item .case-info .case-label {
+      font-size: 11px;
+      color: #c0392b;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .case-item .case-info .case-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #1a1a2e;
+    }
+    .case-item .case-info .case-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.6;
+    }
+    .case-item .case-info .case-link {
+      font-size: 11px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .case-item .case-info .case-link a {
+      color: #2563eb;
+      text-decoration: none;
+    }
 
     .sop-step {
       display: flex;
@@ -342,6 +394,7 @@
 <!-- ==================== NAV ==================== -->
 <div class="nav-tabs" id="navTabs">
   <div class="tab active" data-section="overview">总览</div>
+  <div class="tab" data-section="cases">案例参考</div>
   <div class="tab" data-section="fence">围挡策略</div>
   <div class="tab" data-section="content">内容日历</div>
   <div class="tab" data-section="lele">楽乐烧</div>
@@ -410,6 +463,101 @@
     <strong>💡 核心逻辑：</strong><br>
     围挡阶段做悬念（让人好奇）→ 预热阶段做互动（让人参与）→ 冲刺阶段做转化（让人预约）→ 开业阶段做爆发（让人到店）→ 长尾阶段做沉淀（让人复购+传播）。<br>
     每一步的结果都是下一步的素材，环环相扣，不浪费任何一个流量。
+  </div>
+</div>
+
+<!-- ==================== 案例参考 ==================== -->
+<div class="section" id="section-cases">
+  <h2 class="section-title">📸 真实案例参考</h2>
+  <p class="section-sub">8个小红书围挡案例，拆解背后的打法逻辑</p>
+
+  <div class="case-gallery">
+    <div class="case-item">
+      <img class="case-img" src="case-screenshots/围挡打卡有礼1.jpg" alt="永庆坊广州围挡" loading="lazy">
+      <div class="case-info">
+        <div class="case-label">📸 围挡打卡有礼</div>
+        <div class="case-title">永庆坊广州首店</div>
+        <div class="case-desc">围挡=打卡点+互动装置，拍照发小红书送限定周边，UGC直接裂变</div>
+        <div class="case-link"><a href="http://xhslink.com/o/6Xf67zdIHFm" target="_blank" rel="noopener">查看原笔记 →</a></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <img class="case-img" src="case-screenshots/围挡打卡有礼2.jpg" alt="青岛炸鸡围挡" loading="lazy">
+      <div class="case-info">
+        <div class="case-label">📸 围挡打卡有礼</div>
+        <div class="case-title">青岛炸鸡围挡</div>
+        <div class="case-desc">Q版可爱视觉+「ju可爱」钩子文案，路人拍照传播欲拉满</div>
+        <div class="case-link"><a href="http://xhslink.com/o/AJqzoeN3wL7" target="_blank" rel="noopener">查看原笔记 →</a></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <img class="case-img" src="case-screenshots/新店预告1.jpg" alt="SeRoRi香料厨房" loading="lazy">
+      <div class="case-info">
+        <div class="case-label">🔮 新店预告·悬念</div>
+        <div class="case-title">SeRoRi香料厨房</div>
+        <div class="case-desc">「正在悄悄准备…」悬念文案，只露调性不露菜品，好奇心拉满</div>
+        <div class="case-link"><a href="http://xhslink.com/o/8FmmwgSrQjT" target="_blank" rel="noopener">查看原笔记 →</a></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <img class="case-img" src="case-screenshots/新店预告2.jpg" alt="东方福来德围挡" loading="lazy">
+      <div class="case-info">
+        <div class="case-label">🔮 新店预告·偶遇</div>
+        <div class="case-title">东方福来德</div>
+        <div class="case-desc">「扫街发现…」路人视角发现围挡，制造偶遇感和稀缺感</div>
+        <div class="case-link"><a href="http://xhslink.com/o/5SwL7sdSpZc" target="_blank" rel="noopener">查看原笔记 →</a></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <img class="case-img" src="case-screenshots/福利活动1.jpg" alt="上海1000杯免费" loading="lazy">
+      <div class="case-info">
+        <div class="case-label">🎁 福利诱饵</div>
+        <div class="case-title">上海1000杯免费</div>
+        <div class="case-desc">「1000杯免费喝」福利数字化，低门槛引流到店</div>
+        <div class="case-link"><a href="http://xhslink.com/o/9PwqLLhgPn3" target="_blank" rel="noopener">查看原笔记 →</a></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <img class="case-img" src="case-screenshots/福利活动2.jpg" alt="天府烧烤免费吃" loading="lazy">
+      <div class="case-info">
+        <div class="case-label">🎁 福利诱饵</div>
+        <div class="case-title">天府烧烤免费吃</div>
+        <div class="case-desc">绑定闺蜜社交场景，「免费吃」+周末聚会需求双锚点</div>
+        <div class="case-link"><a href="http://xhslink.com/o/9p3Qa8FHsNR" target="_blank" rel="noopener">查看原笔记 →</a></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <img class="case-img" src="case-screenshots/开业免费菜1.png" alt="醒仔品鉴官招募" loading="lazy">
+      <div class="case-info">
+        <div class="case-label">👑 品鉴官招募</div>
+        <div class="case-title">醒仔·打卡招募</div>
+        <div class="case-desc">打卡围挡→招募品鉴官→霸王餐换UGC，低门槛高回报模式</div>
+        <div class="case-link"><a href="http://xhslink.com/o/8rNcwGvOdB2" target="_blank" rel="noopener">查看原笔记 →</a></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <img class="case-img" src="case-screenshots/开业免费菜2.png" alt="开业免费菜引流" loading="lazy">
+      <div class="case-info">
+        <div class="case-label">🥩 免费菜引流</div>
+        <div class="case-title">开业免费菜组合</div>
+        <div class="case-desc">到店出示笔记即送招牌菜，适合新升级版本开业引流</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-box" style="margin-top:4px;">
+    <strong>▸ 核心借鉴逻辑：</strong><br>
+    ① <strong>悬念是最便宜的流量</strong>——信息打码比直接告知多3倍互动<br>
+    ② <strong>打卡=内容触发器</strong>——围挡设计要有「拍照冲动」，不是好看就行<br>
+    ③ <strong>福利要「可感知」</strong>——说"1000杯"比说"大力度优惠"有效100倍<br>
+    ④ <strong>品鉴官=信任背书</strong>——第三方的口碑永远比品牌自夸值钱
   </div>
 </div>
 
