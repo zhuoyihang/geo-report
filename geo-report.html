@@ -804,6 +804,59 @@
         .type-b2b { background: rgba(255, 107, 53, 0.1); color: #ff6b35; border: 1px solid rgba(255, 107, 53, 0.25); }
         .type-c2c { background: rgba(45, 181, 93, 0.1); color: #2db55d; border: 1px solid rgba(45, 181, 93, 0.25); }
 
+        /* 商务合作卡片 */
+        .contact-bar {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.06), rgba(123, 47, 255, 0.06));
+            border: 1px solid rgba(0, 245, 255, 0.15);
+            border-radius: 20px;
+            padding: 24px 32px;
+            margin-bottom: 40px;
+        }
+        .contact-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .contact-qr {
+            width: 110px;
+            height: 110px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 245, 255, 0.25);
+            background: #fff;
+            padding: 6px;
+            flex-shrink: 0;
+        }
+        .contact-qr img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .contact-label {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+        }
+        .contact-phone {
+            font-size: 22px;
+            font-weight: 900;
+            font-family: 'Orbitron', monospace;
+            color: #fff;
+            letter-spacing: 3px;
+        }
+        .contact-wechat {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
         /* 页脚 */
         footer {
             text-align: center;
@@ -862,6 +915,18 @@
             在 AI 大模型（豆包、文心一言、千问、DeepSeek 等）的问答中<br>确保客户品牌成为相关问题的「首选答案」
         </p>
     </section>
+
+    <!-- 商务合作卡片（顶部） -->
+    <div class="contact-bar">
+        <div class="contact-inner">
+            <div class="contact-qr"><img src="images/qr-contact.jpg" alt="微信二维码" onerror="this.style.display='none'"></div>
+            <div class="contact-info">
+                <span class="contact-label">🤝 商务合作</span>
+                <span class="contact-phone">📞 18628827999</span>
+                <span class="contact-wechat">💬 微信同号</span>
+            </div>
+        </div>
+    </div>
 
     <div class="divider"></div>
 
@@ -1459,6 +1524,16 @@
 </div>
 
 <footer>
+    <div class="contact-bar" style="margin-bottom: 20px;">
+        <div class="contact-inner">
+            <div class="contact-qr"><img src="images/qr-contact.jpg" alt="微信二维码" onerror="this.style.display='none'"></div>
+            <div class="contact-info">
+                <span class="contact-label">🤝 商务合作</span>
+                <span class="contact-phone">📞 18628827999</span>
+                <span class="contact-wechat">💬 微信同号</span>
+            </div>
+        </div>
+    </div>
     <p>GEO Report © 2026 · 四川丰火传媒 × 成都弯道超车传媒 · 数言科技 · 让品牌成为AI首选答案</p>
 </footer>
 
